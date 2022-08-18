@@ -6,6 +6,14 @@ plugins {
 android {
     compileSdk 32
 
+    viewBinding {
+        enabled = true
+    }
+
+    buildFeatures {
+        viewBinding true
+    }
+
     defaultConfig {
         applicationId "by.ealipatov.kotlin.materialyoufromealipatov"
         minSdk 21
@@ -14,6 +22,14 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes.each {
+        Properties properties = new Properties()
+        properties.load(project.rootProject.file("apikey.properties").newDataInputStream())
+
+        def nasaApiKey = properties.getProperty("NASA_API_KEY", "")
+        it.buildConfigField "String", "NASA_API_KEY", nasaApiKey
     }
 
     buildTypes {
@@ -32,8 +48,24 @@ android {
 }
 
 dependencies {
+    //Retrofit
+    implementation 'com.squareup.retrofit2:retrofit:2.9.0'
+    implementation 'com.squareup.retrofit2:converter-gson:2.9.0'
+    implementation 'com.squareup.okhttp3:logging-interceptor:4.9.2'
 
-    implementation 'androidx.core:core-ktx:1.7.0'
+    //Lifecycle
+    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
+
+    //Gson
+    implementation 'com.google.code.gson:gson:2.9.0'
+
+    // coil
+    implementation 'io.coil-kt:coil:2.1.0'
+    implementation("io.coil-kt:coil-gif:2.1.0")
+    implementation("io.coil-kt:coil-svg:2.1.0")
+
+    //default core
+    implementation 'androidx.core:core-ktx:1.8.0'
     implementation 'androidx.appcompat:appcompat:1.5.0'
     implementation 'com.google.android.material:material:1.6.1'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
