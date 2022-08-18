@@ -111,10 +111,12 @@ class PictureOfTheDayFragment : Fragment() {
             PODFragmentViewModelAppState.Loading -> {}
             is PODFragmentViewModelAppState.Success -> {
                 val pictureData = appState.pictureData
-                val pictureUrl = pictureData.url
+
+                binding.imageTitleDescription.text = pictureData.title
+                binding.imageDescription.text = pictureData.explanation
 
                 Coil.setImageLoader(imageLoader)
-                binding.imageView.load(pictureUrl)
+                binding.imageView.load(pictureData.url)
                 {
                    error(R.drawable.ic_baseline_no_photography_24)
                    placeholder(R.drawable.loadingfast)

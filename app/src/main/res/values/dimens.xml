@@ -2,4 +2,6 @@
 <resources>
     <dimen name="fab_radius">40dp</dimen>
     <dimen name="fab_cradle_margin">5dp</dimen>
+    <dimen name="title_image_description_text_size">24sp</dimen>
+    <dimen name="image_description_text_size">18sp</dimen>
 </resources>

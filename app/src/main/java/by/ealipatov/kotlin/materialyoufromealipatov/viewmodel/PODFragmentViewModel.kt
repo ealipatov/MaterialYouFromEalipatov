@@ -1,6 +1,5 @@
 package by.ealipatov.kotlin.materialyoufromealipatov.viewmodel
 
-import androidx.core.app.ActivityCompat
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import by.ealipatov.kotlin.materialyoufromealipatov.model.CallbackPictureData
