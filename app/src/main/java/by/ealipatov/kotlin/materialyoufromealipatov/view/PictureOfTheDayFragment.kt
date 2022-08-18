@@ -76,7 +76,7 @@ class PictureOfTheDayFragment : Fragment() {
                 val pictureUrl = pictureData.url
 
                 Coil.setImageLoader(imageLoader)
-                binding.image.load(pictureUrl)
+                binding.imageView.load(pictureUrl)
                 {
                    error(R.drawable.ic_baseline_no_photography_24)
                    placeholder(R.drawable.loadingfast)
