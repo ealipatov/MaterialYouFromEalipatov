@@ -1,5 +1,14 @@
 <resources>
     <string name="app_name">MaterialYouFromEalipatov</string>
-    <string name="pictureofnasa">PictureOfNasa</string>
-    <string name="anymessage">AnyMessage</string>
+    <string name="picture_of_nasa">PictureOfNasa</string>
+    <string name="any_message">AnyMessage</string>
+    <string name="error_loading">Ошибка загрузки</string>
+    <string name="error_loading_picture">Ошибка загрузки картинки</string>
+
+    <string name="photo_of_the_day_stub">Photo of the day</string>
+    <string name="search_wiki">Найти в Википедии</string>
+    <string name="wiki_helper_text">Поищите термин в википедии</string>
+    <string name="favourite">Мзбранное</string>
+    <string name="settings">Настройки</string>
+    <string name="search">Поиск</string>
 </resources>

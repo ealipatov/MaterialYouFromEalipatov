@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import by.ealipatov.kotlin.materialyoufromealipatov.R
 import by.ealipatov.kotlin.materialyoufromealipatov.databinding.FragmentPictureOfTheDayBinding
+import by.ealipatov.kotlin.materialyoufromealipatov.utils.toast
 import by.ealipatov.kotlin.materialyoufromealipatov.viewmodel.PODFragmentViewModel
 import by.ealipatov.kotlin.materialyoufromealipatov.viewmodel.PODFragmentViewModelAppState
 import coil.Coil
@@ -43,15 +44,10 @@ class PictureOfTheDayFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-  //      val picture = arguments?.getParcelable<Weather>(BUNDLE_WEATHER_EXTRA)
-
         viewModel.getLiveData().observe(viewLifecycleOwner) { appState ->
             renderData(appState)
         }
 
-//        weather?.let {
-//            viewModel.getWeather(it.city)
-//        }
         viewModel.getPicture()
 
     }
@@ -71,7 +67,9 @@ class PictureOfTheDayFragment : Fragment() {
             .build()
 
         when (appState) {
-            is PODFragmentViewModelAppState.Error -> {}
+            is PODFragmentViewModelAppState.Error -> {
+                toast(getString(R.string.error_loading_picture))
+            }
             PODFragmentViewModelAppState.Loading -> {}
             is PODFragmentViewModelAppState.Success -> {
                 val pictureData = appState.pictureData
@@ -80,23 +78,23 @@ class PictureOfTheDayFragment : Fragment() {
                 Coil.setImageLoader(imageLoader)
                 binding.image.load(pictureUrl)
                 {
-                   error(R.drawable.loadingfast)
+                   error(R.drawable.ic_baseline_no_photography_24)
                    placeholder(R.drawable.loadingfast)
+                   crossfade(true)
                 }
             }
         }
     }
 
-//    companion object {
-//        fun newInstance(weather: Weather) = WeatherDetailFragment().also {
-//            it.arguments = Bundle().apply { putParcelable(BUNDLE_WEATHER_EXTRA, weather) }
+    companion object {
+        fun newInstance() = PictureOfTheDayFragment()
+//        fun newInstance(pictureData: ServerNasaPODResponseData) = PictureOfTheDayFragment().also {
+//            it.arguments = Bundle().apply { putParcelable(BUNDLE_PICTURE_EXTRA, pictureData) }
 //        }
-//    }
+    }
 
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
     }
-
-
 }
