@@ -1,10 +1,13 @@
 package by.ealipatov.kotlin.materialyoufromealipatov.view
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import by.ealipatov.kotlin.materialyoufromealipatov.R
@@ -18,6 +21,7 @@ import coil.decode.GifDecoder
 import coil.decode.ImageDecoderDecoder
 import coil.decode.SvgDecoder
 import coil.load
+import com.google.android.material.bottomsheet.BottomSheetBehavior
 
 
 class PictureOfTheDayFragment : Fragment() {
@@ -27,6 +31,8 @@ class PictureOfTheDayFragment : Fragment() {
         get() {
             return _binding!!
         }
+
+    private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
 
     private val viewModel by lazy {
         ViewModelProvider(this)[PODFragmentViewModel::class.java]
@@ -49,6 +55,14 @@ class PictureOfTheDayFragment : Fragment() {
         }
 
         viewModel.getPicture()
+
+        setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
+
+        binding.inputLayout.setEndIconOnClickListener {
+            startActivity(Intent(Intent.ACTION_VIEW).apply {
+                data = Uri.parse("https://en.wikipedia.org/wiki/${binding.inputEditText.text.toString()}")
+            })
+        }
 
     }
     private fun renderData(appState: PODFragmentViewModelAppState) {
@@ -84,6 +98,11 @@ class PictureOfTheDayFragment : Fragment() {
                 }
             }
         }
+    }
+
+    private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
+        bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
+        bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
     }
 
     companion object {
