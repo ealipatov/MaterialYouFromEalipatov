@@ -9,7 +9,7 @@
     android:background="#f6f6fa"
 
     app:behavior_hideable="true"
-    app:behavior_peekHeight="100dp"
+    app:behavior_peekHeight="120dp"
 
     android:visibility="visible"
     app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">

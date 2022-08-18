@@ -12,6 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import by.ealipatov.kotlin.materialyoufromealipatov.MainActivity
 import by.ealipatov.kotlin.materialyoufromealipatov.R
 import by.ealipatov.kotlin.materialyoufromealipatov.databinding.FragmentPictureOfTheDayBinding
+
 import by.ealipatov.kotlin.materialyoufromealipatov.utils.toast
 import by.ealipatov.kotlin.materialyoufromealipatov.viewmodel.PODFragmentViewModel
 import by.ealipatov.kotlin.materialyoufromealipatov.viewmodel.PODFragmentViewModelAppState
@@ -23,6 +24,7 @@ import coil.decode.SvgDecoder
 import coil.load
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import kotlinx.android.synthetic.main.bottom_sheet_layout.view.*
 
 
 class PictureOfTheDayFragment : Fragment() {
@@ -34,6 +36,8 @@ class PictureOfTheDayFragment : Fragment() {
         }
 
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
+    private lateinit var imageTitleDescription: String
+    private lateinit var imageDescription: String
 
     private val viewModel by lazy {
         ViewModelProvider(this)[PODFragmentViewModel::class.java]
@@ -111,9 +115,11 @@ class PictureOfTheDayFragment : Fragment() {
             PODFragmentViewModelAppState.Loading -> {}
             is PODFragmentViewModelAppState.Success -> {
                 val pictureData = appState.pictureData
+                imageTitleDescription = pictureData.title.toString()
+                imageDescription = pictureData.explanation.toString()
 
-                binding.imageTitleDescription.text = pictureData.title
-                binding.imageDescription.text = pictureData.explanation
+                binding.imageTitleDescription.text = imageTitleDescription
+                binding.imageDescription.text = imageDescription
 
                 Coil.setImageLoader(imageLoader)
                 binding.imageView.load(pictureData.url)
@@ -129,6 +135,38 @@ class PictureOfTheDayFragment : Fragment() {
     private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+        bottomSheetBehavior.addBottomSheetCallback(object :
+            BottomSheetBehavior.BottomSheetCallback() {
+            override fun onStateChanged(bottomSheet: View, newState: Int) {
+                when (newState) {
+                    BottomSheetBehavior.STATE_COLLAPSED -> {
+                        bottomSheet.bottomSheetDescriptionHeader.text = "Разверните для просмотра"
+                        bottomSheet.bottomSheetDescription.text = ""
+                    }
+                    BottomSheetBehavior.STATE_EXPANDED -> {
+                        bottomSheet.bottomSheetDescriptionHeader.text = imageTitleDescription
+                        bottomSheet.bottomSheetDescription.text = imageDescription
+
+                    }
+                    BottomSheetBehavior.STATE_DRAGGING -> {
+                        bottomSheet.bottomSheetDescriptionHeader.text = "Тяни вверх"
+                    }
+                    BottomSheetBehavior.STATE_HALF_EXPANDED -> {
+                        //ничего не делаем
+                    }
+                    BottomSheetBehavior.STATE_HIDDEN -> {
+                        //ничего не делаем
+                    }
+                    BottomSheetBehavior.STATE_SETTLING -> {
+                        //ничего не делаем
+                    }
+                }
+            }
+
+            override fun onSlide(bottomSheet: View, slideOffset: Float) {
+                //не используется
+            }
+        })
     }
 
     private fun setBottomAppBar(view: View) {
