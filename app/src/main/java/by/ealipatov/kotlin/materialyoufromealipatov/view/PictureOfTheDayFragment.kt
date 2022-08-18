@@ -5,6 +5,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.view.*
+import androidx.annotation.RequiresApi
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
@@ -12,7 +13,6 @@ import androidx.lifecycle.ViewModelProvider
 import by.ealipatov.kotlin.materialyoufromealipatov.MainActivity
 import by.ealipatov.kotlin.materialyoufromealipatov.R
 import by.ealipatov.kotlin.materialyoufromealipatov.databinding.FragmentPictureOfTheDayBinding
-
 import by.ealipatov.kotlin.materialyoufromealipatov.utils.toast
 import by.ealipatov.kotlin.materialyoufromealipatov.viewmodel.PODFragmentViewModel
 import by.ealipatov.kotlin.materialyoufromealipatov.viewmodel.PODFragmentViewModelAppState
@@ -24,7 +24,10 @@ import coil.decode.SvgDecoder
 import coil.load
 import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.chip.Chip
 import kotlinx.android.synthetic.main.bottom_sheet_layout.view.*
+import kotlinx.android.synthetic.main.fragment_chips.*
+import java.time.LocalDate
 
 
 class PictureOfTheDayFragment : Fragment() {
@@ -59,18 +62,36 @@ class PictureOfTheDayFragment : Fragment() {
             renderData(appState)
         }
 
-        viewModel.getPicture()
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            viewModel.getPicture(LocalDate.now())
+        }
 
         setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
 
         setBottomAppBar(view)
+
+
+        binding.chipToday.setOnClickListener {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                viewModel.getPicture(LocalDate.now())
+            }
+        }
+        binding.chipYesterday.setOnClickListener {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                viewModel.getPicture(LocalDate.now().minusDays(1))
+            }
+        }
+        binding.chipDayBeforeYesterday.setOnClickListener {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                viewModel.getPicture(LocalDate.now().minusDays(2))
+            }
+        }
 
         binding.inputLayout.setEndIconOnClickListener {
             startActivity(Intent(Intent.ACTION_VIEW).apply {
                 data = Uri.parse("https://en.wikipedia.org/wiki/${binding.inputEditText.text.toString()}")
             })
         }
-
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -111,6 +132,8 @@ class PictureOfTheDayFragment : Fragment() {
         when (appState) {
             is PODFragmentViewModelAppState.Error -> {
                 toast(getString(R.string.error_loading_picture))
+                imageTitleDescription = getString(R.string.error_loading)
+                imageDescription = getString(R.string.error_loading)
             }
             PODFragmentViewModelAppState.Loading -> {}
             is PODFragmentViewModelAppState.Success -> {
@@ -144,6 +167,7 @@ class PictureOfTheDayFragment : Fragment() {
                         bottomSheet.bottomSheetDescription.text = ""
                     }
                     BottomSheetBehavior.STATE_EXPANDED -> {
+
                         bottomSheet.bottomSheetDescriptionHeader.text = imageTitleDescription
                         bottomSheet.bottomSheetDescription.text = imageDescription
 

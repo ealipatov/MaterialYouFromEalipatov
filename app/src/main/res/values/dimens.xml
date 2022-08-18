@@ -4,4 +4,8 @@
     <dimen name="fab_cradle_margin">5dp</dimen>
     <dimen name="title_image_description_text_size">24sp</dimen>
     <dimen name="image_description_text_size">18sp</dimen>
+    <dimen name="padding_start">10dp</dimen>
+    <dimen name="padding_end">10dp</dimen>
+    <dimen name="layout_width_zero">0dp</dimen>
+    <dimen name="margin_top">16dp</dimen>
 </resources>

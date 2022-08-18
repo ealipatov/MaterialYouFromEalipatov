@@ -1,11 +1,14 @@
 package by.ealipatov.kotlin.materialyoufromealipatov.viewmodel
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import by.ealipatov.kotlin.materialyoufromealipatov.model.CallbackPictureData
 import by.ealipatov.kotlin.materialyoufromealipatov.model.RepositoryNasaPODRetrofit
 import by.ealipatov.kotlin.materialyoufromealipatov.model.ServerNasaPODResponseData
 import java.io.IOException
+import java.time.LocalDate
 
 class PODFragmentViewModel(
     private val liveData: MutableLiveData<PODFragmentViewModelAppState> =
@@ -36,9 +39,10 @@ class PODFragmentViewModel(
 //        return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting
 //    }
 
-    fun getPicture() {
+    @RequiresApi(Build.VERSION_CODES.O)
+    fun getPicture(date: LocalDate) {
         liveData.value = PODFragmentViewModelAppState.Loading
-        repository.getUrlPicture(callback)
+        repository.getUrlPicture(date, callback)
     }
 
     private val callback = object : CallbackPictureData {

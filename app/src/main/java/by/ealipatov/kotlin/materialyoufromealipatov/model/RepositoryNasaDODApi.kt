@@ -7,5 +7,6 @@ import retrofit2.http.Query
 interface RepositoryNasaDODApi {
 
     @GET("planetary/apod")
-    fun getPictureOfTheDay(@Query("api_key") apiKey: String): Call<ServerNasaPODResponseData>
+    fun getPictureOfTheDay(@Query("api_key") apiKey: String, @Query("date") date: String):
+            Call<ServerNasaPODResponseData>
 }
