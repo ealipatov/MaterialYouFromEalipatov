@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">MaterialYouFromEalipatov</string>
+    <string name="pictureofnasa">PictureOfNasa</string>
+    <string name="anymessage">AnyMessage</string>
 </resources>
