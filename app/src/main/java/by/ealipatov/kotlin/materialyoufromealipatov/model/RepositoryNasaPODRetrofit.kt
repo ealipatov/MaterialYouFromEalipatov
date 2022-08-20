@@ -11,7 +11,6 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.io.IOException
 import java.time.LocalDate
-import java.time.format.DateTimeFormatter
 
 class RepositoryNasaPODRetrofit: RepositoryNasaPOD {
     @RequiresApi(Build.VERSION_CODES.O)

@@ -8,4 +8,5 @@
     <dimen name="padding_end">10dp</dimen>
     <dimen name="layout_width_zero">0dp</dimen>
     <dimen name="margin_top">16dp</dimen>
+    <dimen name="image_date_text_size">14sp</dimen>
 </resources>

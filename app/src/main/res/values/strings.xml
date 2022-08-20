@@ -14,4 +14,12 @@
     <string name="today">Сегодня</string>
     <string name="yesterday">Вчера</string>
     <string name="day_before_yesterday">Позавчера</string>
+    <string name="one_fragment">One fragment</string>
+    <string name="two_fragment">Two fragment</string>
+    <string name="close_is_clicked">Close is Clicked</string>
+    <string name="selected">Выбран</string>
+    <string name="favorite">Избранное</string>
+    <string name="expand_to_view">Разверните для просмотра</string>
+    <string name="pull_up">Тяни вверх</string>
+    <string name="hd">HD</string>
 </resources>

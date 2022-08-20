@@ -32,7 +32,7 @@
 
                 app:helperText="@string/wiki_helper_text"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/chip_group"
+                app:layout_constraintBottom_toTopOf="@+id/chips"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
 
@@ -43,14 +43,20 @@
                     android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <LinearLayout
+                android:id="@+id/chips"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/input_layout"
+                app:layout_constraintBottom_toTopOf="@id/image_view"
+                android:orientation="horizontal">
+
             <com.google.android.material.chip.ChipGroup
                 android:id="@+id/chip_group"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_top"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/input_layout"
-                app:layout_constraintBottom_toTopOf="@id/image_view"
 
                 app:singleSelection="true">
 
@@ -59,6 +65,7 @@
                     style="@style/Widget.MaterialComponents.Chip.Choice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:gravity="start"
                     android:text="@string/today" />
 
                 <com.google.android.material.chip.Chip
@@ -77,17 +84,39 @@
 
             </com.google.android.material.chip.ChipGroup>
 
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_hd_image"
+                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:text="@string/hd" />
+
+            </LinearLayout>
+
             <by.ealipatov.kotlin.materialyoufromealipatov.utils.EquilateralImageView
                 android:id="@+id/image_view"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:contentDescription="@string/photo_of_the_day_stub"
+                app:layout_constraintBottom_toTopOf="@id/image_date"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/chips"
+                app:srcCompat="@drawable/ic_no_photo_vector" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/image_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_top"
+                android:textSize="@dimen/image_date_text_size"
+                android:gravity="end"
                 app:layout_constraintBottom_toTopOf="@id/image_title_description"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/chip_group"
-                app:srcCompat="@drawable/ic_no_photo_vector" />
+                app:layout_constraintTop_toBottomOf="@id/image_view"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/image_title_description"
@@ -98,7 +127,7 @@
                 app:layout_constraintBottom_toTopOf="@id/image_description"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/image_view"/>
+                app:layout_constraintTop_toBottomOf="@id/image_date"/>
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/image_description"

@@ -26,7 +26,7 @@ import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.chip.Chip
 import kotlinx.android.synthetic.main.bottom_sheet_layout.view.*
-import kotlinx.android.synthetic.main.fragment_chips.*
+import kotlinx.android.synthetic.main.fragment_picture_of_the_day.*
 import java.time.LocalDate
 
 
@@ -41,6 +41,9 @@ class PictureOfTheDayFragment : Fragment() {
     private lateinit var bottomSheetBehavior: BottomSheetBehavior<ConstraintLayout>
     private lateinit var imageTitleDescription: String
     private lateinit var imageDescription: String
+    private lateinit var imageHDUrl: String
+    private lateinit var imageUrl: String
+
 
     private val viewModel by lazy {
         ViewModelProvider(this)[PODFragmentViewModel::class.java]
@@ -55,6 +58,7 @@ class PictureOfTheDayFragment : Fragment() {
         return binding.root
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -70,20 +74,30 @@ class PictureOfTheDayFragment : Fragment() {
 
         setBottomAppBar(view)
 
+        binding.chipGroup.setOnCheckedChangeListener { chipGroup, position ->
+            chipGroup.findViewById<Chip>(position)?.let {
+                when (it.id){
+                    R.id.chip_today ->{
+                        viewModel.getPicture(LocalDate.now())
+                        chip_hd_image.isChecked = false
+                    }
+                    R.id.chip_yesterday ->{
+                        viewModel.getPicture(LocalDate.now().minusDays(1))
+                        chip_hd_image.isChecked = false
+                    }
+                    R.id.chip_day_before_yesterday ->{
+                        viewModel.getPicture(LocalDate.now().minusDays(2))
+                        chip_hd_image.isChecked = false
+                    }
+                }
+            }
+        }
 
-        binding.chipToday.setOnClickListener {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                viewModel.getPicture(LocalDate.now())
-            }
-        }
-        binding.chipYesterday.setOnClickListener {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                viewModel.getPicture(LocalDate.now().minusDays(1))
-            }
-        }
-        binding.chipDayBeforeYesterday.setOnClickListener {
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                viewModel.getPicture(LocalDate.now().minusDays(2))
+        binding.chipHdImage.setOnClickListener {
+            if(!chip_hd_image.isChecked){
+              displayPicture(imageHDUrl)
+            } else{
+              displayPicture(imageUrl)
             }
         }
 
@@ -101,7 +115,7 @@ class PictureOfTheDayFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.app_bar_fav -> toast("Favourite")
+            R.id.app_bar_fav -> toast(getString(R.string.favorite))
             R.id.app_bar_settings -> activity?.supportFragmentManager?.beginTransaction()?.add(R.id.container, ChipsFragment.newInstance())
                 ?.addToBackStack(null)
                 ?.commit()
@@ -116,6 +130,30 @@ class PictureOfTheDayFragment : Fragment() {
 
     private fun renderData(appState: PODFragmentViewModelAppState) {
 
+        when (appState) {
+            is PODFragmentViewModelAppState.Error -> {
+                toast(getString(R.string.error_loading_picture))
+                imageTitleDescription = getString(R.string.error_loading)
+                imageDescription = getString(R.string.error_loading)
+            }
+            PODFragmentViewModelAppState.Loading -> {}
+            is PODFragmentViewModelAppState.Success -> {
+                val pictureData = appState.pictureData
+                imageTitleDescription = pictureData.title.toString()
+                imageDescription = pictureData.explanation.toString()
+                imageHDUrl = pictureData.hdurl.toString()
+                imageUrl = pictureData.url.toString()
+
+                binding.imageTitleDescription.text = imageTitleDescription
+                binding.imageDescription.text = imageDescription
+                binding.imageDate.text = pictureData.date.toString()
+
+                displayPicture(imageUrl)
+            }
+        }
+    }
+
+    private fun displayPicture(url: String){
         val imageLoader = ImageLoader.Builder(requireContext())
             .components {
                 //GIF
@@ -129,41 +167,25 @@ class PictureOfTheDayFragment : Fragment() {
             }
             .build()
 
-        when (appState) {
-            is PODFragmentViewModelAppState.Error -> {
-                toast(getString(R.string.error_loading_picture))
-                imageTitleDescription = getString(R.string.error_loading)
-                imageDescription = getString(R.string.error_loading)
-            }
-            PODFragmentViewModelAppState.Loading -> {}
-            is PODFragmentViewModelAppState.Success -> {
-                val pictureData = appState.pictureData
-                imageTitleDescription = pictureData.title.toString()
-                imageDescription = pictureData.explanation.toString()
-
-                binding.imageTitleDescription.text = imageTitleDescription
-                binding.imageDescription.text = imageDescription
-
-                Coil.setImageLoader(imageLoader)
-                binding.imageView.load(pictureData.url)
-                {
-                   error(R.drawable.ic_baseline_no_photography_24)
-                   placeholder(R.drawable.loadingfast)
-                   crossfade(true)
-                }
-            }
+        Coil.setImageLoader(imageLoader)
+        binding.imageView.load(url)
+        {
+            error(R.drawable.ic_baseline_no_photography_24)
+            placeholder(R.drawable.loadingfast)
+            crossfade(true)
         }
     }
 
     private fun setBottomSheetBehavior(bottomSheet: ConstraintLayout) {
         bottomSheetBehavior = BottomSheetBehavior.from(bottomSheet)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_COLLAPSED
+        bottomSheet.bottomSheetDescriptionHeader.text = getString(R.string.expand_to_view)
         bottomSheetBehavior.addBottomSheetCallback(object :
             BottomSheetBehavior.BottomSheetCallback() {
             override fun onStateChanged(bottomSheet: View, newState: Int) {
                 when (newState) {
                     BottomSheetBehavior.STATE_COLLAPSED -> {
-                        bottomSheet.bottomSheetDescriptionHeader.text = "Разверните для просмотра"
+                        bottomSheet.bottomSheetDescriptionHeader.text = getString(R.string.expand_to_view)
                         bottomSheet.bottomSheetDescription.text = ""
                     }
                     BottomSheetBehavior.STATE_EXPANDED -> {
@@ -173,7 +195,7 @@ class PictureOfTheDayFragment : Fragment() {
 
                     }
                     BottomSheetBehavior.STATE_DRAGGING -> {
-                        bottomSheet.bottomSheetDescriptionHeader.text = "Тяни вверх"
+                        bottomSheet.bottomSheetDescriptionHeader.text = getString(R.string.pull_up)
                     }
                     BottomSheetBehavior.STATE_HALF_EXPANDED -> {
                         //ничего не делаем
@@ -218,9 +240,6 @@ class PictureOfTheDayFragment : Fragment() {
     companion object {
         fun newInstance() = PictureOfTheDayFragment()
         private var isMain = true
-//        fun newInstance(pictureData: ServerNasaPODResponseData) = PictureOfTheDayFragment().also {
-//            it.arguments = Bundle().apply { putParcelable(BUNDLE_PICTURE_EXTRA, pictureData) }
-//        }
     }
 
     override fun onDestroy() {
