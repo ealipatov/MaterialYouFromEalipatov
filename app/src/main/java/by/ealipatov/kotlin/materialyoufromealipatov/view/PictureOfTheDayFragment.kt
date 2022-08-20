@@ -94,6 +94,7 @@ class PictureOfTheDayFragment : Fragment() {
         }
 
         binding.chipHdImage.setOnClickListener {
+            //Проверим: если чип не нажат - выведем HD, нажат - обычную картинку
             if(!chip_hd_image.isChecked){
               displayPicture(imageHDUrl)
             } else{
@@ -153,6 +154,11 @@ class PictureOfTheDayFragment : Fragment() {
         }
     }
 
+    /***
+     * Функция вывода с помощью Coil картинки.
+     * На вход принимает url в виде строки.
+     * Поддерживает gif и svg
+     */
     private fun displayPicture(url: String){
         val imageLoader = ImageLoader.Builder(requireContext())
             .components {
