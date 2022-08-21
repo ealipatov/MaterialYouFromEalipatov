@@ -74,8 +74,8 @@ class PictureOfTheDayFragment : Fragment() {
 
         setBottomAppBar(view)
 
-        binding.chipGroup.setOnCheckedChangeListener { chipGroup, position ->
-            chipGroup.findViewById<Chip>(position)?.let {
+        binding.chipGroup.setOnCheckedStateChangeListener { chipGroup, position ->
+            chipGroup.findViewById<Chip>(position[0])?.let {
                 when (it.id){
                     R.id.chip_today ->{
                         viewModel.getPicture(LocalDate.now())

@@ -25,8 +25,8 @@ class ChipsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.chipGroup.setOnCheckedChangeListener { chipGroup, position ->
-            chipGroup.findViewById<Chip>(position)?.let {
+        binding.chipGroup.setOnCheckedStateChangeListener { chipGroup, position ->
+            chipGroup.findViewById<Chip>(position[0])?.let {
                 toast(getString(R.string.selected) + "${it.text}")
             }
         }
