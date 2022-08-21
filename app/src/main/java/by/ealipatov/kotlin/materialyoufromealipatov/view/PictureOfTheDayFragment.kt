@@ -95,7 +95,7 @@ class PictureOfTheDayFragment : Fragment() {
 
         binding.chipHdImage.setOnClickListener {
             //Проверим: если чип не нажат - выведем HD, нажат - обычную картинку
-            if(!chip_hd_image.isChecked){
+            if(chip_hd_image.isChecked){
               displayPicture(imageHDUrl)
             } else{
               displayPicture(imageUrl)
