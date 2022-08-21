@@ -14,4 +14,10 @@
     <color name="bottom_sheet_container_background_color">#f6f6fa</color>
     <color name="bottom_sheet_view_background_color">#663b4351</color>
     <color name="bottom_sheet_header_text_color">#000</color>
+
+    <color name="light_gray">#a7c0cd</color>
+    <color name="indigo">#6002ee</color>
+    <color name="indigo_dark">#0000ba</color>
+    <color name="indigo_light">#9c47ff</color>
+    <color name="green">#FF03DAC5</color>
 </resources>

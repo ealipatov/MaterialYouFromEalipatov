@@ -13,6 +13,7 @@ import androidx.lifecycle.ViewModelProvider
 import by.ealipatov.kotlin.materialyoufromealipatov.MainActivity
 import by.ealipatov.kotlin.materialyoufromealipatov.R
 import by.ealipatov.kotlin.materialyoufromealipatov.databinding.FragmentPictureOfTheDayBinding
+import by.ealipatov.kotlin.materialyoufromealipatov.utils.isConnection
 import by.ealipatov.kotlin.materialyoufromealipatov.utils.toast
 import by.ealipatov.kotlin.materialyoufromealipatov.viewmodel.PODFragmentViewModel
 import by.ealipatov.kotlin.materialyoufromealipatov.viewmodel.PODFragmentViewModelAppState
@@ -67,7 +68,7 @@ class PictureOfTheDayFragment : Fragment() {
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-            viewModel.getPicture(LocalDate.now())
+                viewModel.getPicture(LocalDate.now())
         }
 
         setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
@@ -103,9 +104,14 @@ class PictureOfTheDayFragment : Fragment() {
         }
 
         binding.inputLayout.setEndIconOnClickListener {
-            startActivity(Intent(Intent.ACTION_VIEW).apply {
-                data = Uri.parse("https://en.wikipedia.org/wiki/${binding.inputEditText.text.toString()}")
-            })
+            if(isConnection(requireContext())){
+                startActivity(Intent(Intent.ACTION_VIEW).apply {
+                    data = Uri.parse("https://en.wikipedia.org/wiki/${binding.inputEditText.text.toString()}")
+                })
+            } else {
+                toast(getString(R.string.no_internet_connection))
+            }
+
         }
     }
 

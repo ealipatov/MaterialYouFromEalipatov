@@ -22,6 +22,7 @@
     <string name="expand_to_view">Разверните для просмотра</string>
     <string name="pull_up">Тяни вверх</string>
     <string name="hd">HD</string>
+
     <string name="default_chip">Default</string>
     <string name="entry">Entry</string>
     <string name="choice">Choice</string>
@@ -46,4 +47,5 @@
     <string name="a">a</string>
     <string name="scroll">scroll</string>
     <string name="close_icon_listener">Close Icon Listener</string>
+    <string name="no_internet_connection">Нет подключения к интернет</string>
 </resources>
