@@ -120,10 +120,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/image_title_description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/fragment_POD_margin_top"
-                android:textSize="@dimen/title_image_description_text_size"
+                style="@style/title_text_style"
                 app:layout_constraintBottom_toTopOf="@id/image_description"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -131,10 +128,7 @@
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/image_description"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:textSize="@dimen/image_description_text_size"
+                style="@style/body_text_style"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/image_title_description"/>
