@@ -13,4 +13,32 @@
         <item name="android:layout_marginTop">@dimen/fragment_POD_margin_top</item>
         <item name="android:textSize">@dimen/image_description_text_size</item>
     </style>
+
+    <style name="AppTextAppearance.Button" parent = "TextAppearance.MaterialComponents.Button">
+        <item name="android:textAllCaps">false</item>
+    </style>
+    
+    <style name="AppShapeAppearance.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">18dp</item>
+    </style>
+
+    <style name="AppShapeAppearance.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">16dp</item>
+    </style>
+
+    <style name="AppButton" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">?attr/colorSecondary</item>
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">18dp</item>
+    </style>
+
+    <style name="AppTextField" parent ="Widget.MaterialComponents.TextInputLayout.FilledBox">
+        <item name="boxBackgroundColor">@color/text_field_background</item>
+    </style>
+
+    <style name="AppCard" parent="Widget.MaterialComponents.CardView">
+        <item name="cardElevation">8dp</item>
+    </style>
 </resources>

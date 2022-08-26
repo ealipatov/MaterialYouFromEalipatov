@@ -20,10 +20,11 @@ fun Fragment.toast(string: String?) {
 
 /***
  * Функция проверяет наличие подключения к интернету
+ * На вход принимает контекст
  */
-    @Suppress("DEPRECATION")
-    fun isConnection(context: Context): Boolean {
-        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        val activeNetworkInfo: NetworkInfo? = cm.activeNetworkInfo
-        return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting
-    }
+@Suppress("DEPRECATION")
+fun isConnection(context: Context): Boolean {
+    val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+    val activeNetworkInfo: NetworkInfo? = cm.activeNetworkInfo
+    return activeNetworkInfo != null && activeNetworkInfo.isConnectedOrConnecting
+}

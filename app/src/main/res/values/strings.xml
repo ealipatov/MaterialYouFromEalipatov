@@ -4,6 +4,7 @@
     <string name="any_message">AnyMessage</string>
     <string name="error_loading">Ошибка загрузки</string>
     <string name="error_loading_picture">Ошибка загрузки картинки</string>
+    <string name="no_internet_connection">Нет подключения к интернет</string>
 
     <string name="photo_of_the_day_stub">Photo of the day</string>
     <string name="search_wiki">Найти в Википедии</string>
@@ -47,5 +48,21 @@
     <string name="a">a</string>
     <string name="scroll">scroll</string>
     <string name="close_icon_listener">Close Icon Listener</string>
-    <string name="no_internet_connection">Нет подключения к интернет</string>
+    <string name="to_fragment_one">На экран 1</string>
+    <string name="to_fragment_two">На экран 2</string>
+    <string name="chips_example">Примеры чипов</string>
+
+    <string name="indigo_theme">Индиго</string>
+    <string name="pink_theme">Розовая</string>
+    <string name="card">Card</string>
+    <string name="text">Text</string>
+    <string name="switch_component">Switch</string>
+    <string name="radio_button">Radio Button</string>
+    <string name="checkbox">Checkbox</string>
+    <string name="text_button">Text Button</string>
+    <string name="outlined_button">Outlined Button</string>
+    <string name="unelevated_button">Unelevated Button</string>
+    <string name="raised_button">Raised Button</string>
+    <string name="filled_box_text_field">Filled Box Text Field</string>
+    <string name="outlined_box_text_field">Outlined Box Text Field</string>
 </resources>
