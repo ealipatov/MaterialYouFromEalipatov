@@ -21,7 +21,7 @@
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/indigo_theme"
+            android:text="@string/moon_theme"
             />
 
         <com.google.android.material.chip.Chip
@@ -29,8 +29,14 @@
             style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/pink_theme"
+            android:text="@string/mars_theme"
             />
         </com.google.android.material.chip.ChipGroup>
+
+    <TextView
+        android:id="@+id/selected_theme_name"
+        style="@style/title_text_style"
+        android:text="Выбрана:"
+        android:textColor="@android:color/black"/>
 
 </LinearLayout>

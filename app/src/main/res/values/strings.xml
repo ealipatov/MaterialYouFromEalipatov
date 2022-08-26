@@ -65,4 +65,9 @@
     <string name="raised_button">Raised Button</string>
     <string name="filled_box_text_field">Filled Box Text Field</string>
     <string name="outlined_box_text_field">Outlined Box Text Field</string>
+
+    <string name="moon_theme">Лунная тема</string>
+    <string name="mars_theme">Марсианская тема</string>
+    <string name="check_moon_theme">Выбрана: лунная тема</string>
+    <string name="check_mars_theme">Выбрана: марсианская тема</string>
 </resources>
