@@ -13,4 +13,27 @@
         <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+
+    <style name="MoonTheme" parent="Theme.MaterialYouFromEalipatov">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/moon_primary_night_color</item>
+        <item name="colorPrimaryVariant">@color/moon_primary_dark_night_color</item>
+        <item name="colorOnPrimary">@color/moon_primary_light_night_color</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/moon_secondary_night_color</item>
+        <item name="colorSecondaryVariant">@color/moon_secondary_dark_night_color</item>
+        <item name="colorOnSecondary">@color/moon_secondary_light_night_color</item>
+    </style>
+
+    <style name="MarsTheme" parent="Theme.MaterialYouFromEalipatov">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/mars_primary_night_color</item>
+        <item name="colorPrimaryVariant">@color/mars_primary_dark_night_color</item>
+        <item name="colorOnPrimary">@color/mars_primary_light_night_color</item>
+        <!-- Primary brand color. -->
+        <item name="colorSecondary">@color/mars_secondary_night_color</item>
+        <item name="colorSecondaryVariant">@color/mars_secondary_dark_night_color</item>
+        <item name="colorOnSecondary">@color/mars_secondary_light_night_color</item>
+
+    </style>
 </resources>

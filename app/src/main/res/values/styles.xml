@@ -5,6 +5,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">@dimen/fragment_POD_margin_top</item>
         <item name="android:textSize">@dimen/title_image_description_text_size</item>
+        <item name="android:textColor">@android:color/black</item>
     </style>
 
     <style name="body_text_style">
@@ -12,6 +13,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">@dimen/fragment_POD_margin_top</item>
         <item name="android:textSize">@dimen/image_description_text_size</item>
+        <item name="android:textColor">@android:color/black</item>
     </style>
 
     <style name="AppTextAppearance.Button" parent = "TextAppearance.MaterialComponents.Button">

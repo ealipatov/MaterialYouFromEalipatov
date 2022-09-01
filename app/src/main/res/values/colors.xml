@@ -11,31 +11,53 @@
     <color name="light_gray">#a7c0cd</color>
     <color name="color_gray">#66000000</color>
 
-    <color name="colorPrimary">#FF6200EE</color>
-    <color name="colorAccent">#FF03DAC5</color>
+    <color name="color_primary">#FF6200EE</color>
+    <color name="color_accent">#FF03DAC5</color>
+
+    <color name="color_connected">#38AC3C</color>
+    <color name="color_disconnected">#8d8d8d</color>
 
     <color name="bottom_sheet_container_background_color">#f6f6fa</color>
     <color name="bottom_sheet_view_background_color">#663b4351</color>
     <color name="bottom_sheet_header_text_color">#000</color>
 
-    <color name="indigo">#6002ee</color>
-    <color name="indigo_dark">#0000ba</color>
-    <color name="indigo_light">#9c47ff</color>
+    <color name="primary_text_color">@android:color/black</color>
+    <color name="secondary_text_color">@android:color/white</color>
 
-    <color name="moon_primary">#bdbdbd</color>
-    <color name="moon_primary_dark">#8d8d8d</color>
-    <color name="moon_primary_light">#bdbdbd</color>
-    <color name="moon_secondary">#b0bec5</color>
-    <color name="moon_secondary_dark">#808e95</color>
-    <color name="moon_secondary_light">#e2f1f8</color>
+    <color name="moon_primary_color">#bdbdbd</color>
+    <color name="moon_primary_dark_color">#8d8d8d</color>
+    <color name="moon_primary_light_color">#efefef</color>
+    <color name="moon_secondary_color">#757575</color>
+    <color name="moon_secondary_dark_color">#494949</color>
+    <color name="moon_secondary_light_color">#a4a4a4</color>
     <color name="moon_background_color">#607d8b</color>
 
-    <color name="mars_primary">#d84315</color>
-    <color name="mars_primary_dark">#9f0000</color>
-    <color name="mars_primary_light">#ff7543</color>
-    <color name="mars_secondary">#ffd180</color>
-    <color name="mars_secondary_dark">#caa052</color>
-    <color name="mars_secondary_light">#ffffb1</color>
+    <color name="moon_primary_night_color">#353535</color>
+    <color name="moon_primary_dark_night_color">#0f0f0f</color>
+    <color name="moon_primary_light_night_color">#5f5f5f</color>
+    <color name="moon_secondary_night_color">#1e272d</color>
+    <color name="moon_secondary_dark_night_color">#000002</color>
+    <color name="moon_secondary_light_night_color">#464f56</color>
+    <color name="moon_primary_text_night_color">#f5ff88</color>
+    <color name="moon_secondary_text_night_color">#f5ff88</color>
+
+    <color name="mars_primary_color">#ff9800</color>
+    <color name="mars_primary_dark_color">#c66900</color>
+    <color name="mars_primary_light_color">#ffc947</color>
+    <color name="mars_secondary_color">#ff5722</color>
+    <color name="mars_secondary_dark_color">#c41c00</color>
+    <color name="mars_secondary_light_color">#ff8a50</color>
     <color name="mars_background_color">#dd2c00</color>
+    <color name="mars_primary_text_color">#721200</color>
+    <color name="mars_secondary_text_color">#fffbf1</color>
+
+    <color name="mars_primary_night_color">#842a00</color>
+    <color name="mars_primary_dark_night_color">#530000</color>
+    <color name="mars_primary_light_night_color">#ba572c</color>
+    <color name="mars_secondary_night_color">#913f2b</color>
+    <color name="mars_secondary_dark_night_color">#370000</color>
+    <color name="mars_secondary_light_night_color">#ff8a50</color>
+    <color name="mars_primary_text_night_color">#ffffff</color>
+    <color name="mars_secondary_text_night_color">#ffffff</color>
 
 </resources>

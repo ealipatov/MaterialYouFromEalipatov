@@ -30,8 +30,17 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
         binding.navigationView.setNavigationItemSelectedListener { menuItem ->
             when (menuItem.itemId) {
                 R.id.navigation_one -> {
-                    activity?.supportFragmentManager?.beginTransaction()?.add(R.id.container, ChipsFragment.newInstance())
-                    ?.addToBackStack(null)?.commit()
+                    requireActivity().supportFragmentManager.apply {
+                        //при нескольких нажатиях на пункт меню, не "плодим" фрагменты
+                        if (this.findFragmentByTag("chips") == null) {
+                            beginTransaction()
+                                .add(R.id.container, ChipsFragment.newInstance(), "chips")
+                                .hide(this.fragments.last())
+                                .hide(this.fragments.first())
+                                .addToBackStack(null)
+                                .commit()
+                        }
+                    }
                 }
                 R.id.navigation_two -> toast(getString(R.string.two_fragment))
             }

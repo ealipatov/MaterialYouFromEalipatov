@@ -52,8 +52,6 @@
     <string name="to_fragment_two">На экран 2</string>
     <string name="chips_example">Примеры чипов</string>
 
-    <string name="indigo_theme">Индиго</string>
-    <string name="pink_theme">Розовая</string>
     <string name="card">Card</string>
     <string name="text">Text</string>
     <string name="switch_component">Switch</string>
@@ -70,4 +68,6 @@
     <string name="mars_theme">Марсианская тема</string>
     <string name="check_moon_theme">Выбрана: лунная тема</string>
     <string name="check_mars_theme">Выбрана: марсианская тема</string>
+    <string name="night_mode">Ночной режим:</string>
+    <string name="apply">Применить</string>
 </resources>

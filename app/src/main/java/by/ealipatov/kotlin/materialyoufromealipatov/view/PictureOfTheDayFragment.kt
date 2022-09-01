@@ -12,7 +12,6 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import by.ealipatov.kotlin.materialyoufromealipatov.MainActivity
 import by.ealipatov.kotlin.materialyoufromealipatov.R
-import by.ealipatov.kotlin.materialyoufromealipatov.databinding.FragmentPictureOfTheDayBinding
 import by.ealipatov.kotlin.materialyoufromealipatov.utils.isConnection
 import by.ealipatov.kotlin.materialyoufromealipatov.utils.toast
 import by.ealipatov.kotlin.materialyoufromealipatov.viewmodel.PODFragmentViewModel
@@ -29,12 +28,13 @@ import com.google.android.material.chip.Chip
 import kotlinx.android.synthetic.main.bottom_sheet_layout.view.*
 import kotlinx.android.synthetic.main.fragment_picture_of_the_day.*
 import java.time.LocalDate
+import by.ealipatov.kotlin.materialyoufromealipatov.databinding.FragmentPictureOfTheDayBinding as FragmentPictureOfTheDayBinding1
 
 
 class PictureOfTheDayFragment : Fragment() {
 
-    private var _binding: FragmentPictureOfTheDayBinding? = null
-    private val binding: FragmentPictureOfTheDayBinding
+    private var _binding: FragmentPictureOfTheDayBinding1? = null
+    private val binding: FragmentPictureOfTheDayBinding1
         get() {
             return _binding!!
         }
@@ -55,7 +55,7 @@ class PictureOfTheDayFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentPictureOfTheDayBinding.inflate(inflater)
+        _binding = FragmentPictureOfTheDayBinding1.inflate(inflater)
         return binding.root
     }
 
@@ -123,9 +123,15 @@ class PictureOfTheDayFragment : Fragment() {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
             R.id.app_bar_fav -> toast(getString(R.string.favorite))
-            R.id.app_bar_settings -> activity?.supportFragmentManager?.beginTransaction()?.add(R.id.container, SettingFragment.newInstance())
-                ?.addToBackStack(null)
-                ?.commit()
+            R.id.app_bar_settings -> requireActivity().supportFragmentManager.apply {
+                 beginTransaction()
+                .add(R.id.container, SettingFragment.newInstance(), "setting")
+                .hide(this.fragments.last())
+                .addToBackStack(null)
+                .hide(PictureOfTheDayFragment())
+                .commit()
+            }
+
             android.R.id.home -> {
                 activity?.let {
                     BottomNavigationDrawerFragment().show(it.supportFragmentManager, "tag")

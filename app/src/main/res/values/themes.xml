@@ -15,54 +15,75 @@
         <item name="textColorConnected">@color/green</item>
         <item name="textColorDisConnected">@color/light_gray</item>
 
-
-    </style>
-
-    <style name="MoonTheme" parent="Theme.MaterialYouFromEalipatov">
-        <item name="colorPrimary">@color/moon_primary</item>
-        <item name="colorPrimaryVariant">@color/moon_primary_dark</item>
-        <item name="colorOnPrimary">@color/moon_primary_light</item>
-
-        <item name="colorSecondary">@color/moon_secondary</item>
-        <item name="colorSecondaryVariant">@color/moon_secondary_dark</item>
-        <item name="colorOnSecondary">@color/moon_secondary_light</item>
-
-        <item name="backgroundColor">@color/moon_background_color</item>
-
-        <item name="textAppearanceDisplaySmall">@android:color/black</item>
-    </style>
-
-    <style name="MarsTheme" parent="Theme.MaterialYouFromEalipatov">
-        <item name="colorPrimary">@color/mars_primary</item>
-        <item name="colorPrimaryVariant">@color/mars_primary_dark</item>
-        <item name="colorOnPrimary">@color/mars_primary_light</item>
-
-        <item name="colorSecondary">@color/mars_secondary</item>
-        <item name="colorSecondaryVariant">@color/mars_secondary_dark</item>
-        <item name="colorOnSecondary">@color/mars_secondary_light</item>
-
-        <item name="backgroundColor">@color/mars_background_color</item>
-
-        <item name="textAppearanceDisplaySmall">@android:color/black</item>
-    </style>
-
-    <style name="IndigoTheme" parent="Theme.MaterialYouFromEalipatov">
-        <item name="colorPrimary">@color/indigo</item>
-        <item name="colorPrimaryVariant">@color/indigo_dark</item>
-        <item name="colorSecondary">@color/light_gray</item>
-        <item name="colorSecondaryVariant">@color/light_gray</item>
-        <item name="colorOnSecondary">@color/black</item>
-        <item name="themeColorPrimary">@color/indigo</item>
-        <item name="colorAccent">@color/indigo_dark</item>
-
         <item name="textAppearanceButton">@style/AppTextAppearance.Button</item>
-
         <item name="shapeAppearanceSmallComponent">@style/AppShapeAppearance.SmallComponent</item>
         <item name="shapeAppearanceMediumComponent">@style/AppShapeAppearance.MediumComponent</item>
 
         <item name="materialButtonStyle">@style/AppButton</item>
         <item name="textInputStyle">@style/AppTextField</item>
         <item name="materialCardViewStyle">@style/AppCard</item>
+
+        <item name="textAppearanceDisplaySmall">@android:color/black</item>
+
+    </style>
+
+    <style name="AppTheme" parent="Theme.MaterialYouFromEalipatov">
+
+        <item name="textColorConnected">@color/color_connected</item>
+        <item name="textColorDisConnected">@color/color_disconnected</item>
+
+        <item name="android:textColorPrimary">@color/primary_text_color</item>
+        <item name="android:textColorSecondary">@color/secondary_text_color</item>
+    </style>
+
+    <style name="MoonTheme" parent="AppTheme">
+        <item name="colorPrimary">@color/moon_primary_color</item>
+        <item name="colorPrimaryVariant">@color/moon_primary_dark_color</item>
+        <item name="colorOnPrimary">@color/moon_primary_light_color</item>
+
+        <item name="colorSecondary">@color/moon_secondary_color</item>
+        <item name="colorSecondaryVariant">@color/moon_secondary_dark_color</item>
+        <item name="colorOnSecondary">@color/moon_secondary_light_color</item>
+
+        <item name="backgroundColor">@color/moon_background_color</item>
+        <item name="chipBackgroundColor">@color/moon_secondary_color</item>
+
+        <item name="colorOnBackground">@color/moon_background_color</item>
+
+        <!-- активное состояние (30% прозрачности для фона) -->
+        <item name="colorControlActivated">@android:color/holo_green_light</item>
+        <!-- неактивное состояние ползунка -->
+        <item name="colorSwitchThumbNormal">@android:color/holo_orange_dark</item>
+
+        <!-- цвет дорожки для неактивного состояния (30% прозрачности) -->
+        <item name="android:colorForeground">@android:color/darker_gray</item>
+    </style>
+
+    <style name="MarsTheme" parent="AppTheme">
+        <item name="colorPrimary">@color/mars_primary_color</item>
+        <item name="colorPrimaryVariant">@color/mars_primary_dark_color</item>
+        <item name="colorOnPrimary">@color/mars_primary_light_color</item>
+
+        <item name="colorSecondary">@color/mars_secondary_color</item>
+        <item name="colorSecondaryVariant">@color/mars_secondary_dark_color</item>
+        <item name="colorOnSecondary">@color/mars_secondary_light_color</item>
+
+        <item name="backgroundColor">@color/mars_background_color</item>
+        <item name="chipBackgroundColor">@color/mars_secondary_color</item>
+
+        <item name="colorOnBackground">@color/mars_background_color</item>
+
+        <!-- активное состояние (30% прозрачности для фона) -->
+        <item name="colorControlActivated">@android:color/holo_green_light</item>
+        <!-- неактивное состояние ползунка -->
+        <item name="colorSwitchThumbNormal">@android:color/holo_orange_dark</item>
+
+        <!-- цвет дорожки для неактивного состояния (30% прозрачности) -->
+        <item name="android:colorForeground">@android:color/darker_gray</item>
+
+        <!-- Цвет дорожки, вдоль которой двигается ползунок -->
+        <item name="trackTint">@android:color/holo_purple</item>
+
     </style>
 
 </resources>
