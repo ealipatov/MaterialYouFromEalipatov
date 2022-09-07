@@ -5,9 +5,9 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import by.ealipatov.kotlin.materialyoufromealipatov.databinding.ActivityMainBinding
+import by.ealipatov.kotlin.materialyoufromealipatov.utils.AUTO_NIGHT_MODE_KEY
 import by.ealipatov.kotlin.materialyoufromealipatov.utils.NIGHT_MODE_KEY
 import by.ealipatov.kotlin.materialyoufromealipatov.utils.SHARED_PREF_FILE
-import by.ealipatov.kotlin.materialyoufromealipatov.utils.SHARED_PREF_FILE2
 import by.ealipatov.kotlin.materialyoufromealipatov.utils.THEME_KEY
 import by.ealipatov.kotlin.materialyoufromealipatov.view.PictureOfTheDayFragment
 
@@ -18,11 +18,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
 
         val sharedPreferences = this.getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE)
-        val sharedPreferences2 = this.getSharedPreferences(SHARED_PREF_FILE2, Context.MODE_PRIVATE)
-
-        //Включение темной темы при низком заряже батареи
-        AppCompatDelegate.setDefaultNightMode(
-            AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY)
 
         //Если в файле настроек есть сохраненная тема - применяем ее.
         if(sharedPreferences.contains(THEME_KEY))
@@ -30,10 +25,17 @@ class MainActivity : AppCompatActivity() {
 
 
         //Если в файле настроек есть выбор ночной/дневной темы - применяем ее.
-        if(sharedPreferences2.contains(NIGHT_MODE_KEY)){
-            when(sharedPreferences2.getBoolean(NIGHT_MODE_KEY, false)){
+        if(sharedPreferences.contains(NIGHT_MODE_KEY)){
+            when(sharedPreferences.getBoolean(NIGHT_MODE_KEY, false)){
                 true -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
                 false ->AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+            }
+        }
+
+        //Если в файле настроек есть выбор авто ночной/дневной темы - применяем ее.
+        if(sharedPreferences.contains(AUTO_NIGHT_MODE_KEY)){
+            if(sharedPreferences.getBoolean(NIGHT_MODE_KEY, false)){
+                AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY)
             }
         }
 

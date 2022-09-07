@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <style name="title_text_style">
-        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">@dimen/fragment_POD_margin_top</item>
         <item name="android:textSize">@dimen/title_image_description_text_size</item>
-        <item name="android:paddingStart">@dimen/bottom_sheet_header_padding_start</item>
-        <item name="android:paddingEnd">@dimen/bottom_sheet_header_padding_end</item>
+        <item name="android:textColor">@android:color/black</item>
     </style>
 
     <style name="body_text_style">
@@ -14,13 +13,7 @@
         <item name="android:layout_height">wrap_content</item>
         <item name="android:layout_marginTop">@dimen/fragment_POD_margin_top</item>
         <item name="android:textSize">@dimen/image_description_text_size</item>
-        <item name="android:paddingStart">@dimen/bottom_sheet_text_body_padding_start</item>
-        <item name="android:paddingEnd">@dimen/bottom_sheet_text_body_padding_end</item>
-    </style>
-
-
-    <style name="AppChips" parent = "Widget.MaterialComponents.Chip.Choice">
-        <item name="chipBackgroundColor">@color/mars_secondary_color</item>
+        <item name="android:textColor">@android:color/black</item>
     </style>
 
     <style name="AppTextAppearance.Button" parent = "TextAppearance.MaterialComponents.Button">
@@ -28,18 +21,17 @@
     </style>
 
     <style name="AppShapeAppearance.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
-        <item name="cornerFamily">cut</item>
-        <item name="cornerSize">10dp</item>
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">18dp</item>
     </style>
 
     <style name="AppShapeAppearance.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
         <item name="cornerFamily">cut</item>
-        <item name="cornerSize">10dp</item>
+        <item name="cornerSize">16dp</item>
     </style>
 
     <style name="AppButton" parent="Widget.MaterialComponents.Button">
-        <item name="backgroundTint">@color/moon_secondary_dark_color</item>
-        <item name="strokeColor">@color/moon_track_tint_color</item>
+        <item name="backgroundTint">?attr/colorSecondary</item>
         <item name="cornerFamily">cut</item>
         <item name="cornerSize">18dp</item>
     </style>
@@ -50,6 +42,5 @@
 
     <style name="AppCard" parent="Widget.MaterialComponents.CardView">
         <item name="cardElevation">8dp</item>
-        <item name="cardBackgroundColor">@color/mars_secondary_light_color</item>
     </style>
 </resources>

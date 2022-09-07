@@ -2,30 +2,33 @@
 <resources>
     <dimen name="fab_radius">40dp</dimen>
     <dimen name="fab_cradle_margin">5dp</dimen>
-    <dimen name="title_image_description_text_size">24sp</dimen>
-    <dimen name="image_description_text_size">18sp</dimen>
+    <dimen name="title_image_description_text_size">20sp</dimen>
+    <dimen name="image_description_text_size">16sp</dimen>
     <dimen name="fragment_POD_padding_start">10dp</dimen>
     <dimen name="fragment_POD_padding_end">10dp</dimen>
     <dimen name="layout_width_zero">0dp</dimen>
     <dimen name="fragment_POD_margin_top">16dp</dimen>
     <dimen name="image_date_text_size">14sp</dimen>
     <dimen name="fragment_POD_chip_HD_margin_start">32dp</dimen>
+
     <dimen name="chips_fr_margin_top">16dp</dimen>
     <dimen name="chips_fr_icon_start_padding">10dp</dimen>
     <dimen name="chips_fr_layout_margin">8dp</dimen>
     <dimen name="chips_fr_text_size">18sp</dimen>
     <dimen name="chips_fr_spacing_horizontal">25dp</dimen>
     <dimen name="chips_fr_chip_close_margin_top">24dp</dimen>
+
     <dimen name="bottom_nav_margin_start">8dp</dimen>
     <dimen name="bottom_nav_margin_top">8dp</dimen>
     <dimen name="bottom_nav_margin_end">8dp</dimen>
     <dimen name="behavior_peek_height">120dp</dimen>
+
     <dimen name="bottom_sheet_view_layout_width">25dp</dimen>
     <dimen name="bottom_sheet_view_layout_height">1dp</dimen>
     <dimen name="bottom_sheet_view_margin_top">5dp</dimen>
     <dimen name="bottom_sheet_header_margin_top">5dp</dimen>
-    <dimen name="bottom_sheet_header_padding_start">10dp</dimen>
-    <dimen name="bottom_sheet_header_padding_end">10dp</dimen>
-    <dimen name="bottom_sheet_text_body_padding_">10dp</dimen>
-    <dimen name="bottom_sheet_text_body_padding_end">10dp</dimen>
+    <dimen name="bottom_sheet_header_padding_start">16dp</dimen>
+    <dimen name="bottom_sheet_header_padding_end">16dp</dimen>
+    <dimen name="bottom_sheet_text_body_padding_start">16dp</dimen>
+    <dimen name="bottom_sheet_text_body_padding_end">16dp</dimen>
 </resources>

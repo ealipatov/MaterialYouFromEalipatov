@@ -10,30 +10,17 @@
         <item name="colorSecondaryVariant">@color/teal_700</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" >?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
         <item name="textColorConnected">@color/green</item>
         <item name="textColorDisConnected">@color/light_gray</item>
-
-        <item name="textAppearanceButton">@style/AppTextAppearance.Button</item>
-        <item name="shapeAppearanceSmallComponent">@style/AppShapeAppearance.SmallComponent</item>
-        <item name="shapeAppearanceMediumComponent">@style/AppShapeAppearance.MediumComponent</item>
-
-        <item name="materialButtonStyle">@style/AppButton</item>
-        <item name="textInputStyle">@style/AppTextField</item>
-        <item name="materialCardViewStyle">@style/AppCard</item>
-
-        <item name="textAppearanceDisplaySmall">@android:color/black</item>
-
     </style>
 
     <style name="AppTheme" parent="Theme.MaterialYouFromEalipatov">
-
         <item name="textColorConnected">@color/color_connected</item>
         <item name="textColorDisConnected">@color/color_disconnected</item>
 
-        <item name="android:textColorPrimary">@color/primary_text_color</item>
-        <item name="android:textColorSecondary">@color/secondary_text_color</item>
+        <item name="textAppearanceButton">@style/AppTextAppearance.Button</item>
     </style>
 
     <style name="MoonTheme" parent="AppTheme">
@@ -45,18 +32,15 @@
         <item name="colorSecondaryVariant">@color/moon_secondary_dark_color</item>
         <item name="colorOnSecondary">@color/moon_secondary_light_color</item>
 
-        <item name="backgroundColor">@color/moon_background_color</item>
-        <item name="chipBackgroundColor">@color/moon_secondary_color</item>
-
-        <item name="colorOnBackground">@color/moon_background_color</item>
-
         <!-- активное состояние (30% прозрачности для фона) -->
-        <item name="colorControlActivated">@android:color/holo_green_light</item>
-        <!-- неактивное состояние ползунка -->
-        <item name="colorSwitchThumbNormal">@android:color/holo_orange_dark</item>
+        <item name="colorControlActivated">@color/moon_control_activated_color</item>
 
-        <!-- цвет дорожки для неактивного состояния (30% прозрачности) -->
-        <item name="android:colorForeground">@android:color/darker_gray</item>
+        <!-- Цвет дорожки, вдоль которой двигается ползунок -->
+        <item name="trackTint">@color/moon_track_tint_color</item>
+
+        <item name="bottomAppBarStyle">@style/AppButton</item>
+
+        <item name="materialButtonStyle">@style/AppButton</item>
     </style>
 
     <style name="MarsTheme" parent="AppTheme">
@@ -68,21 +52,20 @@
         <item name="colorSecondaryVariant">@color/mars_secondary_dark_color</item>
         <item name="colorOnSecondary">@color/mars_secondary_light_color</item>
 
-        <item name="backgroundColor">@color/mars_background_color</item>
-        <item name="chipBackgroundColor">@color/mars_secondary_color</item>
-
-        <item name="colorOnBackground">@color/mars_background_color</item>
+        <item name="shapeAppearanceSmallComponent">@style/AppShapeAppearance.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/AppShapeAppearance.MediumComponent</item>
 
         <!-- активное состояние (30% прозрачности для фона) -->
-        <item name="colorControlActivated">@android:color/holo_green_light</item>
-        <!-- неактивное состояние ползунка -->
-        <item name="colorSwitchThumbNormal">@android:color/holo_orange_dark</item>
-
-        <!-- цвет дорожки для неактивного состояния (30% прозрачности) -->
-        <item name="android:colorForeground">@android:color/darker_gray</item>
+        <item name="colorControlActivated">@android:color/holo_orange_dark</item>
 
         <!-- Цвет дорожки, вдоль которой двигается ползунок -->
-        <item name="trackTint">@android:color/holo_purple</item>
+        <item name="trackTint">@android:color/darker_gray</item>
+
+        <!-- Стиль для чипов -->
+        <item name="chipStyle">@style/AppChips</item>
+
+        <!-- Стиль для material card -->
+        <item name="materialCardViewStyle">@style/AppCard</item>
 
     </style>
 

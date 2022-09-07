@@ -70,4 +70,5 @@
     <string name="check_mars_theme">Выбрана: марсианская тема</string>
     <string name="night_mode">Ночной режим:</string>
     <string name="apply">Применить</string>
+    <string name="auto_night_mode">Автоматический ночной режим</string>
 </resources>
