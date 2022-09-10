@@ -2,5 +2,13 @@
 <resources>
     <attr name="textColorConnected" format="reference"/>
     <attr name="textColorDisConnected" format="reference"/>
+    <attr name="textColorTitle" format="reference"/>
+    <attr name="textColorBody" format="reference"/>
+    <attr name="backgroundAppThemeColor" format="reference"/>
+    <attr name="backgroundBottomSheetColor" format="reference"/>
+    <attr name="appChipBackgroundColor" format="reference"/>
+    <attr name="appSwitchActiveColor" format="reference"/>
+    <attr name="appSwitchNoActiveColor" format="reference"/>
+    <attr name="appSwitchTintColor" format="reference"/>
 
 </resources>

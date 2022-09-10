@@ -12,11 +12,14 @@
     <dimen name="fragment_POD_chip_HD_margin_start">32dp</dimen>
 
     <dimen name="chips_fr_margin_top">16dp</dimen>
+    <dimen name="chips_fr_margin_start">16dp</dimen>
+    <dimen name="chips_fr_margin_end">16dp</dimen>
     <dimen name="chips_fr_icon_start_padding">10dp</dimen>
     <dimen name="chips_fr_layout_margin">8dp</dimen>
     <dimen name="chips_fr_text_size">18sp</dimen>
     <dimen name="chips_fr_spacing_horizontal">25dp</dimen>
     <dimen name="chips_fr_chip_close_margin_top">24dp</dimen>
+    <dimen name="chips_fr_padding_bottom">16dp</dimen>
 
     <dimen name="bottom_nav_margin_start">8dp</dimen>
     <dimen name="bottom_nav_margin_top">8dp</dimen>

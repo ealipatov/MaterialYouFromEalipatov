@@ -2,6 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="?attr/backgroundAppThemeColor"
     android:orientation="vertical">
 
     <TextView
@@ -15,14 +16,14 @@
 
         <com.google.android.material.chip.Chip
             android:id="@+id/moon_theme"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
+            style="@style/AppChipChoice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/moon_theme" />
 
         <com.google.android.material.chip.Chip
             android:id="@+id/mars_theme"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
+            style="@style/AppChipChoice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/mars_theme" />
@@ -35,14 +36,14 @@
 
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/switchNightMod"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/material_components_chip_fragment_style"
+        android:theme="@style/SwitchStyle"
         android:text="@string/night_mode" />
 
     <com.google.android.material.switchmaterial.SwitchMaterial
         android:id="@+id/autoSwitchNightMod"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        style="@style/material_components_chip_fragment_style"
+        android:theme="@style/SwitchStyle"
         android:text="@string/auto_night_mode" />
 
     <com.google.android.material.button.MaterialButton

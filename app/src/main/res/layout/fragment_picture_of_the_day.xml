@@ -10,10 +10,7 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/main"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingStart="@dimen/fragment_POD_padding_start"
-            android:paddingEnd="@dimen/fragment_POD_padding_end">
+            style="@style/constraint_layout_style">
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/input_layout"
@@ -62,7 +59,7 @@
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_today"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    style="@style/AppChipChoice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:gravity="start"
@@ -70,14 +67,14 @@
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_yesterday"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    style="@style/AppChipChoice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/yesterday" />
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_day_before_yesterday"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    style="@style/AppChipChoice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/day_before_yesterday" />
@@ -86,7 +83,7 @@
 
                 <com.google.android.material.chip.Chip
                     android:id="@+id/chip_hd_image"
-                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                    style="@style/AppChipChoice"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="@dimen/fragment_POD_chip_HD_margin_start"
@@ -124,7 +121,7 @@
                 app:layout_constraintBottom_toTopOf="@id/image_description"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/image_date"/>
+                app:layout_constraintTop_toBottomOf="@id/image_date" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/image_description"

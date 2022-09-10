@@ -21,6 +21,14 @@
         <item name="textColorDisConnected">@color/color_disconnected</item>
 
         <item name="textAppearanceButton">@style/AppTextAppearance.Button</item>
+        <!-- Цвет текста заголовка-->
+        <item name="textColorTitle">@android:color/black</item>
+        <!-- Цвет текста основного-->
+        <item name="textColorBody">@android:color/black</item>
+        <!-- Цвет фона -->
+        <item name="backgroundAppThemeColor">@android:color/white</item>
+        <!-- Цвет фона BottomSheet-->
+        <item name="backgroundBottomSheetColor">@android:color/darker_gray</item>
     </style>
 
     <style name="MoonTheme" parent="AppTheme">
@@ -32,14 +40,20 @@
         <item name="colorSecondaryVariant">@color/moon_secondary_dark_color</item>
         <item name="colorOnSecondary">@color/moon_secondary_light_color</item>
 
-        <!-- активное состояние (30% прозрачности для фона) -->
-        <item name="colorControlActivated">@color/moon_control_activated_color</item>
+        <!-- Цвет фона Chip-->
+        <item name="appChipBackgroundColor">@color/moon_primary_light_night_color</item>
 
+        <!-- активное состояние (30% прозрачности для фона) -->
+        <item name="appSwitchActiveColor">@color/moon_control_activated_color</item>
+        <!-- неактивное состояние ползунка -->
+        <item name="appSwitchNoActiveColor">@color/moon_secondary_text_night_color</item>
         <!-- Цвет дорожки, вдоль которой двигается ползунок -->
-        <item name="trackTint">@color/moon_track_tint_color</item>
+        <item name="appSwitchTintColor">@color/moon_track_tint_color</item>
+
+        <!-- Стиль для чипов -->
+        <item name="chipStyle">@style/AppChipChoice</item>
 
         <item name="bottomAppBarStyle">@style/AppButton</item>
-
         <item name="materialButtonStyle">@style/AppButton</item>
     </style>
 
@@ -52,18 +66,26 @@
         <item name="colorSecondaryVariant">@color/mars_secondary_dark_color</item>
         <item name="colorOnSecondary">@color/mars_secondary_light_color</item>
 
+        <!-- Цвет фона Chip-->
+        <item name="appChipBackgroundColor">@color/mars_primary_dark_color</item>
+        <!-- Цвет фона -->
+        <item name="backgroundAppThemeColor">@color/mars_primary_light_color</item>
+        <!-- Цвет фона BottomSheet-->
+        <item name="backgroundBottomSheetColor">@color/mars_primary_dark_color</item>
+
+        <!-- Стили для маленьких и средних компонентов-->
         <item name="shapeAppearanceSmallComponent">@style/AppShapeAppearance.SmallComponent</item>
         <item name="shapeAppearanceMediumComponent">@style/AppShapeAppearance.MediumComponent</item>
 
         <!-- активное состояние (30% прозрачности для фона) -->
-        <item name="colorControlActivated">@android:color/holo_orange_dark</item>
-
+        <item name="appSwitchActiveColor">@android:color/holo_orange_dark</item>
+        <!-- неактивное состояние ползунка -->
+        <item name="appSwitchNoActiveColor">@color/moon_secondary_text_night_color</item>
         <!-- Цвет дорожки, вдоль которой двигается ползунок -->
-        <item name="trackTint">@android:color/darker_gray</item>
+        <item name="appSwitchTintColor">@android:color/darker_gray</item>
 
         <!-- Стиль для чипов -->
-        <item name="chipStyle">@style/AppChips</item>
-
+        <item name="chipStyle">@style/AppChipChoice</item>
         <!-- Стиль для material card -->
         <item name="materialCardViewStyle">@style/AppCard</item>
 

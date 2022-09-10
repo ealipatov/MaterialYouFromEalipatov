@@ -14,7 +14,14 @@
         <!-- Customize your theme here. -->
     </style>
 
-    <style name="MoonTheme" parent="Theme.MaterialYouFromEalipatov">
+    <style name="AppTheme" parent="Theme.MaterialYouFromEalipatov">
+        <item name="textColorConnected">@color/color_connected</item>
+        <item name="textColorDisConnected">@color/color_disconnected</item>
+
+        <item name="textAppearanceButton">@style/AppTextAppearance.Button</item>
+    </style>
+
+    <style name="MoonTheme" parent="AppTheme">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/moon_primary_night_color</item>
         <item name="colorPrimaryVariant">@color/moon_primary_dark_night_color</item>
@@ -23,9 +30,30 @@
         <item name="colorSecondary">@color/moon_secondary_night_color</item>
         <item name="colorSecondaryVariant">@color/moon_secondary_dark_night_color</item>
         <item name="colorOnSecondary">@color/moon_secondary_light_night_color</item>
+
+        <!-- активное состояние (30% прозрачности для фона) -->
+        <item name="appSwitchActiveColor">@color/moon_control_activated_color</item>
+        <!-- неактивное состояние ползунка -->
+        <item name="appSwitchNoActiveColor">@color/moon_secondary_text_night_color</item>
+        <!-- Цвет дорожки, вдоль которой двигается ползунок -->
+        <item name="appSwitchTintColor">@color/moon_track_tint_color</item>
+
+        <!-- Цвет текста заголовка-->
+        <item name="textColorTitle">@color/moon_secondary_text_night_color</item>
+        <!-- Цвет текста основного-->
+        <item name="textColorBody">@color/moon_secondary_text_night_color</item>
+        <!-- Цвет фона -->
+        <item name="backgroundAppThemeColor">@color/moon_secondary_night_color</item>
+        <!-- Цвет фона BottomSheet-->
+        <item name="backgroundBottomSheetColor">@color/moon_primary_light_night_color</item>
+        <!-- Цвет фона Chip-->
+        <item name="appChipBackgroundColor">@color/moon_primary_light_night_color</item>
+
+        <!-- Стиль для чипов -->
+        <item name="chipStyle">@style/AppChipChoice</item>
     </style>
 
-    <style name="MarsTheme" parent="Theme.MaterialYouFromEalipatov">
+    <style name="MarsTheme" parent="AppTheme">
         <!-- Primary brand color. -->
         <item name="colorPrimary">@color/mars_primary_night_color</item>
         <item name="colorPrimaryVariant">@color/mars_primary_dark_night_color</item>
@@ -35,5 +63,28 @@
         <item name="colorSecondaryVariant">@color/mars_secondary_dark_night_color</item>
         <item name="colorOnSecondary">@color/mars_secondary_light_night_color</item>
 
+        <item name="shapeAppearanceSmallComponent">@style/AppShapeAppearance.SmallComponent</item>
+        <item name="shapeAppearanceMediumComponent">@style/AppShapeAppearance.MediumComponent</item>
+
+        <!-- Цвет активного ползунка -->
+        <item name="appSwitchActiveColor">@android:color/holo_orange_dark</item>
+        <!-- Цвет не активного ползунка  -->
+        <item name="appSwitchNoActiveColor">@color/moon_secondary_text_night_color</item>
+        <!-- Цвет дорожки, вдоль которой двигается ползунок -->
+        <item name="appSwitchTintColor">@android:color/darker_gray</item>
+
+        <!-- Цвет текста заголовка-->
+        <item name="textColorTitle">@color/mars_secondary_text_night_color</item>
+        <!-- Цвет текста основного-->
+        <item name="textColorBody">@color/mars_secondary_text_night_color</item>
+        <!-- Цвет фона -->
+        <item name="backgroundAppThemeColor">@color/mars_secondary_dark_night_color</item>
+        <!-- Цвет фона BottomSheet-->
+        <item name="backgroundBottomSheetColor">@color/mars_secondary_night_color</item>
+        <!-- Цвет фона Chip-->
+        <item name="appChipBackgroundColor">@color/mars_secondary_night_color</item>
+
+        <!-- Стиль для чипов -->
+        <item name="chipStyle">@style/AppChipChoice</item>
     </style>
 </resources>
