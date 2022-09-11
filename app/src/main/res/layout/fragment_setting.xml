@@ -6,7 +6,7 @@
     android:orientation="vertical">
 
     <TextView
-        style="@style/title_text_style"
+        style="@style/TitleTextStyle"
         android:text="@string/settings" />
 
     <com.google.android.material.chip.ChipGroup
@@ -32,19 +32,21 @@
 
     <TextView
         android:id="@+id/selected_theme_name"
-        style="@style/title_text_style" />
+        style="@style/TitleTextStyle" />
 
-    <com.google.android.material.switchmaterial.SwitchMaterial
+    <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/switchNightMod"
-        style="@style/material_components_chip_fragment_style"
+        style="@style/MaterialComponentsChipFragmentStyle"
         android:theme="@style/SwitchStyle"
-        android:text="@string/night_mode" />
+        android:minHeight="@dimen/minHeightSettingSwitch"
+        android:text="@string/night_mode"/>
 
-    <com.google.android.material.switchmaterial.SwitchMaterial
+    <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/autoSwitchNightMod"
-        style="@style/material_components_chip_fragment_style"
+        style="@style/MaterialComponentsChipFragmentStyle"
         android:theme="@style/SwitchStyle"
-        android:text="@string/auto_night_mode" />
+        android:minHeight="@dimen/minHeightSettingSwitch"
+        android:text="@string/auto_night_mode"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/apply_btn"

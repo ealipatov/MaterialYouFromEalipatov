@@ -17,8 +17,12 @@
     <style name="AppTheme" parent="Theme.MaterialYouFromEalipatov">
         <item name="textColorConnected">@color/color_connected</item>
         <item name="textColorDisConnected">@color/color_disconnected</item>
-
         <item name="textAppearanceButton">@style/AppTextAppearance.Button</item>
+
+        <!-- Стиль для чипов -->
+        <item name="chipStyle">@style/AppChipChoice</item>
+        <!-- Стиль для material card -->
+        <item name="materialCardViewStyle">@style/AppCard</item>
     </style>
 
     <style name="MoonTheme" parent="AppTheme">
@@ -48,9 +52,8 @@
         <item name="backgroundBottomSheetColor">@color/moon_primary_light_night_color</item>
         <!-- Цвет фона Chip-->
         <item name="appChipBackgroundColor">@color/moon_primary_light_night_color</item>
-
-        <!-- Стиль для чипов -->
-        <item name="chipStyle">@style/AppChipChoice</item>
+        <!-- Цвет фона CardView-->
+        <item name="appCardViewBackgroundColor">@color/moon_secondary_night_color</item>
     </style>
 
     <style name="MarsTheme" parent="AppTheme">
@@ -83,8 +86,8 @@
         <item name="backgroundBottomSheetColor">@color/mars_secondary_night_color</item>
         <!-- Цвет фона Chip-->
         <item name="appChipBackgroundColor">@color/mars_secondary_night_color</item>
+        <!-- Цвет фона CardView-->
+        <item name="appCardViewBackgroundColor">@color/mars_secondary_night_color</item>
 
-        <!-- Стиль для чипов -->
-        <item name="chipStyle">@style/AppChipChoice</item>
     </style>
 </resources>

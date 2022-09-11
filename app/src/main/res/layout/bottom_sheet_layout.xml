@@ -24,7 +24,7 @@
 
     <TextView
         android:id="@+id/bottomSheetDescriptionHeader"
-        style="@style/title_text_style"
+        style="@style/TitleTextStyle"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,7 +33,7 @@
 
     <TextView
         android:id="@+id/bottomSheetDescription"
-        style="@style/body_text_style"
+        style="@style/BodyTextStyle"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bottomSheetDescriptionHeader"

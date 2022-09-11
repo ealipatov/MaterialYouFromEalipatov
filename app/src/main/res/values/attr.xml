@@ -10,5 +10,6 @@
     <attr name="appSwitchActiveColor" format="reference"/>
     <attr name="appSwitchNoActiveColor" format="reference"/>
     <attr name="appSwitchTintColor" format="reference"/>
+    <attr name="appCardViewBackgroundColor" format="reference"/>
 
 </resources>

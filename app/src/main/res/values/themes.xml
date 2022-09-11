@@ -29,6 +29,12 @@
         <item name="backgroundAppThemeColor">@android:color/white</item>
         <!-- Цвет фона BottomSheet-->
         <item name="backgroundBottomSheetColor">@android:color/darker_gray</item>
+
+        <!-- Стиль для чипов -->
+        <item name="chipStyle">@style/AppChipChoice</item>
+        <!-- Стиль для material card -->
+        <item name="materialCardViewStyle">@style/AppCard</item>
+
     </style>
 
     <style name="MoonTheme" parent="AppTheme">
@@ -42,6 +48,8 @@
 
         <!-- Цвет фона Chip-->
         <item name="appChipBackgroundColor">@color/moon_primary_light_night_color</item>
+        <!-- Цвет фона CardView-->
+        <item name="appCardViewBackgroundColor">@color/moon_background_color</item>
 
         <!-- активное состояние (30% прозрачности для фона) -->
         <item name="appSwitchActiveColor">@color/moon_control_activated_color</item>
@@ -49,9 +57,6 @@
         <item name="appSwitchNoActiveColor">@color/moon_secondary_text_night_color</item>
         <!-- Цвет дорожки, вдоль которой двигается ползунок -->
         <item name="appSwitchTintColor">@color/moon_track_tint_color</item>
-
-        <!-- Стиль для чипов -->
-        <item name="chipStyle">@style/AppChipChoice</item>
 
         <item name="bottomAppBarStyle">@style/AppButton</item>
         <item name="materialButtonStyle">@style/AppButton</item>
@@ -68,6 +73,8 @@
 
         <!-- Цвет фона Chip-->
         <item name="appChipBackgroundColor">@color/mars_primary_dark_color</item>
+        <!-- Цвет фона CardView-->
+        <item name="appCardViewBackgroundColor">@color/mars_secondary_dark_color</item>
         <!-- Цвет фона -->
         <item name="backgroundAppThemeColor">@color/mars_primary_light_color</item>
         <!-- Цвет фона BottomSheet-->
@@ -83,11 +90,6 @@
         <item name="appSwitchNoActiveColor">@color/moon_secondary_text_night_color</item>
         <!-- Цвет дорожки, вдоль которой двигается ползунок -->
         <item name="appSwitchTintColor">@android:color/darker_gray</item>
-
-        <!-- Стиль для чипов -->
-        <item name="chipStyle">@style/AppChipChoice</item>
-        <!-- Стиль для material card -->
-        <item name="materialCardViewStyle">@style/AppCard</item>
 
     </style>
 

@@ -34,4 +34,5 @@
     <dimen name="bottom_sheet_header_padding_end">16dp</dimen>
     <dimen name="bottom_sheet_text_body_padding_start">16dp</dimen>
     <dimen name="bottom_sheet_text_body_padding_end">16dp</dimen>
+    <dimen name="minHeightSettingSwitch">48dp</dimen>
 </resources>
