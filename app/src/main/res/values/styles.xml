@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="TitleTextStyle" parent="Widget.AppCompat.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/fragment_POD_margin_top</item>
+        <item name="android:textSize">@dimen/title_image_description_text_size</item>
+        <item name="android:paddingStart">@dimen/bottom_sheet_header_padding_start</item>
+        <item name="android:paddingEnd">@dimen/bottom_sheet_header_padding_end</item>
+        <item name="android:textColor">?attr/textColorTitle</item>
+    </style>
+
+    <style name="BodyTextStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginTop">@dimen/fragment_POD_margin_top</item>
+        <item name="android:textSize">@dimen/image_description_text_size</item>
+        <item name="android:paddingStart">@dimen/bottom_sheet_text_body_padding_start</item>
+        <item name="android:paddingEnd">@dimen/bottom_sheet_text_body_padding_end</item>
+        <item name="android:textColor">?attr/textColorBody</item>
+    </style>
+
+    <style name="ConstraintLayoutStyle">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+        <item name="android:background">?attr/backgroundAppThemeColor</item>
+        <item name="paddingStart">@dimen/fragment_POD_padding_start</item>
+        <item name="paddingEnd">@dimen/fragment_POD_padding_end</item>
+    </style>
+
+    <style name="MaterialComponentsChipFragmentStyle">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/chips_fr_margin_start</item>
+        <item name="android:layout_marginTop">@dimen/chips_fr_margin_top</item>
+    </style>
+
+    <style name="SwitchStyle" parent="Theme.AppCompat.DayNight.NoActionBar">
+        <!-- активное состояние (30% прозрачности для фона) -->
+        <item name="colorControlActivated">?attr/appSwitchActiveColor</item>
+        <!-- неактивное состояние ползунка -->
+        <item name="colorSwitchThumbNormal">?attr/appSwitchNoActiveColor</item>
+        <!-- Цвет дорожки, вдоль которой двигается ползунок -->
+        <item name="trackTint">?attr/appSwitchTintColor</item>
+    </style>
+
+    <style name="OutlinedButtonChipFragmentStyle" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/chips_fr_margin_start</item>
+        <item name="android:layout_marginTop">@dimen/chips_fr_margin_top</item>
+    </style>
+
+    <style name="UnelevatedButtonChipFragmentStyle" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/chips_fr_margin_start</item>
+        <item name="android:layout_marginTop">@dimen/chips_fr_margin_top</item>
+    </style>
+
+    <style name="TextButtonChipFragmentStyle" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/chips_fr_margin_start</item>
+        <item name="android:layout_marginTop">@dimen/chips_fr_margin_top</item>
+    </style>
+
+    <style name="OutlinedBoxChipFragmentStyle" parent="Widget.MaterialComponents.TextInputLayout.OutlinedBox">
+        <item name="android:layout_width">240dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginStart">@dimen/chips_fr_margin_start</item>
+        <item name="android:layout_marginTop">@dimen/chips_fr_margin_top</item>
+    </style>
+
+    <style name="AppChipChoice" parent="Widget.MaterialComponents.Chip.Choice">
+        <item name="chipBackgroundColor">?attr/appChipBackgroundColor</item>
+    </style>
+
+    <style name="AppChipEntry" parent="Widget.MaterialComponents.Chip.Entry">
+        <item name="chipBackgroundColor">?attr/appChipBackgroundColor</item>
+    </style>
+
+    <style name="AppChipAction" parent="Widget.MaterialComponents.Chip.Action">
+        <item name="chipBackgroundColor">?attr/appChipBackgroundColor</item>
+    </style>
+
+    <style name="AppChipFilter" parent="Widget.MaterialComponents.Chip.Filter">
+        <item name="chipBackgroundColor">?attr/appChipBackgroundColor</item>
+    </style>
+
+    <style name="AppTextAppearance.Button" parent="TextAppearance.MaterialComponents.Button">
+        <item name="android:textAllCaps">false</item>
+    </style>
+
+    <style name="AppShapeAppearance.SmallComponent" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">10dp</item>
+    </style>
+
+    <style name="AppShapeAppearance.MediumComponent" parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">10dp</item>
+    </style>
+
+    <style name="AppButton" parent="Widget.MaterialComponents.Button">
+        <item name="backgroundTint">@color/moon_secondary_dark_color</item>
+        <item name="strokeColor">@color/moon_track_tint_color</item>
+        <item name="cornerFamily">cut</item>
+        <item name="cornerSize">18dp</item>
+    </style>
+
+    <style name="AppCard" parent="Widget.MaterialComponents.CardView">
+        <item name="cardElevation">8dp</item>
+        <item name="cardBackgroundColor">?attr/appCardViewBackgroundColor</item>
+    </style>
+
+</resources>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?attr/backgroundAppThemeColor"
+    android:orientation="vertical">
+
+    <TextView
+        style="@style/TitleTextStyle"
+        android:text="@string/settings" />
+
+    <com.google.android.material.chip.ChipGroup
+        android:id="@+id/chip_theme_group"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/moon_theme"
+            style="@style/AppChipChoice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/moon_theme" />
+
+        <com.google.android.material.chip.Chip
+            android:id="@+id/mars_theme"
+            style="@style/AppChipChoice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mars_theme" />
+
+    </com.google.android.material.chip.ChipGroup>
+
+    <TextView
+        android:id="@+id/selected_theme_name"
+        style="@style/TitleTextStyle" />
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/switchNightMod"
+        style="@style/MaterialComponentsChipFragmentStyle"
+        android:theme="@style/SwitchStyle"
+        android:minHeight="@dimen/minHeightSettingSwitch"
+        android:text="@string/night_mode"/>
+
+    <androidx.appcompat.widget.SwitchCompat
+        android:id="@+id/autoSwitchNightMod"
+        style="@style/MaterialComponentsChipFragmentStyle"
+        android:theme="@style/SwitchStyle"
+        android:minHeight="@dimen/minHeightSettingSwitch"
+        android:text="@string/auto_night_mode"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/apply_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="@string/apply" />
+
+</LinearLayout>
