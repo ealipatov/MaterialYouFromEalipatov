@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import by.ealipatov.kotlin.materialyoufromealipatov.MainActivity
 import by.ealipatov.kotlin.materialyoufromealipatov.R
+import by.ealipatov.kotlin.materialyoufromealipatov.databinding.FragmentPictureOfTheDayBinding
 import by.ealipatov.kotlin.materialyoufromealipatov.utils.isConnection
 import by.ealipatov.kotlin.materialyoufromealipatov.utils.toast
 import by.ealipatov.kotlin.materialyoufromealipatov.viewmodel.PODFragmentViewModel
@@ -28,13 +29,11 @@ import com.google.android.material.chip.Chip
 import kotlinx.android.synthetic.main.bottom_sheet_layout.view.*
 import kotlinx.android.synthetic.main.fragment_picture_of_the_day.*
 import java.time.LocalDate
-import by.ealipatov.kotlin.materialyoufromealipatov.databinding.FragmentPictureOfTheDayBinding as FragmentPictureOfTheDayBinding1
 
 
 class PictureOfTheDayFragment : Fragment() {
-
-    private var _binding: FragmentPictureOfTheDayBinding1? = null
-    private val binding: FragmentPictureOfTheDayBinding1
+    private var _binding: FragmentPictureOfTheDayBinding? = null
+    private val binding: FragmentPictureOfTheDayBinding
         get() {
             return _binding!!
         }
@@ -45,7 +44,6 @@ class PictureOfTheDayFragment : Fragment() {
     private lateinit var imageHDUrl: String
     private lateinit var imageUrl: String
 
-
     private val viewModel by lazy {
         ViewModelProvider(this)[PODFragmentViewModel::class.java]
     }
@@ -55,7 +53,7 @@ class PictureOfTheDayFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentPictureOfTheDayBinding1.inflate(inflater)
+        _binding = FragmentPictureOfTheDayBinding.inflate(inflater)
         return binding.root
     }
 
@@ -68,7 +66,7 @@ class PictureOfTheDayFragment : Fragment() {
         }
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                viewModel.getPicture(LocalDate.now())
+            viewModel.getPicture(LocalDate.now())
         }
 
         setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
@@ -76,19 +74,16 @@ class PictureOfTheDayFragment : Fragment() {
         setBottomAppBar(view)
 
         binding.chipGroup.setOnCheckedStateChangeListener { chipGroup, position ->
-            chipGroup.findViewById<Chip>(position[0])?.let {
-                when (it.id){
-                    R.id.chip_today ->{
-                        viewModel.getPicture(LocalDate.now())
-                        chip_hd_image.isChecked = false
+            chipGroup.findViewById<Chip>(position.last())?.let {
+                when (it.id) {
+                    R.id.chip_today -> {
+                        getPictureByDate(LocalDate.now())
                     }
-                    R.id.chip_yesterday ->{
-                        viewModel.getPicture(LocalDate.now().minusDays(1))
-                        chip_hd_image.isChecked = false
+                    R.id.chip_yesterday -> {
+                        getPictureByDate(LocalDate.now().minusDays(1))
                     }
-                    R.id.chip_day_before_yesterday ->{
-                        viewModel.getPicture(LocalDate.now().minusDays(2))
-                        chip_hd_image.isChecked = false
+                    R.id.chip_day_before_yesterday -> {
+                        getPictureByDate(LocalDate.now().minusDays(2))
                     }
                 }
             }
@@ -96,23 +91,34 @@ class PictureOfTheDayFragment : Fragment() {
 
         binding.chipHdImage.setOnClickListener {
             //Проверим: если чип не нажат - выведем HD, нажат - обычную картинку
-            if(chip_hd_image.isChecked){
-              displayPicture(imageHDUrl)
-            } else{
-              displayPicture(imageUrl)
+            if (chip_hd_image.isChecked) {
+                displayPicture(imageHDUrl)
+            } else {
+                displayPicture(imageUrl)
             }
         }
 
         binding.inputLayout.setEndIconOnClickListener {
-            if(isConnection(requireContext())){
+            if (isConnection(requireContext())) {
                 startActivity(Intent(Intent.ACTION_VIEW).apply {
-                    data = Uri.parse("https://en.wikipedia.org/wiki/${binding.inputEditText.text.toString()}")
+                    data =
+                        Uri.parse("https://en.wikipedia.org/wiki/${binding.inputEditText.text.toString()}")
                 })
             } else {
                 toast(getString(R.string.no_internet_connection))
             }
-
         }
+    }
+
+    /***
+     * Запрашиваем изображение по дате (через вью модель)
+     */
+    private fun getPictureByDate(date: LocalDate) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+            viewModel.getPicture(date)
+        }
+        if (chip_hd_image.isChecked)
+            chip_hd_image.isChecked = false
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -124,12 +130,12 @@ class PictureOfTheDayFragment : Fragment() {
         when (item.itemId) {
             R.id.app_bar_fav -> toast(getString(R.string.favorite))
             R.id.app_bar_settings -> requireActivity().supportFragmentManager.apply {
-                 beginTransaction()
-                .add(R.id.container, SettingFragment.newInstance(), "setting")
-                .hide(this.fragments.last())
-                .addToBackStack(null)
-                .hide(PictureOfTheDayFragment())
-                .commit()
+                beginTransaction()
+                    .add(R.id.container, SettingFragment.newInstance(), "setting")
+                    .hide(this.fragments.last())
+                    .addToBackStack(null)
+                    .hide(PictureOfTheDayFragment())
+                    .commit()
             }
 
             android.R.id.home -> {
@@ -171,7 +177,7 @@ class PictureOfTheDayFragment : Fragment() {
      * На вход принимает url в виде строки.
      * Поддерживает gif и svg
      */
-    private fun displayPicture(url: String){
+    private fun displayPicture(url: String) {
         val imageLoader = ImageLoader.Builder(requireContext())
             .components {
                 //GIF
@@ -203,7 +209,8 @@ class PictureOfTheDayFragment : Fragment() {
             override fun onStateChanged(bottomSheet: View, newState: Int) {
                 when (newState) {
                     BottomSheetBehavior.STATE_COLLAPSED -> {
-                        bottomSheet.bottomSheetDescriptionHeader.text = getString(R.string.expand_to_view)
+                        bottomSheet.bottomSheetDescriptionHeader.text =
+                            getString(R.string.expand_to_view)
                         bottomSheet.bottomSheetDescription.text = ""
                     }
                     BottomSheetBehavior.STATE_EXPANDED -> {
@@ -242,14 +249,24 @@ class PictureOfTheDayFragment : Fragment() {
                 isMain = false
                 binding.bottomAppBar.navigationIcon = null
                 binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
-                binding.fab.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_back_fab))
+                binding.fab.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        context,
+                        R.drawable.ic_back_fab
+                    )
+                )
                 binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar_other_screen)
             } else {
                 isMain = true
                 binding.bottomAppBar.navigationIcon =
                     ContextCompat.getDrawable(context, R.drawable.ic_hamburger_menu_bottom_bar)
                 binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
-                binding.fab.setImageDrawable(ContextCompat.getDrawable(context, R.drawable.ic_plus_fab))
+                binding.fab.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        context,
+                        R.drawable.ic_plus_fab
+                    )
+                )
                 binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar)
             }
         }

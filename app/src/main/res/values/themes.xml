@@ -26,9 +26,14 @@
         <!-- Цвет текста основного-->
         <item name="textColorBody">@android:color/black</item>
         <!-- Цвет фона -->
-        <item name="backgroundAppThemeColor">@android:color/white</item>
+        <item name="backgroundAppThemeColor">@color/light_gray</item>
         <!-- Цвет фона BottomSheet-->
-        <item name="backgroundBottomSheetColor">@android:color/darker_gray</item>
+        <item name="backgroundBottomSheetColor">@color/color_primary</item>
+
+        <!-- Цвет фона Chip-->
+        <item name="appChipBackgroundColor">@color/moon_primary_light_night_color</item>
+        <!-- Цвет фона CardView-->
+        <item name="appCardViewBackgroundColor">@color/moon_background_color</item>
 
         <!-- Стиль для чипов -->
         <item name="chipStyle">@style/AppChipChoice</item>
@@ -50,6 +55,8 @@
         <item name="appChipBackgroundColor">@color/moon_primary_light_night_color</item>
         <!-- Цвет фона CardView-->
         <item name="appCardViewBackgroundColor">@color/moon_background_color</item>
+        <!-- Цвет фона BottomSheet-->
+        <item name="backgroundBottomSheetColor">@color/moon_secondary_color</item>
 
         <!-- активное состояние (30% прозрачности для фона) -->
         <item name="appSwitchActiveColor">@color/moon_control_activated_color</item>

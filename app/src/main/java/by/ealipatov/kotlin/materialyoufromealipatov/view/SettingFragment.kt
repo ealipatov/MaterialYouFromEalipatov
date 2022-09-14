@@ -39,7 +39,7 @@ class SettingFragment : Fragment(), CompoundButton.OnCheckedChangeListener {
         )
         editor = sharedPreferences.edit()
 
-        //Проверяем установленную тему
+        //Проверяем есть ли сохраненная тема и применяем изменения.
         if (sharedPreferences.contains(THEME_KEY)) {
             when (sharedPreferences.getInt(THEME_KEY, R.style.Theme_MaterialYouFromEalipatov)) {
                 R.style.MoonTheme -> {
@@ -57,37 +57,46 @@ class SettingFragment : Fragment(), CompoundButton.OnCheckedChangeListener {
 
         //Выбор темы приложения
         binding.chipThemeGroup.setOnCheckedStateChangeListener { chipGroup, position ->
-            chipGroup.findViewById<Chip>(position[0])?.let {
+            chipGroup.findViewById<Chip>(position.last())?.let {
                 when (it.id) {
                     R.id.moon_theme -> {
-                        if (it.id != R.style.MoonTheme) {
-                            changeTheme(R.style.MoonTheme)
-                        }
+                        changeTheme(R.style.MoonTheme)
+                        binding.moonTheme.setChipBackgroundColorResource(R.color.color_connected)
+                        binding.marsTheme.setChipBackgroundColorResource(R.color.color_disconnected)
+                        moon_theme.isCheckable = false
+                        mars_theme.isCheckable = true
                     }
                     R.id.mars_theme -> {
-                        if (it.id != R.style.MarsTheme) {
-                            changeTheme(R.style.MarsTheme)
-                        }
+                        changeTheme(R.style.MarsTheme)
+                        binding.marsTheme.setChipBackgroundColorResource(R.color.color_connected)
+                        binding.moonTheme.setChipBackgroundColorResource(R.color.color_disconnected)
+                        mars_theme.isCheckable = false
+                        moon_theme.isCheckable = true
                     }
                 }
             }
         }
+
         //Выбипаем сохраненный режим день/ночь/авто
         if (sharedPreferences.contains(THEME_MODE_KEY)) {
-            when(sharedPreferences.getString(THEME_MODE_KEY, "Day")){
-                "Day" -> {binding.switchNightMod.isChecked = false}
-                "Night" -> {binding.switchNightMod.isChecked = true}
+            when (sharedPreferences.getString(THEME_MODE_KEY, "Day")) {
+                "Day" -> {
+                    binding.switchNightMod.isChecked = false
+                }
+                "Night" -> {
+                    binding.switchNightMod.isChecked = true
+                }
                 "Auto" -> {
                     binding.autoSwitchNightMod.isChecked = true
                     binding.switchNightMod.isChecked = false
                 }
             }
         }
-
+        //Надуваем слушателеей для переключателей
         binding.switchNightMod.setOnCheckedChangeListener(this)
         binding.autoSwitchNightMod.setOnCheckedChangeListener(this)
 
-        //Применияем изменения
+        //Применияем изменения по нажатию кнопки
         binding.applyBtn.setOnClickListener {
             applyChanges()
         }
@@ -97,26 +106,26 @@ class SettingFragment : Fragment(), CompoundButton.OnCheckedChangeListener {
      * Слушатель переключателей
      */
     override fun onCheckedChanged(switch: CompoundButton?, isChecked: Boolean) {
-        when(switch?.id) {
-            R.id.switchNightMod ->{
+        when (switch?.id) {
+            R.id.switchNightMod -> {
                 if (isChecked) {
                     editor.putString(THEME_MODE_KEY, "Night")
-                    if(autoSwitchNightMod.isChecked)
+                    if (autoSwitchNightMod.isChecked)
                         binding.autoSwitchNightMod.isChecked = false
                 } else {
-                    if(!autoSwitchNightMod.isChecked)
-                    editor.putString(THEME_MODE_KEY, "Day")
+                    if (!autoSwitchNightMod.isChecked)
+                        editor.putString(THEME_MODE_KEY, "Day")
                 }
             }
             R.id.autoSwitchNightMod -> {
                 if (isChecked) {
                     editor.putString(THEME_MODE_KEY, "Auto")
-                    if(switchNightMod.isChecked)
+                    if (switchNightMod.isChecked)
                         binding.switchNightMod.isChecked = false
-                        binding.autoSwitchNightMod.isChecked = true
+                    binding.autoSwitchNightMod.isChecked = true
                 } else {
-                    if(!switchNightMod.isChecked)
-                    editor.putString(THEME_MODE_KEY, "Day")
+                    if (!switchNightMod.isChecked)
+                        editor.putString(THEME_MODE_KEY, "System")
                 }
             }
         }
