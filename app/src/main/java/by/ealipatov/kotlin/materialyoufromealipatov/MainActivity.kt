@@ -46,8 +46,6 @@ class MainActivity : AppCompatActivity() {
 
         val sharedPreferences = this.getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE)
 
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-
         //Если в файле настроек есть сохраненная тема - применяем ее.
         if(sharedPreferences.contains(THEME_KEY))
             setTheme(sharedPreferences.getInt(THEME_KEY,R.style.AppTheme))
