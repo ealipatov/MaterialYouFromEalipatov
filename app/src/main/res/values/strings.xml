@@ -9,7 +9,6 @@
     <string name="photo_of_the_day_stub">Photo of the day</string>
     <string name="search_wiki">Найти в Википедии</string>
     <string name="wiki_helper_text">Поищите термин в википедии</string>
-    <string name="favourite">Мзбранное</string>
     <string name="settings">Настройки</string>
     <string name="search">Поиск</string>
     <string name="today">Сегодня</string>
@@ -71,4 +70,7 @@
     <string name="night_mode">Ночной режим:</string>
     <string name="apply">Применить</string>
     <string name="auto_night_mode">Автоматический ночной режим</string>
+    <string name="earth_tab_text">Earth</string>
+    <string name="mars_tab_text">Mars</string>
+    <string name="solar_system_tab_text">Solar system</string>
 </resources>

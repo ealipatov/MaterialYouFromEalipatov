@@ -15,6 +15,7 @@ import by.ealipatov.kotlin.materialyoufromealipatov.R
 import by.ealipatov.kotlin.materialyoufromealipatov.databinding.FragmentPictureOfTheDayBinding
 import by.ealipatov.kotlin.materialyoufromealipatov.utils.isConnection
 import by.ealipatov.kotlin.materialyoufromealipatov.utils.toast
+import by.ealipatov.kotlin.materialyoufromealipatov.view.ViewPager.ViewPagerFragment
 import by.ealipatov.kotlin.materialyoufromealipatov.viewmodel.PODFragmentViewModel
 import by.ealipatov.kotlin.materialyoufromealipatov.viewmodel.PODFragmentViewModelAppState
 import coil.Coil
@@ -128,7 +129,15 @@ class PictureOfTheDayFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.app_bar_fav -> toast(getString(R.string.favorite))
+            R.id.app_bar_fav -> requireActivity().supportFragmentManager.apply {
+                beginTransaction()
+                    .add(R.id.container, ViewPagerFragment(), "view_pager")
+                    .hide(this.fragments.last())
+                    .addToBackStack(null)
+                    .hide(PictureOfTheDayFragment())
+                    .commit()
+            }
+
             R.id.app_bar_settings -> requireActivity().supportFragmentManager.apply {
                 beginTransaction()
                     .add(R.id.container, SettingFragment.newInstance(), "setting")

@@ -41,7 +41,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-        //включим ресимвер
+        //включим ресивер
         registerReceiver(configChangeReceiver, filter)
 
         val sharedPreferences = this.getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE)
