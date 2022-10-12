@@ -129,21 +129,19 @@ class PictureOfTheDayFragment : Fragment() {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.app_bar_fav -> requireActivity().supportFragmentManager.apply {
+            R.id.app_favorite -> requireActivity().supportFragmentManager.apply {
                 beginTransaction()
-                    .add(R.id.container, ViewPagerFragment(), "view_pager")
+                    .add(R.id.container, ViewPagerFragment())
                     .hide(this.fragments.last())
                     .addToBackStack(null)
-                    .hide(PictureOfTheDayFragment())
                     .commit()
             }
 
             R.id.app_bar_settings -> requireActivity().supportFragmentManager.apply {
                 beginTransaction()
-                    .add(R.id.container, SettingFragment.newInstance(), "setting")
+                    .add(R.id.container, SettingFragment())
                     .hide(this.fragments.last())
                     .addToBackStack(null)
-                    .hide(PictureOfTheDayFragment())
                     .commit()
             }
 
@@ -283,7 +281,7 @@ class PictureOfTheDayFragment : Fragment() {
 
     companion object {
         fun newInstance() = PictureOfTheDayFragment()
-        private var isMain = true
+        internal var isMain = true
     }
 
     override fun onDestroy() {
