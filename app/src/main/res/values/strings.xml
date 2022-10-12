@@ -70,7 +70,9 @@
     <string name="night_mode">Ночной режим:</string>
     <string name="apply">Применить</string>
     <string name="auto_night_mode">Автоматический ночной режим</string>
+
     <string name="earth_tab_text">Earth</string>
     <string name="mars_tab_text">Mars</string>
     <string name="solar_system_tab_text">Solar system</string>
+    <string name="wq">dsf</string>
 </resources>

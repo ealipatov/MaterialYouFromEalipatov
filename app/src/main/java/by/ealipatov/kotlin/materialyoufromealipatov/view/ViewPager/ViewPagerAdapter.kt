@@ -1,24 +1,20 @@
 package by.ealipatov.kotlin.materialyoufromealipatov.view.ViewPager
 
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentStatePagerAdapter
+import androidx.viewpager2.adapter.FragmentStateAdapter
 
-class ViewPagerAdapter(fragmentManager: FragmentManager) :
-    FragmentStatePagerAdapter(fragmentManager) {
+
+class ViewPagerAdapter(fragment: Fragment) :
+    FragmentStateAdapter(fragment) {
 
     private val fragments = arrayOf(EarthFragment(), MarsFragment(), SolarSystemFragment())
-
-    override fun getCount(): Int {
+    override fun getItemCount(): Int {
         return fragments.size
     }
 
-    override fun getItem(position: Int): Fragment {
+    override fun createFragment(position: Int): Fragment {
         return fragments[position]
     }
 
-    override fun getPageTitle(position: Int): String {
-        return fragments[position].toString()
-    }
 
 }
