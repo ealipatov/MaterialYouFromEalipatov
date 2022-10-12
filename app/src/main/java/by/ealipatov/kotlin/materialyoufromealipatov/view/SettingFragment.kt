@@ -5,14 +5,10 @@ import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.*
 import android.widget.CompoundButton
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import by.ealipatov.kotlin.materialyoufromealipatov.MainActivity
 import by.ealipatov.kotlin.materialyoufromealipatov.R
 import by.ealipatov.kotlin.materialyoufromealipatov.databinding.FragmentSettingBinding
 import by.ealipatov.kotlin.materialyoufromealipatov.utils.*
-import by.ealipatov.kotlin.materialyoufromealipatov.view.ViewPager.ViewPagerFragment
-import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.chip.Chip
 import kotlinx.android.synthetic.main.fragment_setting.*
 
@@ -41,7 +37,7 @@ class SettingFragment : Fragment(), CompoundButton.OnCheckedChangeListener {
         )
         editor = sharedPreferences.edit()
 
-        setBottomAppBar(view)
+      //  setBottomAppBar(view)
 
         //Проверяем есть ли сохраненная тема и применяем изменения.
         if (sharedPreferences.contains(THEME_KEY)) {
@@ -152,7 +148,7 @@ class SettingFragment : Fragment(), CompoundButton.OnCheckedChangeListener {
         requireActivity().supportFragmentManager.popBackStack()
     }
 
-    //меню
+/*    //меню
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         super.onCreateOptionsMenu(menu, inflater)
         inflater.inflate(R.menu.menu_bottom_bar_setting_fragment, menu)
@@ -160,9 +156,9 @@ class SettingFragment : Fragment(), CompoundButton.OnCheckedChangeListener {
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
-            R.id.app_favorite -> requireActivity().supportFragmentManager.apply {
+            R.id.app_bar_favorite -> requireActivity().supportFragmentManager.apply {
                 beginTransaction()
-                    .add(R.id.container, ViewPagerFragment())
+                    .add(R.id.bottom_navigation_container, ViewPagerFragment())
                     .hide(this.fragments.last())
                     .addToBackStack(tag)
                     .commit()
@@ -212,11 +208,7 @@ class SettingFragment : Fragment(), CompoundButton.OnCheckedChangeListener {
             }
         }
     }
-
-    companion object {
-        private var isMain = true
-    }
-
+*/
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null

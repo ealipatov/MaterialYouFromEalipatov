@@ -8,9 +8,12 @@ import android.content.res.Configuration
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.fragment.app.Fragment
 import by.ealipatov.kotlin.materialyoufromealipatov.databinding.ActivityMainBinding
 import by.ealipatov.kotlin.materialyoufromealipatov.utils.*
 import by.ealipatov.kotlin.materialyoufromealipatov.view.PictureOfTheDayFragment
+import by.ealipatov.kotlin.materialyoufromealipatov.view.SettingFragment
+import by.ealipatov.kotlin.materialyoufromealipatov.view.ViewPager.ViewPagerFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.container, PictureOfTheDayFragment.newInstance())
+                .replace(R.id.bottom_navigation_container, PictureOfTheDayFragment.newInstance())
                 .commit()
         }
 
@@ -53,6 +56,34 @@ class MainActivity : AppCompatActivity() {
         //Если в файле настроек есть выбор ночной/дневной/авто/системной темы - применяем ее.
         if(sharedPreferences.contains(THEME_MODE_KEY)){
             sharedPreferences.getString(THEME_MODE_KEY, "System")?.let { changeMode(it) }
+        }
+
+        binding.bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.app_bar_favorite -> {
+                    toFragment(ViewPagerFragment())
+                    true
+                }
+                R.id.app_bar_settings -> {
+                    toFragment(SettingFragment())
+                    true
+                }
+                R.id.app_bar_telescope -> {
+                    toFragment(PictureOfTheDayFragment())
+                    true
+                }
+                else -> false
+            }
+        }
+    }
+
+    private fun toFragment(fragment: Fragment) {
+        supportFragmentManager.apply {
+            beginTransaction()
+                .add(R.id.bottom_navigation_container, fragment)
+                .hide(this.fragments.last())
+                .addToBackStack(null)
+                .commit()
         }
     }
 
