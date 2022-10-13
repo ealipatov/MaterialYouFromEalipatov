@@ -11,7 +11,6 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.fragment.app.Fragment
 import by.ealipatov.kotlin.materialyoufromealipatov.databinding.ActivityMainBinding
 import by.ealipatov.kotlin.materialyoufromealipatov.utils.*
-import by.ealipatov.kotlin.materialyoufromealipatov.view.PictureOfTheDayFragment
 import by.ealipatov.kotlin.materialyoufromealipatov.view.SettingFragment
 import by.ealipatov.kotlin.materialyoufromealipatov.view.ViewPager.ViewPagerFragment
 import by.ealipatov.kotlin.materialyoufromealipatov.view.ViewPagerPOD.PictureOfTheDayViewPagerFragment
@@ -51,11 +50,11 @@ class MainActivity : AppCompatActivity() {
         val sharedPreferences = this.getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE)
 
         //Если в файле настроек есть сохраненная тема - применяем ее.
-        if(sharedPreferences.contains(THEME_KEY))
-            setTheme(sharedPreferences.getInt(THEME_KEY,R.style.AppTheme))
+        if (sharedPreferences.contains(THEME_KEY))
+            setTheme(sharedPreferences.getInt(THEME_KEY, R.style.AppTheme))
 
         //Если в файле настроек есть выбор ночной/дневной/авто/системной темы - применяем ее.
-        if(sharedPreferences.contains(THEME_MODE_KEY)){
+        if (sharedPreferences.contains(THEME_MODE_KEY)) {
             sharedPreferences.getString(THEME_MODE_KEY, "System")?.let { changeMode(it) }
         }
 
@@ -70,7 +69,7 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.app_bar_telescope -> {
-                    toFragment(PictureOfTheDayFragment())
+                    toFragment(PictureOfTheDayViewPagerFragment())
                     true
                 }
                 else -> false
@@ -95,12 +94,12 @@ class MainActivity : AppCompatActivity() {
      * Функция изменения режима день/ночь/авто/системый
      * На вход принимает строку
      */
-    private fun changeMode (mode: String){
-        when(mode){
+    private fun changeMode(mode: String) {
+        when (mode) {
             "Day" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            "Night" ->AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            "Auto" ->AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY)
-            "System" ->AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+            "Night" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            "Auto" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY)
+            "System" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
         }
     }
 }

@@ -1,35 +1,40 @@
 package by.ealipatov.kotlin.materialyoufromealipatov.view.ViewPagerPOD
 
 import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import by.ealipatov.kotlin.materialyoufromealipatov.view.ViewPager.EarthFragment
-import by.ealipatov.kotlin.materialyoufromealipatov.view.ViewPager.MarsFragment
-import by.ealipatov.kotlin.materialyoufromealipatov.view.ViewPager.SolarSystemFragment
 import java.time.LocalDate
 
 
 class PODViewPagerAdapter(fragment: Fragment) :
     FragmentStateAdapter(fragment) {
 
-    private val fragments = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+    @RequiresApi(Build.VERSION_CODES.O)
+    private val fragments =
         arrayOf(
-            PictureOfTheDayByDateFragment(LocalDate.now()),
-            PictureOfTheDayByDateFragment(LocalDate.now().minusDays(1)),
-            PictureOfTheDayByDateFragment(LocalDate.now().minusDays(2))
+            PictureOfTheDayByDateFragment(TODAY),
+            PictureOfTheDayByDateFragment(YESTERDAY),
+            PictureOfTheDayByDateFragment(DB_YESTERDAY)
         )
-    } else {
-        arrayOf(
-            EarthFragment(),
-            MarsFragment(),
-            SolarSystemFragment()
-        )
+
+    companion object {
+        @RequiresApi(Build.VERSION_CODES.O)
+        private val TODAY = LocalDate.now()
+
+        @RequiresApi(Build.VERSION_CODES.O)
+        private val YESTERDAY = LocalDate.now().minusDays(1)
+
+        @RequiresApi(Build.VERSION_CODES.O)
+        private val DB_YESTERDAY = LocalDate.now().minusDays(2)
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun getItemCount(): Int {
         return fragments.size
     }
 
+    @RequiresApi(Build.VERSION_CODES.O)
     override fun createFragment(position: Int): Fragment {
         return fragments[position]
     }
