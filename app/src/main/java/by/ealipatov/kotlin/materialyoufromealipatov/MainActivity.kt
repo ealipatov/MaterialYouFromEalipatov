@@ -75,6 +75,9 @@ class MainActivity : AppCompatActivity() {
                 else -> false
             }
         }
+        //Количество сообщений в углу иконки
+        val badge = binding.bottomNavigationView.getOrCreateBadge(R.id.app_bar_telescope)
+        badge.number = 10
     }
 
     private fun toFragment(fragment: Fragment) {
