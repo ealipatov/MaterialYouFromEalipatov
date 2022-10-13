@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/main"
+            style="@style/ConstraintLayoutStyle">
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_layout"
+                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+
+                android:layout_width="@dimen/layout_width_zero"
+                android:layout_height="wrap_content"
+                android:hint="@string/search_wiki"
+
+                app:counterEnabled="true"
+                app:counterMaxLength="20"
+
+                app:endIconCheckable="true"
+                app:endIconDrawable="@drawable/ic_wikipedia"
+                app:endIconMode="custom"
+
+                app:helperText="@string/wiki_helper_text"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/image_view"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/input_edit_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="text" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <by.ealipatov.kotlin.materialyoufromealipatov.utils.EquilateralImageView
+                android:id="@+id/image_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:contentDescription="@string/photo_of_the_day_stub"
+                app:layout_constraintBottom_toTopOf="@id/image_date"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/input_layout"
+                app:srcCompat="@drawable/ic_no_photo_vector" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/image_date"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/fragment_POD_margin_top"
+                android:textSize="@dimen/image_date_text_size"
+                android:gravity="end"
+                app:layout_constraintBottom_toTopOf="@id/image_title_description"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/image_view"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/image_title_description"
+                style="@style/TitleTextStyle"
+                app:layout_constraintBottom_toTopOf="@id/image_description"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/image_date" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/image_description"
+                style="@style/BodyTextStyle"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/image_title_description"/>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

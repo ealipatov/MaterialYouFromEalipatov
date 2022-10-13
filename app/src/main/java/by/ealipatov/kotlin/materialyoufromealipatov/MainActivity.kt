@@ -14,6 +14,7 @@ import by.ealipatov.kotlin.materialyoufromealipatov.utils.*
 import by.ealipatov.kotlin.materialyoufromealipatov.view.PictureOfTheDayFragment
 import by.ealipatov.kotlin.materialyoufromealipatov.view.SettingFragment
 import by.ealipatov.kotlin.materialyoufromealipatov.view.ViewPager.ViewPagerFragment
+import by.ealipatov.kotlin.materialyoufromealipatov.view.ViewPagerPOD.PictureOfTheDayViewPagerFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.bottom_navigation_container, PictureOfTheDayFragment.newInstance())
+                .replace(R.id.bottom_navigation_container, PictureOfTheDayViewPagerFragment())
                 .commit()
         }
 

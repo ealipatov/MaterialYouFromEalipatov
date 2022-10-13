@@ -68,8 +68,6 @@ class PictureOfTheDayFragment : Fragment() {
 
         setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
 
-     //   setBottomAppBar(view)
-
         binding.chipGroup.setOnCheckedStateChangeListener { chipGroup, position ->
             chipGroup.findViewById<Chip>(position.last())?.let {
                 when (it.id) {
