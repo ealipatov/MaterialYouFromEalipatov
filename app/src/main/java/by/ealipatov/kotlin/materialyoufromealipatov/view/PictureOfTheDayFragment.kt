@@ -7,10 +7,8 @@ import android.os.Bundle
 import android.view.*
 import androidx.annotation.RequiresApi
 import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import by.ealipatov.kotlin.materialyoufromealipatov.MainActivity
 import by.ealipatov.kotlin.materialyoufromealipatov.R
 import by.ealipatov.kotlin.materialyoufromealipatov.databinding.FragmentPictureOfTheDayBinding
 import by.ealipatov.kotlin.materialyoufromealipatov.utils.isConnection
@@ -23,7 +21,6 @@ import coil.decode.GifDecoder
 import coil.decode.ImageDecoderDecoder
 import coil.decode.SvgDecoder
 import coil.load
-import com.google.android.material.bottomappbar.BottomAppBar
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.chip.Chip
 import kotlinx.android.synthetic.main.bottom_sheet_layout.view.*
@@ -71,8 +68,6 @@ class PictureOfTheDayFragment : Fragment() {
 
         setBottomSheetBehavior(view.findViewById(R.id.bottom_sheet_container))
 
-        setBottomAppBar(view)
-
         binding.chipGroup.setOnCheckedStateChangeListener { chipGroup, position ->
             chipGroup.findViewById<Chip>(position.last())?.let {
                 when (it.id) {
@@ -119,32 +114,6 @@ class PictureOfTheDayFragment : Fragment() {
         }
         if (chip_hd_image.isChecked)
             chip_hd_image.isChecked = false
-    }
-
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        inflater.inflate(R.menu.menu_bottom_bar, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.app_bar_fav -> toast(getString(R.string.favorite))
-            R.id.app_bar_settings -> requireActivity().supportFragmentManager.apply {
-                beginTransaction()
-                    .add(R.id.container, SettingFragment.newInstance(), "setting")
-                    .hide(this.fragments.last())
-                    .addToBackStack(null)
-                    .hide(PictureOfTheDayFragment())
-                    .commit()
-            }
-
-            android.R.id.home -> {
-                activity?.let {
-                    BottomNavigationDrawerFragment().show(it.supportFragmentManager, "tag")
-                }
-            }
-        }
-        return super.onOptionsItemSelected(item)
     }
 
     private fun renderData(appState: PODFragmentViewModelAppState) {
@@ -240,41 +209,8 @@ class PictureOfTheDayFragment : Fragment() {
         })
     }
 
-    private fun setBottomAppBar(view: View) {
-        val context = activity as MainActivity
-        context.setSupportActionBar(view.findViewById(R.id.bottom_app_bar))
-        setHasOptionsMenu(true)
-        binding.fab.setOnClickListener {
-            if (isMain) {
-                isMain = false
-                binding.bottomAppBar.navigationIcon = null
-                binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
-                binding.fab.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        context,
-                        R.drawable.ic_back_fab
-                    )
-                )
-                binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar_other_screen)
-            } else {
-                isMain = true
-                binding.bottomAppBar.navigationIcon =
-                    ContextCompat.getDrawable(context, R.drawable.ic_hamburger_menu_bottom_bar)
-                binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
-                binding.fab.setImageDrawable(
-                    ContextCompat.getDrawable(
-                        context,
-                        R.drawable.ic_plus_fab
-                    )
-                )
-                binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar)
-            }
-        }
-    }
-
     companion object {
         fun newInstance() = PictureOfTheDayFragment()
-        private var isMain = true
     }
 
     override fun onDestroy() {

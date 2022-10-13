@@ -34,7 +34,7 @@ class BottomNavigationDrawerFragment : BottomSheetDialogFragment() {
                         //при нескольких нажатиях на пункт меню, не "плодим" фрагменты
                         if (this.findFragmentByTag("chips") == null) {
                             beginTransaction()
-                                .add(R.id.container, ChipsFragment.newInstance(), "chips")
+                                .add(R.id.bottom_navigation_container, ChipsFragment.newInstance(), "chips")
                                 .hide(this.fragments.last())
                                 .hide(this.fragments.first())
                                 .addToBackStack(null)
