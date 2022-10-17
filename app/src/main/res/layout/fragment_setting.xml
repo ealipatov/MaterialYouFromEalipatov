@@ -4,11 +4,11 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="?attr/backgroundAppThemeColor"
-        android:orientation="vertical">
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </androidx.constraintlayout.widget.Guideline>
 
         <TextView
             style="@style/TitleTextStyle"
@@ -59,6 +59,4 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:text="@string/apply" />
-
-    </LinearLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

@@ -48,8 +48,6 @@
     <string name="a">a</string>
     <string name="scroll">scroll</string>
     <string name="close_icon_listener">Close Icon Listener</string>
-    <string name="to_fragment_one">На экран 1</string>
-    <string name="to_fragment_two">На экран 2</string>
     <string name="chips_example">Примеры чипов</string>
 
     <string name="card">Card</string>
@@ -75,5 +73,10 @@
     <string name="earth_tab_text">Earth</string>
     <string name="mars_tab_text">Mars</string>
     <string name="solar_system_tab_text">Solar system</string>
-    <string name="wq">dsf</string>
+
+    <string name="makete">Constraint</string>
+    <string name="constraint_layout">Constraint</string>
+    <string name="coordinator_layout">Coordinator</string>
+    <string name="motion_layout">Motion</string>
+    ConstraintLayout
 </resources>

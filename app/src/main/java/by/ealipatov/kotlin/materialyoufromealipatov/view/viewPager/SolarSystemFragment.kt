@@ -1,4 +1,4 @@
-package by.ealipatov.kotlin.materialyoufromealipatov.view.ViewPager
+package by.ealipatov.kotlin.materialyoufromealipatov.view.viewPager
 
 import android.os.Bundle
 import android.view.LayoutInflater
