@@ -78,5 +78,6 @@
     <string name="constraint_layout">Constraint</string>
     <string name="coordinator_layout">Coordinator</string>
     <string name="motion_layout">Motion</string>
+    <string name="on_off">вкл/выкл</string>
     ConstraintLayout
 </resources>

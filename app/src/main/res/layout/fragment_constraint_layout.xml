@@ -90,4 +90,46 @@
         app:layout_constraintStart_toStartOf="@id/vertical_barrier"
         app:layout_constraintTop_toBottomOf="@+id/horizontal_barrier"/>
 
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/group_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="btn_gr_left, btn_gr_right"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_gr_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/constraint_layout"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btn_gr_right"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_down"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_gr_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/constraint_layout"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btn_gr_left"
+        app:layout_constraintTop_toBottomOf="@+id/btn_down"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_group_on_off"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/on_off"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_gr_left" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
