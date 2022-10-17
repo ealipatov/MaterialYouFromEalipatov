@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment
 import by.ealipatov.kotlin.materialyoufromealipatov.databinding.ActivityMainBinding
 import by.ealipatov.kotlin.materialyoufromealipatov.utils.*
 import by.ealipatov.kotlin.materialyoufromealipatov.view.SettingFragment
-import by.ealipatov.kotlin.materialyoufromealipatov.view.ViewPager.ViewPagerFragment
+import by.ealipatov.kotlin.materialyoufromealipatov.view.solarSystem.ViewPagerFragment
 import by.ealipatov.kotlin.materialyoufromealipatov.view.layouts.LayoutsViewPagerFragment
 import by.ealipatov.kotlin.materialyoufromealipatov.view.pictureOfTheDay.PictureOfTheDayViewPagerFragment
 
