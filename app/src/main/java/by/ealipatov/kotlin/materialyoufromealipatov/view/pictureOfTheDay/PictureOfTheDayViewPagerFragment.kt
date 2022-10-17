@@ -1,4 +1,4 @@
-package by.ealipatov.kotlin.materialyoufromealipatov.view.viewPagerPOD
+package by.ealipatov.kotlin.materialyoufromealipatov.view.pictureOfTheDay
 
 import android.os.Bundle
 import android.view.*
@@ -28,7 +28,7 @@ class PictureOfTheDayViewPagerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.viewPager.adapter = PODViewPagerAdapter(this)
+        binding.viewPager.adapter = PictureOfTheDayViewPagerAdapter(this)
         setupTab()
     }
 

@@ -22,8 +22,6 @@
     </style>
 
     <style name="ConstraintLayoutStyle">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">match_parent</item>
         <item name="android:background">?attr/backgroundAppThemeColor</item>
         <item name="paddingStart">@dimen/fragment_POD_padding_start</item>
         <item name="paddingEnd">@dimen/fragment_POD_padding_end</item>

@@ -12,8 +12,9 @@ import androidx.fragment.app.Fragment
 import by.ealipatov.kotlin.materialyoufromealipatov.databinding.ActivityMainBinding
 import by.ealipatov.kotlin.materialyoufromealipatov.utils.*
 import by.ealipatov.kotlin.materialyoufromealipatov.view.SettingFragment
-import by.ealipatov.kotlin.materialyoufromealipatov.view.viewPager.ViewPagerFragment
-import by.ealipatov.kotlin.materialyoufromealipatov.view.viewPagerPOD.PictureOfTheDayViewPagerFragment
+import by.ealipatov.kotlin.materialyoufromealipatov.view.ViewPager.ViewPagerFragment
+import by.ealipatov.kotlin.materialyoufromealipatov.view.layouts.LayoutsViewPagerFragment
+import by.ealipatov.kotlin.materialyoufromealipatov.view.pictureOfTheDay.PictureOfTheDayViewPagerFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -60,16 +61,20 @@ class MainActivity : AppCompatActivity() {
 
         binding.bottomNavigationView.setOnItemSelectedListener { item ->
             when (item.itemId) {
-                R.id.app_bar_favorite -> {
+                R.id.app_bar_telescope -> {
+                    toFragment(PictureOfTheDayViewPagerFragment())
+                    true
+                }
+                R.id.app_bar_system -> {
                     toFragment(ViewPagerFragment())
+                    true
+                }
+                R.id.app_bar_layouts -> {
+                    toFragment(LayoutsViewPagerFragment())
                     true
                 }
                 R.id.app_bar_settings -> {
                     toFragment(SettingFragment())
-                    true
-                }
-                R.id.app_bar_telescope -> {
-                    toFragment(PictureOfTheDayViewPagerFragment())
                     true
                 }
                 else -> false
@@ -80,6 +85,7 @@ class MainActivity : AppCompatActivity() {
         badge.number = 10
     }
 
+    //Сделать проверку уже созданного фрагмента
     private fun toFragment(fragment: Fragment) {
         supportFragmentManager.apply {
             beginTransaction()

@@ -1,4 +1,4 @@
-package by.ealipatov.kotlin.materialyoufromealipatov.view.viewPager
+package by.ealipatov.kotlin.materialyoufromealipatov.view.ViewPager
 
 import android.os.Bundle
 import android.view.*

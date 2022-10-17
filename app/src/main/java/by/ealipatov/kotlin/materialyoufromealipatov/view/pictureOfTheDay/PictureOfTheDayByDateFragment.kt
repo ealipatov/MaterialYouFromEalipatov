@@ -1,4 +1,4 @@
-package by.ealipatov.kotlin.materialyoufromealipatov.view.viewPagerPOD
+package by.ealipatov.kotlin.materialyoufromealipatov.view.pictureOfTheDay
 
 import android.content.Intent
 import android.net.Uri

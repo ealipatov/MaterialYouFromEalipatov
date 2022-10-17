@@ -74,7 +74,7 @@
     <string name="mars_tab_text">Mars</string>
     <string name="solar_system_tab_text">Solar system</string>
 
-    <string name="makete">Constraint</string>
+    <string name="layouts">Макеты</string>
     <string name="constraint_layout">Constraint</string>
     <string name="coordinator_layout">Coordinator</string>
     <string name="motion_layout">Motion</string>

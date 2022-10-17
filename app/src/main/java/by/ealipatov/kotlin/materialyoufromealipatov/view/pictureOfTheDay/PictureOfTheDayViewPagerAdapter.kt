@@ -1,4 +1,4 @@
-package by.ealipatov.kotlin.materialyoufromealipatov.view.viewPagerPOD
+package by.ealipatov.kotlin.materialyoufromealipatov.view.pictureOfTheDay
 
 import android.os.Build
 import androidx.annotation.RequiresApi
@@ -7,7 +7,7 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import java.time.LocalDate
 
 
-class PODViewPagerAdapter(fragment: Fragment) :
+class PictureOfTheDayViewPagerAdapter(fragment: Fragment) :
     FragmentStateAdapter(fragment) {
 
     @RequiresApi(Build.VERSION_CODES.O)
