@@ -4,6 +4,55 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_vl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_vc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_vr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_hu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_hc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.5"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_hd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.75"/>
+
+
     <androidx.constraintlayout.widget.Barrier
         android:id="@+id/vertical_barrier"
         android:layout_width="wrap_content"
@@ -45,11 +94,10 @@
 
         android:text="@string/constraint_layout"
 
-        app:layout_constraintHorizontal_bias="0.4"
-        app:layout_constraintBottom_toTopOf="@+id/btn_center"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/materialButton2"/>
+        app:layout_constraintBottom_toTopOf="@+id/gl_hu"
+        app:layout_constraintEnd_toEndOf="@+id/gl_vl"
+        app:layout_constraintStart_toStartOf="@+id/gl_vl"
+        app:layout_constraintTop_toBottomOf="@+id/gl_hu"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_center"
@@ -58,11 +106,10 @@
 
         android:text="@string/constraint_layout"
 
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintBottom_toTopOf="@+id/btn_down"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_up" />
+        app:layout_constraintBottom_toTopOf="@+id/gl_hc"
+        app:layout_constraintEnd_toEndOf="@+id/gl_vc"
+        app:layout_constraintStart_toStartOf="@+id/gl_vc"
+        app:layout_constraintTop_toBottomOf="@+id/gl_hc" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_down"
@@ -71,11 +118,10 @@
 
         android:text="@string/constraint_layout"
 
-        app:layout_constraintHorizontal_bias="0.6"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_center"/>
+        app:layout_constraintBottom_toBottomOf="@+id/gl_hd"
+        app:layout_constraintEnd_toEndOf="@+id/gl_vr"
+        app:layout_constraintStart_toStartOf="@+id/gl_vr"
+        app:layout_constraintTop_toBottomOf="@+id/gl_hd"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_barrier"
