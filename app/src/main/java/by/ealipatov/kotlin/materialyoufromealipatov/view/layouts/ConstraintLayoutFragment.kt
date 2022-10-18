@@ -32,6 +32,9 @@ class ConstraintLayoutFragment: Fragment() {
             flag = !flag
             binding.groupBtn.visibility = if (flag) View.GONE else View.VISIBLE
         }
-
+    }
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 }
