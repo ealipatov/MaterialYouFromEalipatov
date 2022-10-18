@@ -4,27 +4,28 @@ import android.content.Context
 import android.util.AttributeSet
 import android.view.View
 import androidx.coordinatorlayout.widget.CoordinatorLayout
-import by.ealipatov.kotlin.materialyoufromealipatov.R
+import androidx.core.widget.NestedScrollView
+import com.google.android.material.appbar.AppBarLayout
 
-class ViewBehavior(context: Context, attrs: AttributeSet?=null):
-    CoordinatorLayout.Behavior<View> (context, attrs) {
+class NestedScrollBehavior(context: Context, attrs: AttributeSet?=null):
+    CoordinatorLayout.Behavior<NestedScrollView> (context, attrs) {
 
     override fun layoutDependsOn(
         parent: CoordinatorLayout,
-        child: View,
+        child: NestedScrollView,
         dependency: View
     ): Boolean {
-        return (dependency.id == R.id.bottom_sheet_container)
+        return (dependency is AppBarLayout)
     }
 
 
     override fun onDependentViewChanged(
         parent: CoordinatorLayout,
-        child: View,
+        child: NestedScrollView,
         dependency: View
     ): Boolean {
-        if (dependency.id == R.id.bottom_sheet_container) {
-            child.y = dependency.y - 350
+        if (dependency is AppBarLayout) {
+            child.y = dependency.y + dependency.height
         }
         return super.onDependentViewChanged(parent, child, dependency)
     }

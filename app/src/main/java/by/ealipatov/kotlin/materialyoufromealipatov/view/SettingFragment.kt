@@ -30,7 +30,6 @@ class SettingFragment : Fragment(), CompoundButton.OnCheckedChangeListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         sharedPreferences = requireActivity().getSharedPreferences(
             SHARED_PREF_FILE,
             Context.MODE_PRIVATE
@@ -102,29 +101,31 @@ class SettingFragment : Fragment(), CompoundButton.OnCheckedChangeListener {
         }
     }
 
+
+
     /***
      * Слушатель переключателей
      */
     override fun onCheckedChanged(switch: CompoundButton?, isChecked: Boolean) {
         when (switch?.id) {
-            R.id.switchNightMod -> {
+            R.id.switch_night_mod -> {
                 if (isChecked) {
                     editor.putString(THEME_MODE_KEY, "Night")
-                    if (autoSwitchNightMod.isChecked)
+                    if (auto_switch_night_mod.isChecked)
                         binding.autoSwitchNightMod.isChecked = false
                 } else {
-                    if (!autoSwitchNightMod.isChecked)
+                    if (!auto_switch_night_mod.isChecked)
                         editor.putString(THEME_MODE_KEY, "Day")
                 }
             }
-            R.id.autoSwitchNightMod -> {
+            R.id.auto_switch_night_mod -> {
                 if (isChecked) {
                     editor.putString(THEME_MODE_KEY, "Auto")
-                    if (switchNightMod.isChecked)
+                    if (switch_night_mod.isChecked)
                         binding.switchNightMod.isChecked = false
                     binding.autoSwitchNightMod.isChecked = true
                 } else {
-                    if (!switchNightMod.isChecked)
+                    if (!switch_night_mod.isChecked)
                         editor.putString(THEME_MODE_KEY, "System")
                 }
             }

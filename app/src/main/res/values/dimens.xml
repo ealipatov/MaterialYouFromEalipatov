@@ -35,4 +35,7 @@
     <dimen name="bottom_sheet_text_body_padding_start">16dp</dimen>
     <dimen name="bottom_sheet_text_body_padding_end">16dp</dimen>
     <dimen name="minHeightSettingSwitch">48dp</dimen>
+    <dimen name="appbar_height">250dp</dimen>
+    <dimen name="collaps_toolbar_margin_end">64dp</dimen>
+    <dimen name="collaps_toolbar_margin_start">48dp</dimen>
 </resources>
