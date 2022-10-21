@@ -5,7 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import by.ealipatov.kotlin.materialyoufromealipatov.R
 import by.ealipatov.kotlin.materialyoufromealipatov.databinding.FragmentMotionLayoutBinding
+import by.ealipatov.kotlin.materialyoufromealipatov.view.animation.AnimationFragment
 
 class MotionLayoutFragment: Fragment() {
 
@@ -24,6 +26,17 @@ class MotionLayoutFragment: Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        binding.btnLeft.setOnClickListener {
+            parentFragmentManager.apply {
+                beginTransaction()
+                    .add(R.id.container, AnimationFragment())
+                    .commit()
+            }
+        }
+    }
     override fun onDestroy() {
         super.onDestroy()
         _binding = null

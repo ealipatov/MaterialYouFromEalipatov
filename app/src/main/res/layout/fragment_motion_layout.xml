@@ -35,10 +35,18 @@
         android:layout_height="wrap_content"
 
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.25"/>
+        app:layout_constraintGuide_percent="0.125"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_hc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_hd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
@@ -82,5 +90,13 @@
         app:layout_constraintEnd_toEndOf="@+id/gl_vc"
         app:layout_constraintStart_toStartOf="@+id/gl_vc"
         app:layout_constraintTop_toBottomOf="@+id/gl_hc" />
+
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        app:layout_constraintTop_toBottomOf="@+id/gl_hd"
+        />
 
 </androidx.constraintlayout.motion.widget.MotionLayout>
