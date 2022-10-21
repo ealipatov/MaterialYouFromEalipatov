@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import by.ealipatov.kotlin.materialyoufromealipatov.R
 import by.ealipatov.kotlin.materialyoufromealipatov.databinding.FragmentMotionLayoutBinding
+import by.ealipatov.kotlin.materialyoufromealipatov.view.animation.AnimationExplodeFragment
 import by.ealipatov.kotlin.materialyoufromealipatov.view.animation.AnimationFragment
 
 class MotionLayoutFragment: Fragment() {
@@ -36,6 +37,14 @@ class MotionLayoutFragment: Fragment() {
                     .commit()
             }
         }
+        binding.btnRight.setOnClickListener {
+            parentFragmentManager.apply {
+                beginTransaction()
+                    .add(R.id.container, AnimationExplodeFragment())
+                    .commit()
+            }
+        }
+
     }
     override fun onDestroy() {
         super.onDestroy()

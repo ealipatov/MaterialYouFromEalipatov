@@ -85,4 +85,5 @@
     <string name="right">Правая</string>
     <string name="animate">Animate</string>
     <string name="transitions_example">Transitions example</string>
+    <string name="tap_on_me">TAP ON ME</string>
 </resources>
