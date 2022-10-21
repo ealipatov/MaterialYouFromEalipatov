@@ -1,10 +1,8 @@
 package by.ealipatov.kotlin.materialyoufromealipatov.view.animation
 
 import android.os.Bundle
-import android.transition.ChangeBounds
-import android.transition.Fade
-import android.transition.TransitionManager
-import android.transition.TransitionSet
+import android.transition.*
+import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,10 +33,13 @@ class AnimationFragment: Fragment() {
         binding.button.setOnClickListener {
             flag = !flag
             val myAutoTransition = TransitionSet()
+            //ORDERING_TOGETHER- одновременно; ORDERING_SEQUENTIAL - по очереди
             myAutoTransition.ordering = TransitionSet.ORDERING_TOGETHER
-            val fade = Fade()
+            //val fade = Fade()
+            val slide = Slide(Gravity.BOTTOM)
             val changeBounds = ChangeBounds()
-            myAutoTransition.addTransition(fade)
+            myAutoTransition.addTransition(slide)
+            slide.duration = 1000L
             myAutoTransition.addTransition(changeBounds)
             TransitionManager.beginDelayedTransition(binding.root, myAutoTransition)
             binding.text.visibility = if(flag) View.VISIBLE else View.GONE
