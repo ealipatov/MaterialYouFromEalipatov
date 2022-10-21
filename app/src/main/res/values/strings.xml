@@ -86,4 +86,7 @@
     <string name="animate">Animate</string>
     <string name="transitions_example">Transitions example</string>
     <string name="tap_on_me">TAP ON ME</string>
+    <string name="btn_text">Text</string>
+    <string name="btn_explode">Explode</string>
+    <string name="btn_image">Image</string>
 </resources>

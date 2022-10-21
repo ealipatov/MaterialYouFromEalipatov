@@ -65,6 +65,7 @@ class AnimationExplodeFragment: Fragment() {
                 }
                 TransitionManager.beginDelayedTransition(binding.recyclerView, explode)
                 binding.recyclerView.adapter = null
+                //parentFragmentManager.popBackStack()
             }
         }
 

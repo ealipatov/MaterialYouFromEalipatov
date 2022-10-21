@@ -9,6 +9,7 @@ import by.ealipatov.kotlin.materialyoufromealipatov.R
 import by.ealipatov.kotlin.materialyoufromealipatov.databinding.FragmentMotionLayoutBinding
 import by.ealipatov.kotlin.materialyoufromealipatov.view.animation.AnimationExplodeFragment
 import by.ealipatov.kotlin.materialyoufromealipatov.view.animation.AnimationFragment
+import by.ealipatov.kotlin.materialyoufromealipatov.view.animation.AnimationImageFragment
 
 class MotionLayoutFragment: Fragment() {
 
@@ -30,21 +31,23 @@ class MotionLayoutFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.btnLeft.setOnClickListener {
-            parentFragmentManager.apply {
-                beginTransaction()
-                    .add(R.id.container, AnimationFragment())
-                    .commit()
-            }
+        binding.btnAnimeText.setOnClickListener {
+            toFragment(AnimationFragment())
         }
-        binding.btnRight.setOnClickListener {
-            parentFragmentManager.apply {
-                beginTransaction()
-                    .add(R.id.container, AnimationExplodeFragment())
-                    .commit()
-            }
+        binding.btnAnimeExplode.setOnClickListener {
+            toFragment(AnimationExplodeFragment())
         }
+        binding.btnAnimeImage.setOnClickListener {
+            toFragment(AnimationImageFragment())
+        }
+    }
 
+    private fun toFragment(fragment: Fragment) {
+        parentFragmentManager.apply {
+            beginTransaction()
+                .replace(R.id.container, fragment)
+                .commit()
+        }
     }
     override fun onDestroy() {
         super.onDestroy()
