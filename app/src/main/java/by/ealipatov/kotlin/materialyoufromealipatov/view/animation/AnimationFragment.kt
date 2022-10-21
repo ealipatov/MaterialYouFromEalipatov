@@ -1,7 +1,10 @@
 package by.ealipatov.kotlin.materialyoufromealipatov.view.animation
 
 import android.os.Bundle
+import android.transition.ChangeBounds
+import android.transition.Fade
 import android.transition.TransitionManager
+import android.transition.TransitionSet
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -31,8 +34,13 @@ class AnimationFragment: Fragment() {
 
         binding.button.setOnClickListener {
             flag = !flag
-
-            TransitionManager.beginDelayedTransition(binding.root)
+            val myAutoTransition = TransitionSet()
+            myAutoTransition.ordering = TransitionSet.ORDERING_TOGETHER
+            val fade = Fade()
+            val changeBounds = ChangeBounds()
+            myAutoTransition.addTransition(fade)
+            myAutoTransition.addTransition(changeBounds)
+            TransitionManager.beginDelayedTransition(binding.root, myAutoTransition)
             binding.text.visibility = if(flag) View.VISIBLE else View.GONE
         }
     }
