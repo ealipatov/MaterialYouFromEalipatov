@@ -8,9 +8,13 @@ import android.content.res.Configuration
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.fragment.app.Fragment
 import by.ealipatov.kotlin.materialyoufromealipatov.databinding.ActivityMainBinding
 import by.ealipatov.kotlin.materialyoufromealipatov.utils.*
-import by.ealipatov.kotlin.materialyoufromealipatov.view.PictureOfTheDayFragment
+import by.ealipatov.kotlin.materialyoufromealipatov.view.SettingFragment
+import by.ealipatov.kotlin.materialyoufromealipatov.view.solarSystem.ViewPagerFragment
+import by.ealipatov.kotlin.materialyoufromealipatov.view.layouts.LayoutsViewPagerFragment
+import by.ealipatov.kotlin.materialyoufromealipatov.view.pictureOfTheDay.PictureOfTheDayViewPagerFragment
 
 class MainActivity : AppCompatActivity() {
 
@@ -21,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.container, PictureOfTheDayFragment.newInstance())
+                .replace(R.id.bottom_navigation_container, PictureOfTheDayViewPagerFragment())
                 .commit()
         }
 
@@ -41,20 +45,54 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-        //включим ресимвер
+        //включим ресивер
         registerReceiver(configChangeReceiver, filter)
 
         val sharedPreferences = this.getSharedPreferences(SHARED_PREF_FILE, Context.MODE_PRIVATE)
 
-        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
-
         //Если в файле настроек есть сохраненная тема - применяем ее.
-        if(sharedPreferences.contains(THEME_KEY))
-            setTheme(sharedPreferences.getInt(THEME_KEY,R.style.AppTheme))
+        if (sharedPreferences.contains(THEME_KEY))
+            setTheme(sharedPreferences.getInt(THEME_KEY, R.style.AppTheme))
 
         //Если в файле настроек есть выбор ночной/дневной/авто/системной темы - применяем ее.
-        if(sharedPreferences.contains(THEME_MODE_KEY)){
+        if (sharedPreferences.contains(THEME_MODE_KEY)) {
             sharedPreferences.getString(THEME_MODE_KEY, "System")?.let { changeMode(it) }
+        }
+
+        binding.bottomNavigationView.setOnItemSelectedListener { item ->
+            when (item.itemId) {
+                R.id.app_bar_telescope -> {
+                    toFragment(PictureOfTheDayViewPagerFragment())
+                    true
+                }
+                R.id.app_bar_system -> {
+                    toFragment(ViewPagerFragment())
+                    true
+                }
+                R.id.app_bar_layouts -> {
+                    toFragment(LayoutsViewPagerFragment())
+                    true
+                }
+                R.id.app_bar_settings -> {
+                    toFragment(SettingFragment())
+                    true
+                }
+                else -> false
+            }
+        }
+        //Количество сообщений в углу иконки
+        val badge = binding.bottomNavigationView.getOrCreateBadge(R.id.app_bar_telescope)
+        badge.number = 10
+    }
+
+    //Сделать проверку уже созданного фрагмента
+    private fun toFragment(fragment: Fragment) {
+        supportFragmentManager.apply {
+            beginTransaction()
+                .add(R.id.bottom_navigation_container, fragment)
+                .hide(this.fragments.last())
+                .addToBackStack(null)
+                .commit()
         }
     }
 
@@ -62,12 +100,12 @@ class MainActivity : AppCompatActivity() {
      * Функция изменения режима день/ночь/авто/системый
      * На вход принимает строку
      */
-    private fun changeMode (mode: String){
-        when(mode){
+    private fun changeMode(mode: String) {
+        when (mode) {
             "Day" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
-            "Night" ->AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
-            "Auto" ->AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY)
-            "System" ->AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
+            "Night" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+            "Auto" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_AUTO_BATTERY)
+            "System" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM)
         }
     }
 }

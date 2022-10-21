@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/btn_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintBottom_toTopOf="@+id/gl_hu"
+            app:layout_constraintEnd_toEndOf="@+id/gl_vl"
+            app:layout_constraintStart_toStartOf="@+id/gl_vl"
+            app:layout_constraintTop_toBottomOf="@+id/gl_hu"/>
+
+        <Constraint
+            android:id="@+id/btn_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintBottom_toBottomOf="@+id/gl_hu"
+            app:layout_constraintEnd_toEndOf="@+id/gl_vr"
+            app:layout_constraintStart_toStartOf="@+id/gl_vr"
+            app:layout_constraintTop_toBottomOf="@+id/gl_hu"/>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/btn_left"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintBottom_toBottomOf="@+id/gl_hu"
+            app:layout_constraintEnd_toEndOf="@+id/gl_vr"
+            app:layout_constraintStart_toStartOf="@+id/gl_vr"
+            app:layout_constraintTop_toBottomOf="@+id/gl_hu"/>
+
+        <Constraint
+            android:id="@+id/btn_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            app:layout_constraintBottom_toTopOf="@+id/gl_hu"
+            app:layout_constraintEnd_toEndOf="@+id/gl_vl"
+            app:layout_constraintStart_toStartOf="@+id/gl_vl"
+            app:layout_constraintTop_toBottomOf="@+id/gl_hu"/>
+    </ConstraintSet>
+
+    <Transition
+        app:constraintSetEnd="@id/end"
+        app:constraintSetStart="@+id/start">
+        <OnClick app:targetId="@+id/btn_center"/>
+    </Transition>
+
+</MotionScene>

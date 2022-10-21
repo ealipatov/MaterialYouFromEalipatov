@@ -3,9 +3,7 @@ package by.ealipatov.kotlin.materialyoufromealipatov.view
 import android.content.Context
 import android.content.SharedPreferences
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.CompoundButton
 import androidx.fragment.app.Fragment
 import by.ealipatov.kotlin.materialyoufromealipatov.R
@@ -32,12 +30,13 @@ class SettingFragment : Fragment(), CompoundButton.OnCheckedChangeListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         sharedPreferences = requireActivity().getSharedPreferences(
             SHARED_PREF_FILE,
             Context.MODE_PRIVATE
         )
         editor = sharedPreferences.edit()
+
+      //  setBottomAppBar(view)
 
         //Проверяем есть ли сохраненная тема и применяем изменения.
         if (sharedPreferences.contains(THEME_KEY)) {
@@ -102,29 +101,31 @@ class SettingFragment : Fragment(), CompoundButton.OnCheckedChangeListener {
         }
     }
 
+
+
     /***
      * Слушатель переключателей
      */
     override fun onCheckedChanged(switch: CompoundButton?, isChecked: Boolean) {
         when (switch?.id) {
-            R.id.switchNightMod -> {
+            R.id.switch_night_mod -> {
                 if (isChecked) {
                     editor.putString(THEME_MODE_KEY, "Night")
-                    if (autoSwitchNightMod.isChecked)
+                    if (auto_switch_night_mod.isChecked)
                         binding.autoSwitchNightMod.isChecked = false
                 } else {
-                    if (!autoSwitchNightMod.isChecked)
+                    if (!auto_switch_night_mod.isChecked)
                         editor.putString(THEME_MODE_KEY, "Day")
                 }
             }
-            R.id.autoSwitchNightMod -> {
+            R.id.auto_switch_night_mod -> {
                 if (isChecked) {
                     editor.putString(THEME_MODE_KEY, "Auto")
-                    if (switchNightMod.isChecked)
+                    if (switch_night_mod.isChecked)
                         binding.switchNightMod.isChecked = false
                     binding.autoSwitchNightMod.isChecked = true
                 } else {
-                    if (!switchNightMod.isChecked)
+                    if (!switch_night_mod.isChecked)
                         editor.putString(THEME_MODE_KEY, "System")
                 }
             }
@@ -148,13 +149,71 @@ class SettingFragment : Fragment(), CompoundButton.OnCheckedChangeListener {
         requireActivity().supportFragmentManager.popBackStack()
     }
 
+/*    //меню
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.menu_bottom_bar_setting_fragment, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+            R.id.app_bar_favorite -> requireActivity().supportFragmentManager.apply {
+                beginTransaction()
+                    .add(R.id.bottom_navigation_container, ViewPagerFragment())
+                    .hide(this.fragments.last())
+                    .addToBackStack(tag)
+                    .commit()
+            }
+
+            R.id.app_bar_back -> requireActivity().supportFragmentManager.apply {
+                popBackStack()
+            }
+
+            android.R.id.home -> {
+                activity?.let {
+                    BottomNavigationDrawerFragment().show(it.supportFragmentManager, "tag")
+                }
+            }
+        }
+        return super.onOptionsItemSelected(item)
+    }
+
+    private fun setBottomAppBar(view: View) {
+        val context = activity as MainActivity
+        context.setSupportActionBar(view.findViewById(R.id.bottom_app_bar))
+        setHasOptionsMenu(true)
+        binding.fab.setOnClickListener {
+            if (isMain) {
+                isMain = false
+                binding.bottomAppBar.navigationIcon = null
+                binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_END
+                binding.fab.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        context,
+                        R.drawable.ic_back_fab
+                    )
+                )
+                binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar_other_screen)
+            } else {
+                isMain = true
+                binding.bottomAppBar.navigationIcon =
+                    ContextCompat.getDrawable(context, R.drawable.ic_hamburger_menu_bottom_bar)
+                binding.bottomAppBar.fabAlignmentMode = BottomAppBar.FAB_ALIGNMENT_MODE_CENTER
+                binding.fab.setImageDrawable(
+                    ContextCompat.getDrawable(
+                        context,
+                        R.drawable.ic_plus_fab
+                    )
+                )
+                binding.bottomAppBar.replaceMenu(R.menu.menu_bottom_bar)
+            }
+        }
+    }
+*/
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
     }
 
-    companion object {
-        fun newInstance() = SettingFragment()
-    }
 }
 

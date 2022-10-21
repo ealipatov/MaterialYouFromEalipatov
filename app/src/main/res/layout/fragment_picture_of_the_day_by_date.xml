@@ -3,14 +3,16 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/main"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             style="@style/ConstraintLayoutStyle">
 
             <com.google.android.material.textfield.TextInputLayout
@@ -30,7 +32,7 @@
 
                 app:helperText="@string/wiki_helper_text"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintBottom_toTopOf="@+id/chips"
+                app:layout_constraintBottom_toTopOf="@+id/image_view"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent">
 
@@ -41,57 +43,6 @@
                     android:inputType="text" />
             </com.google.android.material.textfield.TextInputLayout>
 
-            <LinearLayout
-                android:id="@+id/chips"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/input_layout"
-                app:layout_constraintBottom_toTopOf="@id/image_view"
-                android:orientation="horizontal">
-
-            <com.google.android.material.chip.ChipGroup
-                android:id="@+id/chip_group"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-
-                app:singleSelection="true">
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_today"
-                    style="@style/AppChipChoice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="start"
-                    android:text="@string/today" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_yesterday"
-                    style="@style/AppChipChoice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yesterday" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_day_before_yesterday"
-                    style="@style/AppChipChoice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/day_before_yesterday" />
-
-            </com.google.android.material.chip.ChipGroup>
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_hd_image"
-                    style="@style/AppChipChoice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/fragment_POD_chip_HD_margin_start"
-                    android:text="@string/hd" />
-
-            </LinearLayout>
-
             <by.ealipatov.kotlin.materialyoufromealipatov.utils.EquilateralImageView
                 android:id="@+id/image_view"
                 android:layout_width="match_parent"
@@ -101,7 +52,7 @@
                 app:layout_constraintBottom_toTopOf="@id/image_date"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/chips"
+                app:layout_constraintTop_toBottomOf="@id/input_layout"
                 app:srcCompat="@drawable/ic_no_photo_vector" />
 
             <androidx.appcompat.widget.AppCompatTextView
@@ -133,32 +84,5 @@
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
-
-    <include layout="@layout/bottom_sheet_layout"/>
-
-    <com.google.android.material.bottomappbar.BottomAppBar
-        android:id="@+id/bottom_app_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        app:backgroundTint="?attr/colorPrimary"
-        app:fabAlignmentMode="center"
-
-        app:fabCradleRoundedCornerRadius="@dimen/fab_radius"
-        app:fabCradleMargin="@dimen/fab_cradle_margin"
-
-        app:hideOnScroll="true"
-        app:layout_scrollFlags="scroll|enterAlways"
-        app:navigationIcon="@drawable/ic_hamburger_menu_bottom_bar" />
-
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fab"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:backgroundTint="?attr/colorAccent"
-        android:contentDescription="@string/any_message"
-        app:layout_anchor="@id/bottom_app_bar"
-        app:srcCompat="@drawable/ic_plus_fab"
-        app:tint="@color/white" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
