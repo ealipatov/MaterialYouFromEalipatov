@@ -7,10 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import by.ealipatov.kotlin.materialyoufromealipatov.R
 import by.ealipatov.kotlin.materialyoufromealipatov.databinding.FragmentMotionLayoutBinding
-import by.ealipatov.kotlin.materialyoufromealipatov.view.animation.AnimationExplodeFragment
-import by.ealipatov.kotlin.materialyoufromealipatov.view.animation.AnimationFragment
-import by.ealipatov.kotlin.materialyoufromealipatov.view.animation.AnimationImageFragment
-import by.ealipatov.kotlin.materialyoufromealipatov.view.animation.AnimationMoveTrajectoryFragment
+import by.ealipatov.kotlin.materialyoufromealipatov.view.animation.*
 import kotlinx.android.synthetic.main.fragment_motion_layout.*
 
 class MotionLayoutFragment: Fragment(), View.OnClickListener {
@@ -36,6 +33,7 @@ class MotionLayoutFragment: Fragment(), View.OnClickListener {
         btn_anime_explode.setOnClickListener(this)
         btn_anime_image.setOnClickListener(this)
         btn_anime_move_trajectory.setOnClickListener(this)
+        btn_anime_mix.setOnClickListener(this)
     }
 
     private fun toFragment(fragment: Fragment) {
@@ -56,6 +54,7 @@ class MotionLayoutFragment: Fragment(), View.OnClickListener {
             R.id.btn_anime_explode -> toFragment(AnimationExplodeFragment())
             R.id.btn_anime_image -> toFragment(AnimationImageFragment())
             R.id.btn_anime_move_trajectory -> toFragment(AnimationMoveTrajectoryFragment())
+            R.id.btn_anime_mix -> toFragment(AnimationMixFragment())
         }
     }
 }

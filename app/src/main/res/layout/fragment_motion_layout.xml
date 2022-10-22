@@ -59,7 +59,7 @@
         android:layout_height="wrap_content"
 
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.25"/>
+        app:layout_constraintGuide_percent="0.25" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/gl_hd"
@@ -67,7 +67,7 @@
         android:layout_height="wrap_content"
 
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.5"/>
+        app:layout_constraintGuide_percent="0.3" />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_anime_text"
@@ -118,6 +118,18 @@
         app:layout_constraintTop_toBottomOf="@+id/for_btn_line_two"/>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_anime_mix"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/mix"
+
+        app:layout_constraintBottom_toTopOf="@+id/for_btn_line_two"
+        app:layout_constraintEnd_toEndOf="@+id/gl_vc"
+        app:layout_constraintStart_toStartOf="@+id/gl_vc"
+        app:layout_constraintTop_toBottomOf="@+id/for_btn_line_two"/>
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_left"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -160,6 +172,7 @@
 
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/gl_hd" />
+        app:layout_constraintTop_toBottomOf="@+id/gl_hd"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.motion.widget.MotionLayout>
