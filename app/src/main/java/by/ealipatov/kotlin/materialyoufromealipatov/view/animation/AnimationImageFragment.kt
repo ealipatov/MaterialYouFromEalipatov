@@ -12,6 +12,7 @@ import androidx.transition.ChangeImageTransform
 import androidx.transition.TransitionManager
 import androidx.transition.TransitionSet
 import by.ealipatov.kotlin.materialyoufromealipatov.databinding.FragmentAnimationImageBinding
+import kotlinx.android.synthetic.main.fragment_animation_image.view.*
 
 class AnimationImageFragment: Fragment() {
 
@@ -42,21 +43,22 @@ class AnimationImageFragment: Fragment() {
             val changeImageTransform = ChangeImageTransform()
             val changeBounds = ChangeBounds()
             val transitionSet = TransitionSet()
+            changeBounds.duration = 1000L
 
             transitionSet.addTransition(changeBounds)
             transitionSet.addTransition(changeImageTransform)
-
 
             TransitionManager.beginDelayedTransition(binding.root,transitionSet)
 
             if (flag){
                 params.height = LinearLayout.LayoutParams.MATCH_PARENT
+            //    params.weight = LinearLayout.LayoutParams.WRAP_CONTENT.toFloat()
                 binding.imageView.scaleType = ImageView.ScaleType.CENTER_CROP
             } else{
                 params.height = LinearLayout.LayoutParams.WRAP_CONTENT
                 binding.imageView.scaleType = ImageView.ScaleType.CENTER_INSIDE
             }
-            it.layoutParams = params
+            it.image_view.layoutParams = params
 
         }
 
