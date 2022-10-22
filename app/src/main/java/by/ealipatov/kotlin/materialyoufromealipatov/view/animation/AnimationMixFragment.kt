@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.core.view.ViewCompat
 import androidx.fragment.app.Fragment
 import androidx.transition.TransitionManager
 import by.ealipatov.kotlin.materialyoufromealipatov.databinding.FragmentAnimationMixBinding
@@ -43,6 +44,8 @@ class AnimationMixFragment: Fragment() {
             titles.forEach{
                 binding.mixContainer.addView(TextView(requireContext()).apply {
                     text = it
+                    //Присвоим псевдонимы
+                    ViewCompat.setTransitionName(this, it)
                 })
             }
         }
