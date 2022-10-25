@@ -34,6 +34,7 @@ class MotionLayoutFragment: Fragment(), View.OnClickListener {
         btn_anime_image.setOnClickListener(this)
         btn_anime_move_trajectory.setOnClickListener(this)
         btn_anime_mix.setOnClickListener(this)
+        btn_anime_animator.setOnClickListener(this)
     }
 
     private fun toFragment(fragment: Fragment) {
@@ -50,11 +51,12 @@ class MotionLayoutFragment: Fragment(), View.OnClickListener {
 
     override fun onClick(v: View?) {
         when (v?.id) {
-            R.id.btn_anime_text -> toFragment(AnimationFragment())
+            R.id.btn_anime_text -> toFragment(AnimationSlideFragment())
             R.id.btn_anime_explode -> toFragment(AnimationExplodeFragment())
             R.id.btn_anime_image -> toFragment(AnimationImageFragment())
             R.id.btn_anime_move_trajectory -> toFragment(AnimationMoveTrajectoryFragment())
             R.id.btn_anime_mix -> toFragment(AnimationMixFragment())
+            R.id.btn_anime_animator -> toFragment(AnimationFABFragment())
         }
     }
 }

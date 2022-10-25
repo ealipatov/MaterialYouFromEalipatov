@@ -1,17 +1,20 @@
 package by.ealipatov.kotlin.materialyoufromealipatov.view.animation
 
 import android.os.Bundle
-import android.transition.*
+import android.transition.ChangeBounds
+import android.transition.Slide
+import android.transition.TransitionManager
+import android.transition.TransitionSet
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
-import by.ealipatov.kotlin.materialyoufromealipatov.databinding.FragmentAnimationBinding
+import by.ealipatov.kotlin.materialyoufromealipatov.databinding.FragmentAnimationSlideBinding
 
-class AnimationFragment: Fragment() {
-    private var _binding: FragmentAnimationBinding? = null
-    private val binding: FragmentAnimationBinding
+class AnimationSlideFragment: Fragment() {
+    private var _binding: FragmentAnimationSlideBinding? = null
+    private val binding: FragmentAnimationSlideBinding
         get() {
             return _binding!!
         }
@@ -23,7 +26,7 @@ class AnimationFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentAnimationBinding.inflate(inflater)
+        _binding = FragmentAnimationSlideBinding.inflate(inflater)
         return binding.root
     }
 
