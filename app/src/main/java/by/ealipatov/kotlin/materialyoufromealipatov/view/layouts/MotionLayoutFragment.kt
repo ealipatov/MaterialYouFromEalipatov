@@ -35,12 +35,15 @@ class MotionLayoutFragment: Fragment(), View.OnClickListener {
         btn_anime_move_trajectory.setOnClickListener(this)
         btn_anime_mix.setOnClickListener(this)
         btn_anime_animator.setOnClickListener(this)
+        btn_left.setOnClickListener(this)
+
     }
 
     private fun toFragment(fragment: Fragment) {
-        parentFragmentManager.apply {
+        childFragmentManager.apply {
             beginTransaction()
                 .replace(R.id.container, fragment)
+                .addToBackStack(null)
                 .commit()
         }
     }
@@ -57,6 +60,7 @@ class MotionLayoutFragment: Fragment(), View.OnClickListener {
             R.id.btn_anime_move_trajectory -> toFragment(AnimationMoveTrajectoryFragment())
             R.id.btn_anime_mix -> toFragment(AnimationMixFragment())
             R.id.btn_anime_animator -> toFragment(AnimationFABFragment())
+            R.id.btn_left -> toFragment(AnimationScrollFragment())
         }
     }
 }
