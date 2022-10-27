@@ -1,22 +1,65 @@
 package by.ealipatov.kotlin.materialyoufromealipatov.view.layouts
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
+import android.widget.PopupMenu
 import androidx.fragment.app.Fragment
 import by.ealipatov.kotlin.materialyoufromealipatov.R
 import by.ealipatov.kotlin.materialyoufromealipatov.databinding.FragmentMotionLayoutBinding
 import by.ealipatov.kotlin.materialyoufromealipatov.view.animation.*
-import kotlinx.android.synthetic.main.fragment_motion_layout.*
 
-class MotionLayoutFragment: Fragment(), View.OnClickListener {
+class MotionLayoutFragment : Fragment() {
 
     private var _binding: FragmentMotionLayoutBinding? = null
     private val binding: FragmentMotionLayoutBinding
         get() {
             return _binding!!
         }
+
+    private fun showPopup(view: View) {
+        val popup = PopupMenu(requireContext(), view)
+        popup.inflate(R.menu.menu_animation)
+        popup.setOnMenuItemClickListener { item ->
+            when (item.itemId) {
+                R.id.slide -> {
+                    toFragment(AnimationSlideFragment())
+                    true
+                }
+                R.id.explode -> {
+                    toFragment(AnimationExplodeFragment())
+                    true
+                }
+                R.id.image -> {
+                    toFragment(AnimationImageFragment())
+                    true
+                }
+                R.id.move -> {
+                    toFragment(AnimationMoveTrajectoryFragment())
+                    true
+                }
+                R.id.mix -> {
+                    toFragment(AnimationMixFragment())
+                    true
+                }
+                R.id.animator -> {
+                    toFragment(AnimationFABFragment())
+                    true
+                }
+                R.id.scroll -> {
+                    toFragment(AnimationScrollFragment())
+                    true
+                }
+                R.id.motion -> {
+                    toFragment(AnimationMotionFragment())
+                    true
+                }
+                else -> {
+                    return@setOnMenuItemClickListener false
+                }
+            }
+        }
+        popup.show()
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,38 +72,22 @@ class MotionLayoutFragment: Fragment(), View.OnClickListener {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        btn_anime_text.setOnClickListener(this)
-        btn_anime_explode.setOnClickListener(this)
-        btn_anime_image.setOnClickListener(this)
-        btn_anime_move_trajectory.setOnClickListener(this)
-        btn_anime_mix.setOnClickListener(this)
-        btn_anime_animator.setOnClickListener(this)
-        btn_left.setOnClickListener(this)
 
+        binding.toolbar.setOnClickListener {
+            showPopup(it)
+        }
     }
 
     private fun toFragment(fragment: Fragment) {
         childFragmentManager.apply {
             beginTransaction()
-                .replace(R.id.container, fragment)
-                .addToBackStack(null)
-                .commit()
+                .replace(R.id.container, fragment, tag)
+                .commitAllowingStateLoss()
         }
     }
+
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
-    }
-
-    override fun onClick(v: View?) {
-        when (v?.id) {
-            R.id.btn_anime_text -> toFragment(AnimationSlideFragment())
-            R.id.btn_anime_explode -> toFragment(AnimationExplodeFragment())
-            R.id.btn_anime_image -> toFragment(AnimationImageFragment())
-            R.id.btn_anime_move_trajectory -> toFragment(AnimationMoveTrajectoryFragment())
-            R.id.btn_anime_mix -> toFragment(AnimationMixFragment())
-            R.id.btn_anime_animator -> toFragment(AnimationFABFragment())
-            R.id.btn_left -> toFragment(AnimationScrollFragment())
-        }
     }
 }

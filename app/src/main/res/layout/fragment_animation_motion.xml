@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:layoutDescription="@xml/fragment_motion_layout_scene">
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_vl"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.25"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_vc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_vr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/for_btn_line_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.05" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/for_btn_line_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.125" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_hu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_hc"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/gl_hd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3" />
+
+
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/left"
+
+        app:layout_constraintBottom_toTopOf="@+id/gl_hu"
+        app:layout_constraintEnd_toEndOf="@+id/gl_vl"
+        app:layout_constraintStart_toStartOf="@+id/gl_vl"
+        app:layout_constraintTop_toBottomOf="@+id/gl_hu"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/right"
+
+        app:layout_constraintBottom_toBottomOf="@+id/gl_hu"
+        app:layout_constraintEnd_toEndOf="@+id/gl_vr"
+        app:layout_constraintStart_toStartOf="@+id/gl_vr"
+        app:layout_constraintTop_toBottomOf="@+id/gl_hu"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:text="@string/motion_layout"
+
+        app:layout_constraintBottom_toTopOf="@+id/gl_hc"
+        app:layout_constraintEnd_toEndOf="@+id/gl_vc"
+        app:layout_constraintStart_toStartOf="@+id/gl_vc"
+        app:layout_constraintTop_toBottomOf="@+id/gl_hc" />
+
+</androidx.constraintlayout.motion.widget.MotionLayout>

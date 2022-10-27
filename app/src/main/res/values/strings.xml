@@ -96,4 +96,6 @@
     <string name="option_1">Option 1</string>
     <string name="option_2">Option 2</string>
     <string name="state_list_animator_example">StateListAnimator Example</string>
+    <string name="scroll_animate">Scroll</string>
+    <string name="select_animation">Нажмите для выбора анимации</string>
 </resources>

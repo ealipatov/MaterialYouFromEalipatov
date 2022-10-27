@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/slide"
+        android:title="@string/btn_text"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/explode"
+        android:title="@string/btn_explode"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/image"
+        android:title="@string/btn_image"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/mix"
+        android:title="@string/mix"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/animator"
+        android:title="@string/animator"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/motion"
+        android:title="@string/motion_layout"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/scroll"
+        android:title="@string/scroll_animate"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/move"
+        android:title="@string/btn_move_trajectory"
+        app:showAsAction="ifRoom" />
+</menu>
