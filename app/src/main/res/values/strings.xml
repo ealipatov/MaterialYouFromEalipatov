@@ -93,4 +93,6 @@
     <string name="mix">Mix</string>
     <string name="shuffle">Shuffle</string>
     <string name="animator">Animator</string>
+    <string name="option_1">Option 1</string>
+    <string name="option_2">Option 2</string>
 </resources>

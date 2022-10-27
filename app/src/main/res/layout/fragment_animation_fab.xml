@@ -2,6 +2,7 @@
 <FrameLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     >
@@ -9,7 +10,7 @@
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingTop="150dp"
+        android:paddingTop="@dimen/animation_fab_padding_top"
         app:srcCompat="@drawable/bg_earth"
         />
 
@@ -19,7 +20,7 @@
         android:layout_height="match_parent"
         android:animateLayoutChanges="true"
         android:background="@android:color/white"
-        android:alpha="0.5"
+        android:alpha="0"
         android:clickable="false"
         />
 
@@ -34,17 +35,17 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:orientation="horizontal"
-            android:visibility="gone"
-            android:paddingEnd="150dp"
-            android:paddingBottom="32dp"
-            >
+            android:alpha="0"
+            android:paddingEnd="@dimen/animation_fab_padding_end"
+            android:paddingBottom="@dimen/animation_fab_padding_bottom"
+            tools:ignore="RtlSymmetry,UseCompoundDrawables">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginEnd="5dp"
-                android:text="Option 1"
+                android:layout_marginEnd="@dimen/animation_fab_margin_end"
+                android:text="@string/option_1"
                 android:textStyle="bold"
                 />
 
@@ -53,7 +54,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 app:srcCompat="@drawable/ic_archive"
-                />
+                tools:ignore="ContentDescription" />
         </LinearLayout>
 
         <LinearLayout
@@ -62,17 +63,17 @@
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
             android:orientation="horizontal"
-            android:visibility="gone"
-            android:paddingEnd="150dp"
-            android:paddingBottom="12dp"
-            >
+            android:alpha="0"
+            android:paddingEnd="@dimen/animation_fab_padding_end"
+            android:paddingBottom="@dimen/animation_fab_padding_bottom"
+            tools:ignore="RtlSymmetry,UseCompoundDrawables">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginEnd="5dp"
-                android:text="Option 2"
+                android:layout_marginEnd="@dimen/animation_fab_margin_end"
+                android:text="@string/option_2"
                 android:textStyle="bold"
                 />
 
@@ -81,7 +82,7 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="bottom|end"
                 app:srcCompat="@drawable/ic_send"
-                />
+                tools:ignore="ContentDescription" />
         </LinearLayout>
 
         <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -89,20 +90,20 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:elevation="5dp"
-            />
+            android:layout_marginEnd="@dimen/fab_margin_end"
+            android:layout_marginBottom="@dimen/fab_margin_bottom"
+            android:elevation="@dimen/fab_elevation"
+            tools:ignore="ContentDescription" />
 
         <ImageView
             android:id="@+id/plus_imageview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
-            android:layout_marginEnd="32dp"
-            android:layout_marginBottom="32dp"
-            android:elevation="10dp"
+            android:layout_marginEnd="@dimen/image_plus_margin_end"
+            android:layout_marginBottom="@dimen/image_plus_margin_bottom"
+            android:elevation="@dimen/image_plus_elevation"
             app:srcCompat="@drawable/ic_plus_fab"
-            />
+            tools:ignore="ContentDescription" />
     </FrameLayout>
 </FrameLayout>
