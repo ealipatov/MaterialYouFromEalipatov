@@ -13,7 +13,7 @@ import androidx.fragment.app.Fragment
 import by.ealipatov.kotlin.materialyoufromealipatov.R
 import by.ealipatov.kotlin.materialyoufromealipatov.databinding.FragmentAnimationConstraintSetBinding
 
-class AnimationConstraintSetFragment: Fragment(){
+class AnimationConstraintSetFragment : Fragment() {
 
     private var _binding: FragmentAnimationConstraintSetBinding? = null
     private val binding: FragmentAnimationConstraintSetBinding
@@ -39,34 +39,64 @@ class AnimationConstraintSetFragment: Fragment(){
 
         constraintSet.clone(requireContext(), R.layout.fragment_animation_constraint_set)
 
-        binding.tap.setOnClickListener{
+        binding.tap.setOnClickListener {
             flag = !flag
 
             val changeBounds = ChangeBounds()
             changeBounds.duration = 1000L
             changeBounds.interpolator = AnticipateOvershootInterpolator(5.0f)
             TransitionManager.beginDelayedTransition(binding.containerConstraint, changeBounds)
-            if(flag){
-                  constraintSet.connect(R.id.title, ConstraintSet.RIGHT, R.id.backgroundImage, ConstraintSet.RIGHT)
+            if (flag) {
+                constraintSet.connect(
+                    R.id.title,
+                    ConstraintSet.RIGHT,
+                    R.id.backgroundImage,
+                    ConstraintSet.RIGHT
+                )
 
-                  constraintSet.clear(R.id.date, ConstraintSet.BOTTOM)
-                  constraintSet.connect(R.id.date, ConstraintSet.TOP, R.id.title, ConstraintSet.BOTTOM)
+                constraintSet.clear(R.id.date, ConstraintSet.BOTTOM)
+                constraintSet.connect(
+                    R.id.date,
+                    ConstraintSet.TOP,
+                    R.id.title,
+                    ConstraintSet.BOTTOM
+                )
 
-                  constraintSet.clear(R.id.description, ConstraintSet.TOP)
-                  constraintSet.connect(R.id.description, ConstraintSet.BOTTOM, R.id.backgroundImage, ConstraintSet.BOTTOM)
+                constraintSet.clear(R.id.description, ConstraintSet.TOP)
+                constraintSet.connect(
+                    R.id.description,
+                    ConstraintSet.BOTTOM,
+                    R.id.backgroundImage,
+                    ConstraintSet.BOTTOM
+                )
 
-                  constraintSet.applyTo(binding.containerConstraint)
+                constraintSet.applyTo(binding.containerConstraint)
 
             } else {
-                  constraintSet.connect(R.id.title, ConstraintSet.RIGHT, R.id.backgroundImage, ConstraintSet.LEFT)
+                constraintSet.connect(
+                    R.id.title,
+                    ConstraintSet.RIGHT,
+                    R.id.backgroundImage,
+                    ConstraintSet.LEFT
+                )
 
-                  constraintSet.clear(R.id.date, ConstraintSet.TOP)
-                  constraintSet.connect(R.id.date, ConstraintSet.BOTTOM, R.id.title, ConstraintSet.BOTTOM)
+                constraintSet.clear(R.id.date, ConstraintSet.TOP)
+                constraintSet.connect(
+                    R.id.date,
+                    ConstraintSet.BOTTOM,
+                    R.id.title,
+                    ConstraintSet.BOTTOM
+                )
 
-                  constraintSet.clear(R.id.description, ConstraintSet.BOTTOM)
-                  constraintSet.connect(R.id.description, ConstraintSet.TOP, R.id.backgroundImage, ConstraintSet.BOTTOM)
+                constraintSet.clear(R.id.description, ConstraintSet.BOTTOM)
+                constraintSet.connect(
+                    R.id.description,
+                    ConstraintSet.TOP,
+                    R.id.backgroundImage,
+                    ConstraintSet.BOTTOM
+                )
 
-                  constraintSet.applyTo(binding.containerConstraint)
+                constraintSet.applyTo(binding.containerConstraint)
             }
         }
     }

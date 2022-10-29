@@ -29,8 +29,8 @@ class AnimationScrollFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.scrollView.setOnScrollChangeListener {_, _, _, _, _ ->
-            binding.toolbar.isSelected =  binding.scrollView.canScrollVertically(-1)
+        binding.scrollView.setOnScrollChangeListener { _, _, _, _, _ ->
+            binding.toolbar.isSelected = binding.scrollView.canScrollVertically(-1)
         }
     }
 

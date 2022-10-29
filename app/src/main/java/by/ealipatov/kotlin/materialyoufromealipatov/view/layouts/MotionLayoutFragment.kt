@@ -77,6 +77,7 @@ class MotionLayoutFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        showPopup(binding.toolbar)
         binding.toolbar.setOnClickListener {
             showPopup(it)
         }

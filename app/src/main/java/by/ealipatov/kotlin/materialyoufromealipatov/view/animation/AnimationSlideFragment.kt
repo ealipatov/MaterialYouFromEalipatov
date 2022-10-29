@@ -12,7 +12,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import by.ealipatov.kotlin.materialyoufromealipatov.databinding.FragmentAnimationSlideBinding
 
-class AnimationSlideFragment: Fragment() {
+class AnimationSlideFragment : Fragment() {
     private var _binding: FragmentAnimationSlideBinding? = null
     private val binding: FragmentAnimationSlideBinding
         get() {
@@ -45,7 +45,7 @@ class AnimationSlideFragment: Fragment() {
             slide.duration = 1000L
             myAutoTransition.addTransition(changeBounds)
             TransitionManager.beginDelayedTransition(binding.root, myAutoTransition)
-            binding.text.visibility = if(flag) View.VISIBLE else View.GONE
+            binding.text.visibility = if (flag) View.VISIBLE else View.GONE
         }
     }
 

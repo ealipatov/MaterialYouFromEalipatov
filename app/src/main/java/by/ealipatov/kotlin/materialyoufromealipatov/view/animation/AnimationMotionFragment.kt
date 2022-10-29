@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import by.ealipatov.kotlin.materialyoufromealipatov.databinding.FragmentAnimationMotionBinding
 
-class AnimationMotionFragment: Fragment() {
+class AnimationMotionFragment : Fragment() {
 
     private var _binding: FragmentAnimationMotionBinding? = null
     private val binding: FragmentAnimationMotionBinding

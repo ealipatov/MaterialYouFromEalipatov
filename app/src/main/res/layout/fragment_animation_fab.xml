@@ -1,40 +1,35 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    android:layout_height="match_parent">
 
     <androidx.appcompat.widget.AppCompatImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:srcCompat="@drawable/bg_earth"
-        />
+        app:srcCompat="@drawable/bg_earth" />
 
     <FrameLayout
         android:id="@+id/transparent_background"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:alpha="0"
         android:animateLayoutChanges="true"
         android:background="@android:color/white"
-        android:alpha="0"
-        android:clickable="false"
-        />
+        android:clickable="false" />
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        >
+        android:layout_height="match_parent">
 
         <LinearLayout
             android:id="@+id/option_one_container"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
-            android:orientation="horizontal"
             android:alpha="0"
+            android:orientation="horizontal"
             android:paddingEnd="@dimen/animation_fab_padding_end"
             android:paddingBottom="@dimen/animation_fab_padding_bottom"
             tools:ignore="RtlSymmetry,UseCompoundDrawables">
@@ -45,8 +40,7 @@
                 android:layout_gravity="center"
                 android:layout_marginEnd="@dimen/animation_fab_margin_end"
                 android:text="@string/option_1"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -61,8 +55,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="bottom|end"
-            android:orientation="horizontal"
             android:alpha="0"
+            android:orientation="horizontal"
             android:paddingEnd="@dimen/animation_fab_padding_end"
             android:paddingBottom="@dimen/animation_fab_padding_bottom"
             tools:ignore="RtlSymmetry,UseCompoundDrawables">
@@ -73,8 +67,7 @@
                 android:layout_gravity="center"
                 android:layout_marginEnd="@dimen/animation_fab_margin_end"
                 android:text="@string/option_2"
-                android:textStyle="bold"
-                />
+                android:textStyle="bold" />
 
             <ImageView
                 android:layout_width="wrap_content"

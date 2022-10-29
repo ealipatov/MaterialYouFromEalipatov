@@ -14,7 +14,7 @@ import androidx.transition.TransitionSet
 import by.ealipatov.kotlin.materialyoufromealipatov.databinding.FragmentAnimationImageBinding
 import kotlinx.android.synthetic.main.fragment_animation_image.view.*
 
-class AnimationImageFragment: Fragment() {
+class AnimationImageFragment : Fragment() {
 
     private var _binding: FragmentAnimationImageBinding? = null
     private val binding: FragmentAnimationImageBinding
@@ -36,7 +36,7 @@ class AnimationImageFragment: Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.imageView.setOnClickListener{
+        binding.imageView.setOnClickListener {
             flag = !flag
 
             val params = it.layoutParams as LinearLayout.LayoutParams
@@ -48,13 +48,13 @@ class AnimationImageFragment: Fragment() {
             transitionSet.addTransition(changeBounds)
             transitionSet.addTransition(changeImageTransform)
 
-            TransitionManager.beginDelayedTransition(binding.root,transitionSet)
+            TransitionManager.beginDelayedTransition(binding.root, transitionSet)
 
-            if (flag){
+            if (flag) {
                 params.height = LinearLayout.LayoutParams.MATCH_PARENT
-            //    params.weight = LinearLayout.LayoutParams.WRAP_CONTENT.toFloat()
+                //    params.weight = LinearLayout.LayoutParams.WRAP_CONTENT.toFloat()
                 binding.imageView.scaleType = ImageView.ScaleType.CENTER_CROP
-            } else{
+            } else {
                 params.height = LinearLayout.LayoutParams.WRAP_CONTENT
                 binding.imageView.scaleType = ImageView.ScaleType.CENTER_INSIDE
             }

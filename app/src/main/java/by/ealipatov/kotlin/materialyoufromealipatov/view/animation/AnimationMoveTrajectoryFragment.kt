@@ -13,7 +13,7 @@ import androidx.transition.TransitionManager
 import androidx.transition.TransitionSet
 import by.ealipatov.kotlin.materialyoufromealipatov.databinding.FragmentAnimationMoveTrajectoryBinding
 
-class AnimationMoveTrajectoryFragment: Fragment() {
+class AnimationMoveTrajectoryFragment : Fragment() {
     private var _binding: FragmentAnimationMoveTrajectoryBinding? = null
     private val binding: FragmentAnimationMoveTrajectoryBinding
         get() {
@@ -45,9 +45,9 @@ class AnimationMoveTrajectoryFragment: Fragment() {
 
             transitionSet.addTransition(changeBounds)
             TransitionManager.beginDelayedTransition(binding.root, transitionSet)
-            if (flag){
+            if (flag) {
                 params.gravity = Gravity.CENTER or Gravity.START
-            } else{
+            } else {
                 params.gravity = Gravity.BOTTOM or Gravity.END
             }
             it.layoutParams = params

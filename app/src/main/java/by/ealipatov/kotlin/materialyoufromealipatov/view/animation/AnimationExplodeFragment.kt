@@ -14,7 +14,7 @@ import androidx.transition.TransitionManager
 import by.ealipatov.kotlin.materialyoufromealipatov.R
 import by.ealipatov.kotlin.materialyoufromealipatov.databinding.FragmentAnimationExplodeBinding
 
-class AnimationExplodeFragment: Fragment() {
+class AnimationExplodeFragment : Fragment() {
     private var _binding: FragmentAnimationExplodeBinding? = null
     private val binding: FragmentAnimationExplodeBinding
         get() {
@@ -41,17 +41,18 @@ class AnimationExplodeFragment: Fragment() {
         _binding = null
     }
 
-    inner class Adapter:RecyclerView.Adapter<RecyclerView.ViewHolder>(){
+    inner class Adapter : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
-           return MyViewHolder(
-               LayoutInflater.from(parent.context).inflate(
-                   R.layout.fragment_animation_explode_item,
-                   parent,false) as View
-           )
+            return MyViewHolder(
+                LayoutInflater.from(parent.context).inflate(
+                    R.layout.fragment_animation_explode_item,
+                    parent, false
+                ) as View
+            )
         }
 
         override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-            holder.itemView.setOnClickListener{
+            holder.itemView.setOnClickListener {
                 //как бы бланк
                 val rect = Rect()
                 //в бланк запишем координаты нажатой кнопки
@@ -60,7 +61,7 @@ class AnimationExplodeFragment: Fragment() {
                 val explode = Explode()
                 explode.duration = 1000L
                 //координаты прямоугольника откуда будет разлет взрыва (эпицентр)
-                explode.epicenterCallback = object : Transition.EpicenterCallback(){
+                explode.epicenterCallback = object : Transition.EpicenterCallback() {
                     override fun onGetEpicenter(transition: Transition): Rect {
                         return rect
                     }
@@ -71,9 +72,9 @@ class AnimationExplodeFragment: Fragment() {
         }
 
         override fun getItemCount(): Int {
-           return 24
+            return 24
         }
 
-        inner class MyViewHolder(view: View):RecyclerView.ViewHolder(view)
+        inner class MyViewHolder(view: View) : RecyclerView.ViewHolder(view)
     }
 }
