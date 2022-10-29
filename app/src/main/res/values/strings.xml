@@ -98,4 +98,8 @@
     <string name="state_list_animator_example">StateListAnimator Example</string>
     <string name="scroll_animate">Scroll</string>
     <string name="select_animation">Нажмите для выбора анимации</string>
+    <string name="title_animation_end">Кратер Даниэлсона</string>
+    <string name="date_animation_end">5 июня 2018 г.</string>
+    <string name="tap_for_info">Показать описание</string>
+    <string name="description_animation_end">На фото видно камни и песок в кратере Даниэлсона (диаметр кратера около 67 км), расположенного на юго-востоке области Arabia Terra.</string>
 </resources>

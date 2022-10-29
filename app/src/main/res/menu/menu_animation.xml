@@ -40,4 +40,8 @@
         android:id="@+id/move"
         android:title="@string/btn_move_trajectory"
         app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/constraintSet"
+        android:title="@string/constraint_layout"
+        app:showAsAction="ifRoom" />
 </menu>

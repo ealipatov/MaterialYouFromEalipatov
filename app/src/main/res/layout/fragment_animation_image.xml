@@ -13,6 +13,6 @@
         android:layout_height="wrap_content"
         android:scaleType="fitCenter"
 
-        app:srcCompat="@drawable/mars_photo" />
+        app:srcCompat="@drawable/photo_cat" />
 
 </LinearLayout>

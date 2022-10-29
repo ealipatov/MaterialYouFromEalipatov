@@ -53,6 +53,10 @@ class MotionLayoutFragment : Fragment() {
                     toFragment(AnimationMotionFragment())
                     true
                 }
+                R.id.constraintSet -> {
+                    toFragment(AnimationConstraintSetFragment())
+                    true
+                }
                 else -> {
                     return@setOnMenuItemClickListener false
                 }
