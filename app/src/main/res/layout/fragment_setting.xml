@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/backgroundAppThemeColor"
-    android:orientation="vertical">
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
-        style="@style/TitleTextStyle"
-        android:text="@string/settings" />
+        <TextView
+            android:id="@+id/title"
+            style="@style/TitleTextStyle"
+            android:text="@string/settings" />
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/chip_theme_group"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp">
 
         <com.google.android.material.chip.Chip
             android:id="@+id/moon_theme"
@@ -31,28 +32,35 @@
     </com.google.android.material.chip.ChipGroup>
 
     <TextView
-        android:id="@+id/selected_theme_name"
-        style="@style/TitleTextStyle" />
+            android:id="@+id/selected_theme_name"
+            style="@style/TitleTextStyle"
+            app:layout_anchor="@+id/chip_theme_group"
+            app:layout_anchorGravity="bottom"/>
 
-    <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/switchNightMod"
-        style="@style/MaterialComponentsChipFragmentStyle"
-        android:theme="@style/SwitchStyle"
-        android:minHeight="@dimen/minHeightSettingSwitch"
-        android:text="@string/night_mode"/>
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/switch_night_mod"
+            style="@style/MaterialComponentsChipFragmentStyle"
+            android:minHeight="@dimen/minHeightSettingSwitch"
+            android:text="@string/night_mode"
+            android:theme="@style/SwitchStyle"
+            app:layout_anchor="@+id/selected_theme_name"
+            app:layout_anchorGravity="bottom|start"/>
 
-    <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/autoSwitchNightMod"
-        style="@style/MaterialComponentsChipFragmentStyle"
-        android:theme="@style/SwitchStyle"
-        android:minHeight="@dimen/minHeightSettingSwitch"
-        android:text="@string/auto_night_mode"/>
+        <androidx.appcompat.widget.SwitchCompat
+            android:id="@+id/auto_switch_night_mod"
+            style="@style/MaterialComponentsChipFragmentStyle"
+            android:minHeight="@dimen/minHeightSettingSwitch"
+            android:text="@string/auto_night_mode"
+            android:theme="@style/SwitchStyle"
+            app:layout_anchor="@+id/switch_night_mod"
+            app:layout_anchorGravity="bottom|start"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/apply_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/apply" />
+        android:text="@string/apply"
+        app:layout_anchor="@+id/auto_switch_night_mod"
+        app:layout_anchorGravity="bottom|center" />
 
-</LinearLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

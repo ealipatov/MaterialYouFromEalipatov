@@ -9,8 +9,8 @@
     <string name="photo_of_the_day_stub">Photo of the day</string>
     <string name="search_wiki">Найти в Википедии</string>
     <string name="wiki_helper_text">Поищите термин в википедии</string>
-    <string name="favourite">Мзбранное</string>
     <string name="settings">Настройки</string>
+    <string name="back">Назад</string>
     <string name="search">Поиск</string>
     <string name="today">Сегодня</string>
     <string name="yesterday">Вчера</string>
@@ -48,8 +48,6 @@
     <string name="a">a</string>
     <string name="scroll">scroll</string>
     <string name="close_icon_listener">Close Icon Listener</string>
-    <string name="to_fragment_one">На экран 1</string>
-    <string name="to_fragment_two">На экран 2</string>
     <string name="chips_example">Примеры чипов</string>
 
     <string name="card">Card</string>
@@ -71,4 +69,37 @@
     <string name="night_mode">Ночной режим:</string>
     <string name="apply">Применить</string>
     <string name="auto_night_mode">Автоматический ночной режим</string>
+
+    <string name="earth_tab_text">Earth</string>
+    <string name="mars_tab_text">Mars</string>
+    <string name="solar_system_tab_text">Solar system</string>
+
+    <string name="layouts">Макеты</string>
+    <string name="constraint_layout">Constraint</string>
+    <string name="coordinator_layout">Coordinator</string>
+    <string name="motion_layout">Motion</string>
+    <string name="on_off">вкл/выкл</string>
+
+    <string name="big_text">"This lovely starfield spans some four full moons (about 2 degrees) across the heroic northern constellation of Perseus. In telescopic exposures made during the nights of January 24, 26, and 28 it holds the famous pair of open or galactic star clusters h and Chi Persei with comet PanSTARRS (C/2017 T2) captured each night as it swept left to right across the field of view. Also cataloged as NGC 869 (right) and NGC 884, both star clusters are about 7,000 light-years away and contain stars much younger and hotter than the Sun. Separated by only a few hundred light-years, the clusters are both 13 million years young based on the ages of their individual stars, evidence that they were likely a product of the same star-forming region. Discovered in 2017 while still beyond the orbit of Saturn, Comet PanSTARRs is a new visitor to the inner solar system and just over 13 light-minutes from planet Earth. Always a rewarding sight in binoculars, the Double Cluster is even visible to the unaided eye from dark locations. C/2017 T2 could remain a telescopic comet though. One of the brightest comets anticipated in 2020 it makes its closest approach to the Sun in early May."</string>
+    <string name="left">Левая</string>
+    <string name="right">Правая</string>
+    <string name="animate">Animate</string>
+    <string name="transitions_example">Transitions example</string>
+    <string name="tap_on_me">TAP ON ME</string>
+    <string name="btn_text">Text</string>
+    <string name="btn_explode">Explode</string>
+    <string name="btn_image">Image</string>
+    <string name="btn_move_trajectory">Move</string>
+    <string name="mix">Mix</string>
+    <string name="shuffle">Shuffle</string>
+    <string name="animator">Animator</string>
+    <string name="option_1">Option 1</string>
+    <string name="option_2">Option 2</string>
+    <string name="state_list_animator_example">StateListAnimator Example</string>
+    <string name="scroll_animate">Scroll</string>
+    <string name="select_animation">Нажмите для выбора анимации</string>
+    <string name="title_animation_end">Кратер Даниэлсона</string>
+    <string name="date_animation_end">5 июня 2018 г.</string>
+    <string name="tap_for_info">Показать описание</string>
+    <string name="description_animation_end">На фото видно камни и песок в кратере Даниэлсона (диаметр кратера около 67 км), расположенного на юго-востоке области Arabia Terra.</string>
 </resources>
