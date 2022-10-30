@@ -46,6 +46,9 @@ class LayoutsViewPagerFragment: Fragment() {
                 MOTION -> {
                     getString(R.string.motion_layout)
                 }
+                RECYCLER -> {
+                    getString(R.string.recycler_layout)
+                }
                 else -> {
                     getString(R.string.constraint_layout)
                 }
@@ -58,6 +61,8 @@ class LayoutsViewPagerFragment: Fragment() {
         private const val CONSTRAINT = 0
         private const val COORDINATOR = 1
         private const val MOTION = 2
+        private const val RECYCLER = 3
+
     }
 
     override fun onDestroy() {
