@@ -1,7 +1,7 @@
 package by.ealipatov.kotlin.materialyoufromealipatov.view.recycler
 
 data class Data(
-//    val type: Int = TYPE_EARTH,
+    val type: Int = TYPE_EARTH,
     val someText: String = "Text",
     val someDescription: String? = "Description"
 ) {

@@ -6,6 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import by.ealipatov.kotlin.materialyoufromealipatov.databinding.FragmentRecyclerBinding
+import by.ealipatov.kotlin.materialyoufromealipatov.view.recycler.Data.Companion.TYPE_EARTH
+import by.ealipatov.kotlin.materialyoufromealipatov.view.recycler.Data.Companion.TYPE_HEADER
+import by.ealipatov.kotlin.materialyoufromealipatov.view.recycler.Data.Companion.TYPE_MARS
 
 class RecyclerFragment : Fragment() {
 
@@ -28,13 +31,14 @@ class RecyclerFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         val data = arrayListOf(
-            Data("Earth"),
-            Data("Earth"),
-            Data("Mars", ""),
-            Data("Earth"),
-            Data("Earth"),
-            Data("Earth"),
-            Data("Mars", null)
+            Data(TYPE_HEADER,"Заголовок"),
+            Data(TYPE_EARTH,"Earth"),
+            Data(TYPE_EARTH,"Earth"),
+            Data(TYPE_MARS,"Mars"),
+            Data(TYPE_EARTH,"Earth"),
+            Data(TYPE_EARTH,"Earth"),
+            Data(TYPE_EARTH,"Earth"),
+            Data(TYPE_MARS,"Mars")
         )
 
         binding.recyclerView.adapter = RecyclerAdapter(data)
