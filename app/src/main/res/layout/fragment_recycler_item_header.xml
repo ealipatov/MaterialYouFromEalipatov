@@ -12,7 +12,6 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="15dp"
-        android:text="@string/header_recycler"
         android:textColor="@color/design_default_color_error"
         android:textSize="@dimen/header_recycler_text_size"
         app:layout_constraintEnd_toEndOf="parent"

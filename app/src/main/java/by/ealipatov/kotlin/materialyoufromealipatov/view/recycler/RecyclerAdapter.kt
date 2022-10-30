@@ -30,22 +30,43 @@ class RecyclerAdapter(private val listData:List<Data>) : RecyclerView.Adapter<Re
                 val binding = FragmentRecyclerItemHeaderBinding.inflate(LayoutInflater.from(parent.context))
                HeaderViewHolder(binding)
             }
-
         }
     }
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
-        //TODO("Not yet implemented")
+        when (getItemViewType(position)) {
+            TYPE_EARTH -> {
+                (holder as EarthViewHolder).bind(listData[position])
+            }
+            TYPE_MARS -> {
+                (holder as MarsViewHolder).bind(listData[position])
+            }
+            else -> {
+                (holder as HeaderViewHolder).bind(listData[position])
+            }
+        }
     }
 
     override fun getItemCount(): Int {
         return listData.size
     }
 
-    class MarsViewHolder(val binding:FragmentRecyclerItemMarsBinding) : RecyclerView.ViewHolder(binding.root){
+    class MarsViewHolder(val binding:FragmentRecyclerItemMarsBinding) :
+        RecyclerView.ViewHolder(binding.root){
+        fun bind(data: Data) {
+            binding.marsTextView.text = data.name
+        }
     }
-    class EarthViewHolder(val binding:FragmentRecyclerItemEarthBinding) : RecyclerView.ViewHolder(binding.root){
+    class EarthViewHolder(val binding:FragmentRecyclerItemEarthBinding) :
+        RecyclerView.ViewHolder(binding.root){
+        fun bind(data: Data) {
+            binding.earthTextView.text = data.name
+        }
     }
-    class HeaderViewHolder(val binding: FragmentRecyclerItemHeaderBinding) : RecyclerView.ViewHolder(binding.root){
+    class HeaderViewHolder(val binding: FragmentRecyclerItemHeaderBinding) :
+        RecyclerView.ViewHolder(binding.root){
+        fun bind(data: Data) {
+            binding.header.text = data.name
+        }
     }
 }
