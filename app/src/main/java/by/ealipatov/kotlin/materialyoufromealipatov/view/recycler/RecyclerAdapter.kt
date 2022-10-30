@@ -10,7 +10,12 @@ import by.ealipatov.kotlin.materialyoufromealipatov.databinding.FragmentRecycler
 import by.ealipatov.kotlin.materialyoufromealipatov.view.recycler.Data.Companion.TYPE_EARTH
 import by.ealipatov.kotlin.materialyoufromealipatov.view.recycler.Data.Companion.TYPE_MARS
 
-class RecyclerAdapter(private var listData:List<Data>, val callbackAdd: AddItem, val callbackRemove: RemoveItem) :
+class RecyclerAdapter(private var listData:List<Data>,
+                      val callbackAdd: AddItem,
+                      val callbackRemove: RemoveItem,
+                      val callbackUp: MoveUpItem,
+                      val callbackDown: MoveDownItem
+) :
     RecyclerView.Adapter<RecyclerAdapter.BaseViewHolder>() {
 
     fun setListDataAdd(listDataNew:List<Data>, position:Int){
@@ -21,6 +26,14 @@ class RecyclerAdapter(private var listData:List<Data>, val callbackAdd: AddItem,
     fun setListDataRemove(listDataNew:List<Data>, position:Int){
         listData = listDataNew
         notifyItemRemoved(position)
+    }
+    fun setListDataMoveUp(listDataNew:List<Data>, position:Int){
+        listData = listDataNew
+        notifyItemMoved(position, position - 1)
+    }
+    fun setListDataMoveDown(listDataNew:List<Data>, position:Int){
+        listData = listDataNew
+        notifyItemMoved(position, position + 1)
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -57,12 +70,22 @@ class RecyclerAdapter(private var listData:List<Data>, val callbackAdd: AddItem,
         BaseViewHolder(binding.root){
         override fun bind(data: Data) {
             binding.marsTextView.text = data.name
+
             binding.addItemImageView.setOnClickListener{
                 callbackAdd.add(layoutPosition)
               //  callbackAdd.add(adapterPosition)
             }
+
             binding.removeItemImageView.setOnClickListener{
                 callbackRemove.remove(layoutPosition)
+            }
+
+            binding.moveItemUp.setOnClickListener{
+                callbackUp.moveUp(layoutPosition)
+            }
+
+            binding.moveItemDown.setOnClickListener{
+                callbackDown.moveDown(layoutPosition)
             }
         }
     }
@@ -72,6 +95,7 @@ class RecyclerAdapter(private var listData:List<Data>, val callbackAdd: AddItem,
             binding.earthTextView.text = data.name
         }
     }
+
     class HeaderViewHolder(val binding: FragmentRecyclerItemHeaderBinding) :
         BaseViewHolder(binding.root){
         override fun bind(data: Data) {

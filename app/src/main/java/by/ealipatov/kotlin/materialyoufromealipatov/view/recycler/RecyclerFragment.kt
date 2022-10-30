@@ -43,7 +43,7 @@ class RecyclerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        adapter = RecyclerAdapter(data, callbackAdd, callbackRemove)
+        adapter = RecyclerAdapter(data, callbackAdd, callbackRemove, callbackUp, callbackDown)
         binding.recyclerView.adapter = adapter
     }
 
@@ -55,6 +55,19 @@ class RecyclerFragment : Fragment() {
     private val callbackRemove = RemoveItem {
         data.removeAt(it)
         adapter.setListDataRemove(data, it)
+    }
+
+    private val callbackUp = MoveUpItem {
+        data.removeAt(it).apply {
+            data.add(it-1, this)
+        }
+        adapter.setListDataMoveUp(data, it)
+    }
+    private val callbackDown = MoveDownItem {
+        data.removeAt(it).apply {
+            data.add(it+1, this)
+        }
+        adapter.setListDataMoveDown(data, it)
     }
 
     override fun onDestroy() {
