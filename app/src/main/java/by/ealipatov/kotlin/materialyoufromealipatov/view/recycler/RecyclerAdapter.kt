@@ -10,34 +10,39 @@ import by.ealipatov.kotlin.materialyoufromealipatov.databinding.FragmentRecycler
 import by.ealipatov.kotlin.materialyoufromealipatov.view.recycler.Data.Companion.TYPE_EARTH
 import by.ealipatov.kotlin.materialyoufromealipatov.view.recycler.Data.Companion.TYPE_MARS
 
-class RecyclerAdapter(private var listData:List<Data>,
+class RecyclerAdapter(private var listData:List<Pair<Data, Boolean>>,
                       val callbackAdd: AddItem,
                       val callbackRemove: RemoveItem,
                       val callbackUp: MoveUpItem,
-                      val callbackDown: MoveDownItem
+                      val callbackDown: MoveDownItem,
+                      val callbackChange: ChangeItem
 ) :
     RecyclerView.Adapter<RecyclerAdapter.BaseViewHolder>() {
 
-    fun setListDataAdd(listDataNew:List<Data>, position:Int){
+    fun setListDataAdd(listDataNew:List<Pair<Data, Boolean>>, position:Int){
         listData = listDataNew
      //   notifyDataSetChanged() // изменения без анимации
         notifyItemInserted(position)
     }
-    fun setListDataRemove(listDataNew:List<Data>, position:Int){
+    fun setListDataRemove(listDataNew:List<Pair<Data, Boolean>>, position:Int){
         listData = listDataNew
         notifyItemRemoved(position)
     }
-    fun setListDataMoveUp(listDataNew:List<Data>, position:Int){
+    fun setListDataMoveUp(listDataNew:List<Pair<Data, Boolean>>, position:Int){
         listData = listDataNew
         notifyItemMoved(position, position - 1)
     }
-    fun setListDataMoveDown(listDataNew:List<Data>, position:Int){
+    fun setListDataMoveDown(listDataNew:List<Pair<Data, Boolean>>, position:Int){
         listData = listDataNew
         notifyItemMoved(position, position + 1)
     }
+    fun setListDataChange(listDataNew:List<Pair<Data, Boolean>>, position:Int){
+        listData = listDataNew
+        notifyItemChanged(position)
+    }
 
     override fun getItemViewType(position: Int): Int {
-        return listData[position].type
+        return listData[position].first.type
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
@@ -68,8 +73,8 @@ class RecyclerAdapter(private var listData:List<Data>,
 
     inner class MarsViewHolder(val binding:FragmentRecyclerItemMarsBinding) :
         BaseViewHolder(binding.root){
-        override fun bind(data: Data) {
-            binding.marsTextView.text = data.name
+        override fun bind(data: Pair<Data, Boolean>) {
+            binding.marsTextView.text = data.first.name
 
             binding.addItemImageView.setOnClickListener{
                 callbackAdd.add(layoutPosition)
@@ -87,23 +92,29 @@ class RecyclerAdapter(private var listData:List<Data>,
             binding.moveItemDown.setOnClickListener{
                 callbackDown.moveDown(layoutPosition)
             }
+
+            binding.marsDescriptionTextView.visibility = if (listData[layoutPosition].second) View.VISIBLE else View.GONE
+
+            binding.marsImageView.setOnClickListener{
+                callbackChange.change(layoutPosition)
+            }
         }
     }
     class EarthViewHolder(val binding:FragmentRecyclerItemEarthBinding) :
         BaseViewHolder(binding.root){
-        override fun bind(data: Data) {
-            binding.earthTextView.text = data.name
+        override fun bind(data: Pair<Data, Boolean>) {
+            binding.earthTextView.text = data.first.name
         }
     }
 
     class HeaderViewHolder(val binding: FragmentRecyclerItemHeaderBinding) :
         BaseViewHolder(binding.root){
-        override fun bind(data: Data) {
-            binding.header.text = data.name
+        override fun bind(data: Pair<Data, Boolean>) {
+            binding.header.text = data.first.name
         }
     }
     abstract class BaseViewHolder(view: View) :
         RecyclerView.ViewHolder(view){
-            abstract fun bind(data: Data)
+            abstract fun bind(data: Pair<Data, Boolean>)
     }
 }

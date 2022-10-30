@@ -19,17 +19,17 @@ class RecyclerFragment : Fragment() {
         }
 
     private val data = arrayListOf(
-        Data(TYPE_HEADER,"Заголовок"),
-        Data(TYPE_EARTH,"Earth"),
-        Data(TYPE_EARTH,"Earth"),
-        Data(TYPE_MARS,"Mars"),
-        Data(TYPE_EARTH,"Earth"),
-        Data(TYPE_EARTH,"Earth"),
-        Data(TYPE_EARTH,"Earth"),
-        Data(TYPE_MARS,"Mars")
+        Pair(Data(TYPE_HEADER,"Заголовок"),false),
+        Pair(Data(TYPE_EARTH,"Earth"),false),
+        Pair(Data(TYPE_EARTH,"Earth"),false),
+        Pair(Data(TYPE_MARS,"Mars"),false),
+        Pair(Data(TYPE_EARTH,"Earth"),false),
+        Pair(Data(TYPE_EARTH,"Earth"),false),
+        Pair(Data(TYPE_EARTH,"Earth"),false),
+        Pair(Data(TYPE_MARS,"Mars"),false),
     )
 
-    lateinit var adapter: RecyclerAdapter
+    private lateinit var adapter: RecyclerAdapter
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -43,12 +43,12 @@ class RecyclerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        adapter = RecyclerAdapter(data, callbackAdd, callbackRemove, callbackUp, callbackDown)
+        adapter = RecyclerAdapter(data, callbackAdd, callbackRemove, callbackUp, callbackDown, callbackChange)
         binding.recyclerView.adapter = adapter
     }
 
     private val callbackAdd = AddItem {
-        data.add(it, Data(TYPE_MARS,"Марс"))
+        data.add(it, Pair(Data(TYPE_MARS,"Марс"),false))
         adapter.setListDataAdd(data, it)
     }
 
@@ -68,6 +68,14 @@ class RecyclerFragment : Fragment() {
             data.add(it+1, this)
         }
         adapter.setListDataMoveDown(data, it)
+    }
+    private val callbackChange by lazy {
+        ChangeItem { pos ->
+        data[pos] = data[pos].let {
+            it.first to !it.second
+        }
+        adapter.setListDataChange(data, pos)
+    }
     }
 
     override fun onDestroy() {
