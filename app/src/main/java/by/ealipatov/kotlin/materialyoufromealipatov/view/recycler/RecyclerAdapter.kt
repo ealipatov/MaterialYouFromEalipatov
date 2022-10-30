@@ -10,7 +10,18 @@ import by.ealipatov.kotlin.materialyoufromealipatov.databinding.FragmentRecycler
 import by.ealipatov.kotlin.materialyoufromealipatov.view.recycler.Data.Companion.TYPE_EARTH
 import by.ealipatov.kotlin.materialyoufromealipatov.view.recycler.Data.Companion.TYPE_MARS
 
-class RecyclerAdapter(private val listData:List<Data>) : RecyclerView.Adapter<RecyclerAdapter.BaseViewHolder>() {
+class RecyclerAdapter(private var listData:List<Data>, val callbackAdd: AddItem, val callbackRemove: RemoveItem) :
+    RecyclerView.Adapter<RecyclerAdapter.BaseViewHolder>() {
+
+    fun setListDataAdd(listDataNew:List<Data>, position:Int){
+        listData = listDataNew
+     //   notifyDataSetChanged() // изменения без анимации
+        notifyItemInserted(position)
+    }
+    fun setListDataRemove(listDataNew:List<Data>, position:Int){
+        listData = listDataNew
+        notifyItemRemoved(position)
+    }
 
     override fun getItemViewType(position: Int): Int {
         return listData[position].type
@@ -42,10 +53,17 @@ class RecyclerAdapter(private val listData:List<Data>) : RecyclerView.Adapter<Re
         return listData.size
     }
 
-    class MarsViewHolder(val binding:FragmentRecyclerItemMarsBinding) :
+    inner class MarsViewHolder(val binding:FragmentRecyclerItemMarsBinding) :
         BaseViewHolder(binding.root){
         override fun bind(data: Data) {
             binding.marsTextView.text = data.name
+            binding.addItemImageView.setOnClickListener{
+                callbackAdd.add(layoutPosition)
+              //  callbackAdd.add(adapterPosition)
+            }
+            binding.removeItemImageView.setOnClickListener{
+                callbackRemove.remove(layoutPosition)
+            }
         }
     }
     class EarthViewHolder(val binding:FragmentRecyclerItemEarthBinding) :
