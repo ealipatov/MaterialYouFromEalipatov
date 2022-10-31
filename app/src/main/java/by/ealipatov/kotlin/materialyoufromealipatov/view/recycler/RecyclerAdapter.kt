@@ -3,7 +3,9 @@ package by.ealipatov.kotlin.materialyoufromealipatov.view.recycler
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
+import by.ealipatov.kotlin.materialyoufromealipatov.R
 import by.ealipatov.kotlin.materialyoufromealipatov.databinding.FragmentRecyclerItemEarthBinding
 import by.ealipatov.kotlin.materialyoufromealipatov.databinding.FragmentRecyclerItemHeaderBinding
 import by.ealipatov.kotlin.materialyoufromealipatov.databinding.FragmentRecyclerItemMarsBinding
@@ -15,9 +17,10 @@ class RecyclerAdapter(private var listData:List<Pair<Data, Boolean>>,
                       val callbackRemove: RemoveItem,
                       val callbackUp: MoveUpItem,
                       val callbackDown: MoveDownItem,
-                      val callbackChange: ChangeItem
+                      val callbackChange: ChangeItem,
+                      val callbackMove: MoveToItem
 ) :
-    RecyclerView.Adapter<RecyclerAdapter.BaseViewHolder>() {
+    RecyclerView.Adapter<RecyclerAdapter.BaseViewHolder>(), ItemTouchHelperAdapter {
 
     fun setListDataAdd(listDataNew:List<Pair<Data, Boolean>>, position:Int){
         listData = listDataNew
@@ -39,6 +42,10 @@ class RecyclerAdapter(private var listData:List<Pair<Data, Boolean>>,
     fun setListDataChange(listDataNew:List<Pair<Data, Boolean>>, position:Int){
         listData = listDataNew
         notifyItemChanged(position)
+    }
+    fun setListDataMoveTo(listDataNew:List<Pair<Data, Boolean>>, fromPosition: Int, toPosition: Int){
+        listData = listDataNew
+        notifyItemMoved(fromPosition, toPosition)
     }
 
     override fun getItemViewType(position: Int): Int {
@@ -99,6 +106,7 @@ class RecyclerAdapter(private var listData:List<Pair<Data, Boolean>>,
                 callbackChange.change(layoutPosition)
             }
         }
+
     }
     class EarthViewHolder(val binding:FragmentRecyclerItemEarthBinding) :
         BaseViewHolder(binding.root){
@@ -114,7 +122,23 @@ class RecyclerAdapter(private var listData:List<Pair<Data, Boolean>>,
         }
     }
     abstract class BaseViewHolder(view: View) :
-        RecyclerView.ViewHolder(view){
+        RecyclerView.ViewHolder(view), ItemTouchHelperViewHolder {
             abstract fun bind(data: Pair<Data, Boolean>)
+
+        override fun onItemSelected() {
+            itemView.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.color_accent))
+        }
+
+        override fun onItemClear() {
+            itemView.setBackgroundColor(ContextCompat.getColor(itemView.context, R.color.white))
+        }
+    }
+
+    override fun onItemMove(fromPosition: Int, toPosition: Int) {
+        callbackMove.moveTo(fromPosition, toPosition)
+    }
+
+    override fun onItemDismiss(position: Int) {
+        callbackRemove.remove(position)
     }
 }

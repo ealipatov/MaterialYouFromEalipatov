@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.ItemTouchHelper
 import by.ealipatov.kotlin.materialyoufromealipatov.databinding.FragmentRecyclerBinding
 import by.ealipatov.kotlin.materialyoufromealipatov.view.recycler.Data.Companion.TYPE_EARTH
 import by.ealipatov.kotlin.materialyoufromealipatov.view.recycler.Data.Companion.TYPE_HEADER
@@ -43,8 +44,9 @@ class RecyclerFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        adapter = RecyclerAdapter(data, callbackAdd, callbackRemove, callbackUp, callbackDown, callbackChange)
+        adapter = RecyclerAdapter(data, callbackAdd, callbackRemove, callbackUp, callbackDown, callbackChange, callbackMove)
         binding.recyclerView.adapter = adapter
+        ItemTouchHelper(ItemTouchHelperCallback(adapter)).attachToRecyclerView(binding.recyclerView)
     }
 
     private val callbackAdd = AddItem {
@@ -76,6 +78,12 @@ class RecyclerFragment : Fragment() {
         }
         adapter.setListDataChange(data, pos)
     }
+    }
+    private val callbackMove = MoveToItem { fromPos: Int, toPos: Int ->
+        data.removeAt(fromPos).apply {
+            data.add(toPos, this)
+        }
+        adapter.setListDataMoveTo(data, fromPos, toPos)
     }
 
     override fun onDestroy() {
