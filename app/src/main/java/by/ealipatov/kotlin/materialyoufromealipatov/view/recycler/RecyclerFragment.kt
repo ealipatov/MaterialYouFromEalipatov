@@ -18,16 +18,17 @@ class RecyclerFragment : Fragment() {
         get() {
             return _binding!!
         }
+    private var isNewList = false
 
     private val data = arrayListOf(
-        Pair(Data(TYPE_HEADER,"Заголовок"),false),
-        Pair(Data(TYPE_EARTH,"Earth"),false),
-        Pair(Data(TYPE_EARTH,"Earth"),false),
-        Pair(Data(TYPE_MARS,"Mars"),false),
-        Pair(Data(TYPE_EARTH,"Earth"),false),
-        Pair(Data(TYPE_EARTH,"Earth"),false),
-        Pair(Data(TYPE_EARTH,"Earth"),false),
-        Pair(Data(TYPE_MARS,"Mars"),false),
+        Pair(Data(0,TYPE_HEADER,"Заголовок"),false),
+        Pair(Data(1,TYPE_EARTH,"Earth"),false),
+        Pair(Data(2,TYPE_EARTH,"Earth"),false),
+        Pair(Data(3,TYPE_MARS,"Mars"),false),
+        Pair(Data(4,TYPE_EARTH,"Earth"),false),
+        Pair(Data(5,TYPE_EARTH,"Earth"),false),
+        Pair(Data(6,TYPE_EARTH,"Earth"),false),
+        Pair(Data(7,TYPE_MARS,"Mars"),false)
     )
 
     private lateinit var adapter: RecyclerAdapter
@@ -47,10 +48,14 @@ class RecyclerFragment : Fragment() {
         adapter = RecyclerAdapter(data, callbackAdd, callbackRemove, callbackUp, callbackDown, callbackChange, callbackMove)
         binding.recyclerView.adapter = adapter
         ItemTouchHelper(ItemTouchHelperCallback(adapter)).attachToRecyclerView(binding.recyclerView)
+
+        binding.recyclerViewFAB.setOnClickListener {
+            changeAdapterData()
+        }
     }
 
     private val callbackAdd = AddItem {
-        data.add(it, Pair(Data(TYPE_MARS,"Марс"),false))
+        data.add(it, Pair(Data(8, TYPE_MARS,"Марс"),false))
         adapter.setListDataAdd(data, it)
     }
 
@@ -84,6 +89,37 @@ class RecyclerFragment : Fragment() {
             data.add(toPos, this)
         }
         adapter.setListDataMoveTo(data, fromPos, toPos)
+    }
+
+    private fun changeAdapterData(){
+        adapter.setListDataForDiffUtil(createItemList(isNewList).map {it})
+        isNewList = !isNewList
+    }
+
+    private fun createItemList(instanceNumber: Boolean): List<Pair<Data, Boolean>> {
+        return  when(instanceNumber){
+            false -> listOf(
+                Pair(Data(0,TYPE_HEADER,"Заголовок"),false),
+                Pair(Data(1,TYPE_MARS,"Mars"),false),
+                Pair(Data(2,TYPE_MARS,"Mars"),false),
+                Pair(Data(3,TYPE_MARS,"Mars"),false),
+                Pair(Data(4,TYPE_MARS,"Mars"),false),
+                Pair(Data(5,TYPE_MARS,"Mars"),false),
+                Pair(Data(6,TYPE_MARS,"Mars"),false),
+                Pair(Data(7,TYPE_MARS,"Mars"),false)
+            )
+            true -> listOf(
+                Pair(Data(0,TYPE_HEADER,"Заголовок"),false),
+                Pair(Data(1,TYPE_MARS,"Mars"),false),
+                Pair(Data(2, TYPE_MARS,"Марс"),false),
+                Pair(Data(3,TYPE_MARS,"Mars"),false),
+                Pair(Data(4,TYPE_MARS,"Марс"),false),
+                Pair(Data(5,TYPE_MARS,"Mars"),false),
+                Pair(Data(6,TYPE_MARS,"Mars"),false),
+                Pair(Data(7,TYPE_MARS,"Mars"),false)
+            )
+        }
+
     }
 
     override fun onDestroy() {
