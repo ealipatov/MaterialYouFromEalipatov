@@ -35,4 +35,18 @@
     <dimen name="bottom_sheet_text_body_padding_start">16dp</dimen>
     <dimen name="bottom_sheet_text_body_padding_end">16dp</dimen>
     <dimen name="minHeightSettingSwitch">48dp</dimen>
+    <dimen name="appbar_height">250dp</dimen>
+    <dimen name="collaps_toolbar_margin_end">64dp</dimen>
+    <dimen name="collaps_toolbar_margin_start">48dp</dimen>
+    <dimen name="animation_fab_padding_bottom">16dp</dimen>
+    <dimen name="animation_fab_padding_end">150dp</dimen>
+    <dimen name="animation_fab_padding_top">100dp</dimen>
+    <dimen name="animation_fab_margin_end">5dp</dimen>
+    <dimen name="fab_margin_end">16dp</dimen>
+    <dimen name="fab_margin_bottom">16dp</dimen>
+    <dimen name="fab_elevation">5dp</dimen>
+    <dimen name="image_plus_margin_end">32dp</dimen>
+    <dimen name="image_plus_margin_bottom">32dp</dimen>
+    <dimen name="image_plus_elevation">10dp</dimen>
+    <dimen name="header_recycler_text_size">35sp</dimen>
 </resources>

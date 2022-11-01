@@ -1,6 +1,5 @@
 package by.ealipatov.kotlin.materialyoufromealipatov.viewmodel
 
-import android.app.Activity
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.lifecycle.MutableLiveData
@@ -8,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import by.ealipatov.kotlin.materialyoufromealipatov.model.CallbackPictureData
 import by.ealipatov.kotlin.materialyoufromealipatov.model.RepositoryNasaPODRetrofit
 import by.ealipatov.kotlin.materialyoufromealipatov.model.ServerNasaPODResponseData
-import by.ealipatov.kotlin.materialyoufromealipatov.utils.isConnection
 import java.io.IOException
 import java.time.LocalDate
 

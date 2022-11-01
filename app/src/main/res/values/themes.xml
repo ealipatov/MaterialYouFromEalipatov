@@ -40,6 +40,13 @@
         <!-- Стиль для material card -->
         <item name="materialCardViewStyle">@style/AppCard</item>
 
+        <!-- активное состояние (30% прозрачности для фона) -->
+        <item name="appSwitchActiveColor">@color/color_primary</item>
+        <!-- неактивное состояние ползунка -->
+        <item name="appSwitchNoActiveColor">@color/ic_launcher_background</item>
+        <!-- Цвет дорожки, вдоль которой двигается ползунок -->
+        <item name="appSwitchTintColor">@android:color/darker_gray</item>
+
     </style>
 
     <style name="MoonTheme" parent="AppTheme">
