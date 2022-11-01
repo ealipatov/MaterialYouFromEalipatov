@@ -3,7 +3,7 @@ package by.ealipatov.kotlin.materialyoufromealipatov.view.recycler
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 
-class ItemTouchHelperCallback(val callback: ItemTouchHelperAdapter): ItemTouchHelper.Callback() {
+class ItemTouchHelperCallback(val callback: ItemTouchHelperAdapter) : ItemTouchHelper.Callback() {
     override fun getMovementFlags(
         recyclerView: RecyclerView,
         viewHolder: RecyclerView.ViewHolder
@@ -39,5 +39,4 @@ class ItemTouchHelperCallback(val callback: ItemTouchHelperAdapter): ItemTouchHe
 
         super.clearView(recyclerView, viewHolder)
     }
-
 }
