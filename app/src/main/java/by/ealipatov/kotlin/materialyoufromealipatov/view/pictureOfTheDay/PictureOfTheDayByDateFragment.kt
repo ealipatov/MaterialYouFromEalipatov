@@ -1,6 +1,7 @@
 package by.ealipatov.kotlin.materialyoufromealipatov.view.pictureOfTheDay
 
 import android.content.Intent
+import android.graphics.Typeface
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
@@ -90,6 +91,8 @@ class PictureOfTheDayByDateFragment(private val date: LocalDate) : Fragment() {
                 binding.imageTitleDescription.text = imageTitleDescription
                 binding.imageDescription.text = imageDescription
                 binding.imageDate.text = pictureData.date.toString()
+
+                binding.imageDescription.typeface = Typeface.createFromAsset(requireContext().assets, "fonts/Aloevera.ttf")
 
                 displayPicture(imageUrl)
             }

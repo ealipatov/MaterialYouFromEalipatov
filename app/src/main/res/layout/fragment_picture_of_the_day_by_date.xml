@@ -80,7 +80,7 @@
                 style="@style/BodyTextStyle"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/image_title_description"/>
+                app:layout_constraintTop_toBottomOf="@id/image_title_description" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
