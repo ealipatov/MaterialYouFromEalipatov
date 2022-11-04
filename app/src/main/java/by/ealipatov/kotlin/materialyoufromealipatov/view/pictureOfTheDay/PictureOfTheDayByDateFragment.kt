@@ -5,8 +5,17 @@ import android.graphics.Typeface
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.SpannableStringBuilder
+import android.text.Spanned
+import android.text.style.BulletSpan
+import android.text.style.ForegroundColorSpan
+import android.text.style.ImageSpan
 import android.view.*
 import androidx.annotation.RequiresApi
+import androidx.core.content.ContextCompat
+import androidx.core.graphics.drawable.toBitmap
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import by.ealipatov.kotlin.materialyoufromealipatov.R
@@ -21,6 +30,7 @@ import coil.decode.GifDecoder
 import coil.decode.ImageDecoderDecoder
 import coil.decode.SvgDecoder
 import coil.load
+import kotlinx.android.synthetic.main.fragment_animation_slide.*
 import java.time.LocalDate
 
 
@@ -83,6 +93,39 @@ class PictureOfTheDayByDateFragment(private val date: LocalDate) : Fragment() {
             }
             PODFragmentViewModelAppState.Loading -> {}
             is PODFragmentViewModelAppState.Success -> {
+
+                val spannableString: SpannableString
+                
+                val textForTest = "My text \nbullet one \nbullet two"
+                val bulletSpan = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                    BulletSpan(20, ContextCompat.getColor(requireContext(), R.color.color_connected),20)
+                } else {
+                    BulletSpan(20, ContextCompat.getColor(requireContext(), R.color.color_connected))
+                }
+                spannableString = SpannableString(textForTest)
+                spannableString.setSpan(bulletSpan, 9,20,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+                //Пройти по тексту и все 't' покрасить
+                for (i in textForTest.indices){
+                    if (textForTest[i] == 't'){
+                        spannableString.setSpan(
+                            ForegroundColorSpan(ContextCompat.getColor(requireContext(),
+                            R.color.color_primary)),
+                            i, i+1,
+                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                    }
+                }
+                //Заменить 'o' на значок планеты
+                val bitmap = ContextCompat.getDrawable(requireContext(), R.drawable.ic_earth)!!.toBitmap()
+                for (i in textForTest.indices){
+                    if (textForTest[i] == 'o'){
+                        spannableString.setSpan(
+                            ImageSpan(requireContext(), bitmap),
+                            i, i+1,
+                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                    }
+                }
+
                 val pictureData = appState.pictureData
                 imageTitleDescription = pictureData.title.toString()
                 imageDescription = pictureData.explanation.toString()
@@ -92,9 +135,10 @@ class PictureOfTheDayByDateFragment(private val date: LocalDate) : Fragment() {
                 binding.imageDescription.text = imageDescription
                 binding.imageDate.text = pictureData.date.toString()
 
-                binding.imageDescription.typeface = Typeface.createFromAsset(requireContext().assets, "fonts/Aloevera.ttf")
-
                 displayPicture(imageUrl)
+
+                binding.testText.typeface = Typeface.createFromAsset(requireContext().assets, "fonts/Aloevera.ttf")
+                binding.testText.text = spannableString
             }
         }
     }
