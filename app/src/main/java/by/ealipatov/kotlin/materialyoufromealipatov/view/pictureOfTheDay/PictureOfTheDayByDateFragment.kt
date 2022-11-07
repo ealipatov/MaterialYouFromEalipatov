@@ -7,8 +7,6 @@ import android.os.Build
 import android.os.Bundle
 import android.text.Spannable
 import android.text.SpannableString
-import android.text.SpannableStringBuilder
-import android.text.Spanned
 import android.text.style.BulletSpan
 import android.text.style.ForegroundColorSpan
 import android.text.style.ImageSpan
@@ -95,34 +93,66 @@ class PictureOfTheDayByDateFragment(private val date: LocalDate) : Fragment() {
             is PODFragmentViewModelAppState.Success -> {
 
                 val spannableString: SpannableString
-                
-                val textForTest = "My text \nbullet one \nbullet two"
-                val bulletSpan = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                    BulletSpan(20, ContextCompat.getColor(requireContext(), R.color.color_connected),20)
-                } else {
-                    BulletSpan(20, ContextCompat.getColor(requireContext(), R.color.color_connected))
-                }
+
+                val textForTest = "My text \n" +
+                        "bullet one\n" +
+                        "bullet two\n" +
+                        "bullet tree\n" +
+                        "bullet four\n" +
+                        "bullet five\n"
+
                 spannableString = SpannableString(textForTest)
-                spannableString.setSpan(bulletSpan, 9,20,Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+
+                val indexesTestString = textForTest.indexesOf("\n")
+                var currentIndex = indexesTestString.first()
+                indexesTestString.forEach {
+                    if (currentIndex != it) {
+                        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                            spannableString.setSpan(
+                                BulletSpan(
+                                    20,
+                                    ContextCompat.getColor(requireContext(), R.color.color_connected),
+                                    20
+                                ), currentIndex + 1, it, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                            )
+                        } else {
+                            spannableString.setSpan(
+                                BulletSpan(
+                                    20,
+                                    ContextCompat.getColor(requireContext(), R.color.color_connected)
+                                ), currentIndex + 1, it, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                            )
+                        }
+                    }
+                    currentIndex = it
+                }
+
 
                 //Пройти по тексту и все 't' покрасить
-                for (i in textForTest.indices){
-                    if (textForTest[i] == 't'){
+                for (i in textForTest.indices) {
+                    if (textForTest[i] == 't') {
                         spannableString.setSpan(
-                            ForegroundColorSpan(ContextCompat.getColor(requireContext(),
-                            R.color.color_primary)),
-                            i, i+1,
-                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                            ForegroundColorSpan(
+                                ContextCompat.getColor(
+                                    requireContext(),
+                                    R.color.color_primary
+                                )
+                            ),
+                            i, i + 1,
+                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                        )
                     }
                 }
                 //Заменить 'o' на значок планеты
-                val bitmap = ContextCompat.getDrawable(requireContext(), R.drawable.ic_earth)!!.toBitmap()
-                for (i in textForTest.indices){
-                    if (textForTest[i] == 'o'){
+                val bitmap =
+                    ContextCompat.getDrawable(requireContext(), R.drawable.ic_earth)!!.toBitmap()
+                for (i in textForTest.indices) {
+                    if (textForTest[i] == 'o') {
                         spannableString.setSpan(
                             ImageSpan(requireContext(), bitmap),
-                            i, i+1,
-                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE)
+                            i, i + 1,
+                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                        )
                     }
                 }
 
@@ -137,11 +167,16 @@ class PictureOfTheDayByDateFragment(private val date: LocalDate) : Fragment() {
 
                 displayPicture(imageUrl)
 
-                binding.testText.typeface = Typeface.createFromAsset(requireContext().assets, "fonts/Aloevera.ttf")
+                binding.testText.typeface =
+                    Typeface.createFromAsset(requireContext().assets, "fonts/Aloevera.ttf")
                 binding.testText.text = spannableString
             }
         }
     }
+
+    fun String.indexesOf(subString: String, ignoreCase: Boolean = true): List<Int> =
+        (if (ignoreCase) Regex(subString, RegexOption.IGNORE_CASE) else Regex(subString))
+            .findAll(this).map { it.range.first }.toList()
 
     /***
      * Функция вывода с помощью Coil картинки.
