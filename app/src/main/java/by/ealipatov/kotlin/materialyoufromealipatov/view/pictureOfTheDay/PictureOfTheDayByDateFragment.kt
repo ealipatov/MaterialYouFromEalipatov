@@ -6,7 +6,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.text.Spannable
-import android.text.SpannableString
+import android.text.SpannableStringBuilder
 import android.text.style.BulletSpan
 import android.text.style.ForegroundColorSpan
 import android.text.style.ImageSpan
@@ -92,7 +92,7 @@ class PictureOfTheDayByDateFragment(private val date: LocalDate) : Fragment() {
             PODFragmentViewModelAppState.Loading -> {}
             is PODFragmentViewModelAppState.Success -> {
 
-                val spannableString: SpannableString
+                val spannableStringBuilder: SpannableStringBuilder
 
                 val textForTest = "My text \n" +
                         "bullet one\n" +
@@ -101,14 +101,14 @@ class PictureOfTheDayByDateFragment(private val date: LocalDate) : Fragment() {
                         "bullet four\n" +
                         "bullet five\n"
 
-                spannableString = SpannableString(textForTest)
+                spannableStringBuilder = SpannableStringBuilder(textForTest)
 
                 val indexesTestString = textForTest.indexesOf("\n")
                 var currentIndex = indexesTestString.first()
                 indexesTestString.forEach {
                     if (currentIndex != it) {
                         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
-                            spannableString.setSpan(
+                            spannableStringBuilder.setSpan(
                                 BulletSpan(
                                     20,
                                     ContextCompat.getColor(requireContext(), R.color.color_connected),
@@ -116,7 +116,7 @@ class PictureOfTheDayByDateFragment(private val date: LocalDate) : Fragment() {
                                 ), currentIndex + 1, it, Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
                             )
                         } else {
-                            spannableString.setSpan(
+                            spannableStringBuilder.setSpan(
                                 BulletSpan(
                                     20,
                                     ContextCompat.getColor(requireContext(), R.color.color_connected)
@@ -131,7 +131,7 @@ class PictureOfTheDayByDateFragment(private val date: LocalDate) : Fragment() {
                 //Пройти по тексту и все 't' покрасить
                 for (i in textForTest.indices) {
                     if (textForTest[i] == 't') {
-                        spannableString.setSpan(
+                        spannableStringBuilder.setSpan(
                             ForegroundColorSpan(
                                 ContextCompat.getColor(
                                     requireContext(),
@@ -139,7 +139,7 @@ class PictureOfTheDayByDateFragment(private val date: LocalDate) : Fragment() {
                                 )
                             ),
                             i, i + 1,
-                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE // флаги для разрешения или запрета применения спена для ячейки
                         )
                     }
                 }
@@ -148,7 +148,7 @@ class PictureOfTheDayByDateFragment(private val date: LocalDate) : Fragment() {
                     ContextCompat.getDrawable(requireContext(), R.drawable.ic_earth)!!.toBitmap()
                 for (i in textForTest.indices) {
                     if (textForTest[i] == 'o') {
-                        spannableString.setSpan(
+                        spannableStringBuilder.setSpan(
                             ImageSpan(requireContext(), bitmap),
                             i, i + 1,
                             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
@@ -169,7 +169,10 @@ class PictureOfTheDayByDateFragment(private val date: LocalDate) : Fragment() {
 
                 binding.testText.typeface =
                     Typeface.createFromAsset(requireContext().assets, "fonts/Aloevera.ttf")
-                binding.testText.text = spannableString
+
+              //  spannableStringBuilder.insert(3, "word")
+                spannableStringBuilder.replace(3, 4,"word")
+                binding.testText.text = spannableStringBuilder
             }
         }
     }
