@@ -5,16 +5,21 @@ import android.graphics.Typeface
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.os.Handler
+import android.os.Looper
 import android.text.Spannable
 import android.text.SpannableStringBuilder
 import android.text.style.BulletSpan
 import android.text.style.ForegroundColorSpan
 import android.text.style.ImageSpan
+import android.text.style.TypefaceSpan
 import android.view.*
 import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
+import androidx.core.provider.FontRequest
+import androidx.core.provider.FontsContractCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import by.ealipatov.kotlin.materialyoufromealipatov.R
@@ -174,6 +179,30 @@ class PictureOfTheDayByDateFragment(private val date: LocalDate) : Fragment() {
                     Typeface.createFromAsset(requireContext().assets, "fonts/Aloevera.ttf")
 
                 spannableStringBuilder.replace(3,4,"word")
+
+                val request = FontRequest(
+                    "com.google.android.gms.fonts",
+                    "com.google.android.gms",
+                    "Amiko",
+                    R.array.com_google_android_gms_fonts_certs
+                )
+
+                val callback = object : FontsContractCompat.FontRequestCallback(){
+                    override fun onTypefaceRetrieved(typeface: Typeface?) {
+                       typeface?.let {
+                           if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.P) {
+                               spannableStringBuilder.setSpan(
+                                   TypefaceSpan(it),
+                                   0, spannableStringBuilder.length,
+                                   Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+                               )
+                           }
+                       }
+                        super.onTypefaceRetrieved(typeface)
+                    }
+                }
+
+                FontsContractCompat.requestFont(requireContext(),request,callback, Handler(Looper.getMainLooper()))
             }
         }
     }
