@@ -11,6 +11,7 @@ import android.text.style.BulletSpan
 import android.text.style.ForegroundColorSpan
 import android.text.style.ImageSpan
 import android.view.*
+import android.widget.TextView
 import androidx.annotation.RequiresApi
 import androidx.core.content.ContextCompat
 import androidx.core.graphics.drawable.toBitmap
@@ -92,7 +93,7 @@ class PictureOfTheDayByDateFragment(private val date: LocalDate) : Fragment() {
             PODFragmentViewModelAppState.Loading -> {}
             is PODFragmentViewModelAppState.Success -> {
 
-                val spannableStringBuilder: SpannableStringBuilder
+                var spannableStringBuilder: SpannableStringBuilder
 
                 val textForTest = "My text \n" +
                         "bullet one\n" +
@@ -100,8 +101,10 @@ class PictureOfTheDayByDateFragment(private val date: LocalDate) : Fragment() {
                         "bullet tree\n" +
                         "bullet four\n" +
                         "bullet five\n"
-
+                //Три строки которые позволяют вносить изменения "на лету"
                 spannableStringBuilder = SpannableStringBuilder(textForTest)
+                binding.testText.setText(spannableStringBuilder, TextView.BufferType.EDITABLE)
+                spannableStringBuilder = binding.testText.text as SpannableStringBuilder
 
                 val indexesTestString = textForTest.indexesOf("\n")
                 var currentIndex = indexesTestString.first()
@@ -170,9 +173,7 @@ class PictureOfTheDayByDateFragment(private val date: LocalDate) : Fragment() {
                 binding.testText.typeface =
                     Typeface.createFromAsset(requireContext().assets, "fonts/Aloevera.ttf")
 
-              //  spannableStringBuilder.insert(3, "word")
-                spannableStringBuilder.replace(3, 4,"word")
-                binding.testText.text = spannableStringBuilder
+                spannableStringBuilder.replace(3,4,"word")
             }
         }
     }
