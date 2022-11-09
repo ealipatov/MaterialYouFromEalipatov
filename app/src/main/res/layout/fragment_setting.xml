@@ -51,7 +51,7 @@
         android:layout_height="wrap_content"
 
         android:orientation="horizontal"
-        app:layout_constraintGuide_percent="0.175"/>
+        app:layout_constraintGuide_percent="0.2"/>
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/horizontal_for_switch_one"
@@ -85,7 +85,6 @@
         app:constraint_referenced_ids="auto_switch_night_mod"
         />
 
-
     <TextView
         android:id="@+id/title"
         style="@style/TitleTextStyle"
@@ -95,38 +94,27 @@
         app:layout_constraintStart_toStartOf="@+id/vertical_center"
         app:layout_constraintTop_toBottomOf="@+id/horizontal_for_title"/>
 
-    <com.google.android.material.chip.ChipGroup
-        android:id="@+id/chip_theme_group"
+    <RadioGroup
+        android:id="@+id/theme_group"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/horizontal_for_bottom"
-        app:layout_constraintEnd_toEndOf="@+id/vertical_center"
-        app:layout_constraintStart_toStartOf="@+id/vertical_center"
+        app:layout_constraintStart_toStartOf="@+id/vertical_left"
         app:layout_constraintTop_toBottomOf="@+id/horizontal_for_bottom">
 
-        <com.google.android.material.chip.Chip
+        <com.google.android.material.radiobutton.MaterialRadioButton
             android:id="@+id/moon_theme"
-            style="@style/AppChipChoice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/moon_theme" />
 
-        <com.google.android.material.chip.Chip
+        <com.google.android.material.radiobutton.MaterialRadioButton
             android:id="@+id/mars_theme"
-            style="@style/AppChipChoice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/mars_theme" />
 
-    </com.google.android.material.chip.ChipGroup>
-
-    <TextView
-        android:id="@+id/selected_theme_name"
-        style="@style/TitleTextStyle"
-        app:layout_constraintBottom_toTopOf="@+id/horizontal_for_name_selected_theme"
-        app:layout_constraintEnd_toEndOf="@+id/vertical_center"
-        app:layout_constraintStart_toStartOf="@+id/vertical_center"
-        app:layout_constraintTop_toBottomOf="@+id/horizontal_for_name_selected_theme"/>
+    </RadioGroup>
 
     <androidx.appcompat.widget.SwitchCompat
         android:id="@+id/switch_night_mod"
