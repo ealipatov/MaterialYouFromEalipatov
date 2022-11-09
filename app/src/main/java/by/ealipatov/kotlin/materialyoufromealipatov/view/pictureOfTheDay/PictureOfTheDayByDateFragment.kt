@@ -135,7 +135,6 @@ class PictureOfTheDayByDateFragment(private val date: LocalDate) : Fragment() {
                     currentIndex = it
                 }
 
-
                 //Пройти по тексту и все 't' покрасить
                 for (i in textForTest.indices) {
                     if (textForTest[i] == 't') {
@@ -201,7 +200,6 @@ class PictureOfTheDayByDateFragment(private val date: LocalDate) : Fragment() {
                         super.onTypefaceRetrieved(typeface)
                     }
                 }
-
                 FontsContractCompat.requestFont(requireContext(),request,callback, Handler(Looper.getMainLooper()))
             }
         }

@@ -89,8 +89,8 @@ class MainActivity : AppCompatActivity() {
     private fun toFragment(fragment: Fragment) {
         supportFragmentManager.apply {
             beginTransaction()
-                .add(R.id.bottom_navigation_container, fragment)
-                .hide(this.fragments.last())
+                .replace(R.id.bottom_navigation_container, fragment)
+              //  .hide(this.fragments.last())
                 .addToBackStack(null)
                 .commit()
         }
@@ -100,7 +100,7 @@ class MainActivity : AppCompatActivity() {
      * Функция изменения режима день/ночь/авто/системый
      * На вход принимает строку
      */
-    private fun changeMode(mode: String) {
+    fun changeMode(mode: String) {
         when (mode) {
             "Day" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
             "Night" -> AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)

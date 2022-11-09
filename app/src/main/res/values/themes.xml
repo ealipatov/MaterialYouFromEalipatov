@@ -27,6 +27,8 @@
         <item name="textColorBody">@android:color/black</item>
         <!-- Цвет фона -->
         <item name="backgroundAppThemeColor">@color/light_gray</item>
+        <!-- Цвет фона меню -->
+        <item name="backgroundMenuAppThemeColor">@color/dark_gray</item>
         <!-- Цвет фона BottomSheet-->
         <item name="backgroundBottomSheetColor">@color/color_primary</item>
 
@@ -65,6 +67,11 @@
         <!-- Цвет фона BottomSheet-->
         <item name="backgroundBottomSheetColor">@color/moon_secondary_color</item>
 
+        <!-- Цвет фона -->
+        <item name="backgroundAppThemeColor">@color/moon_primary_light_color</item>
+        <!-- Цвет фона меню-->
+        <item name="backgroundMenuAppThemeColor">@color/moon_primary_dark_color</item>
+
         <!-- активное состояние (30% прозрачности для фона) -->
         <item name="appSwitchActiveColor">@color/moon_control_activated_color</item>
         <!-- неактивное состояние ползунка -->
@@ -91,6 +98,8 @@
         <item name="appCardViewBackgroundColor">@color/mars_secondary_dark_color</item>
         <!-- Цвет фона -->
         <item name="backgroundAppThemeColor">@color/mars_primary_light_color</item>
+        <!-- Цвет фона меню -->
+        <item name="backgroundMenuAppThemeColor">@color/mars_primary_dark_color</item>
         <!-- Цвет фона BottomSheet-->
         <item name="backgroundBottomSheetColor">@color/mars_primary_dark_color</item>
 

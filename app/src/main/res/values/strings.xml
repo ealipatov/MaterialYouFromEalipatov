@@ -15,8 +15,6 @@
     <string name="today">Сегодня</string>
     <string name="yesterday">Вчера</string>
     <string name="day_before_yesterday">Позавчера</string>
-    <string name="one_fragment">One fragment</string>
-    <string name="two_fragment">Two fragment</string>
     <string name="close_is_clicked">Close is Clicked</string>
     <string name="selected">Выбран</string>
     <string name="favorite">Избранное</string>
@@ -104,7 +102,7 @@
     <string name="description_animation_end">На фото видно камни и песок в кратере Даниэлсона (диаметр кратера около 67 км), расположенного на юго-востоке области Arabia Terra.</string>
     <string name="header_recycler">Заголовок</string>
     <string name="mars">Марс</string>
-    <string name="mars_decript">Марс -- четвёртая по удалённости от Солнца и седьмая по размерам планета Солнечной системы. Названа в честь Марса -- древнеримского бога войны, соответствующего древнегреческому Аресу. Иногда Марс называют «красной планетой» из-за красноватого оттенка поверхности, придаваемого ей минералом маггемитом (оксидом железа).</string>
+    <string name="mars_decript">Марс — четвёртая по удалённости от Солнца и седьмая по размерам планета Солнечной системы. Названа в честь Марса — древнеримского бога войны, соответствующего древнегреческому Аресу. Иногда Марс называют «красной планетой» из-за красноватого оттенка поверхности, придаваемого ей минералом маггемитом (оксидом железа).</string>
     <string name="earth">Земля</string>
     <string name="earth_descript">Дополнительный текст</string>
     <string name="recycler_layout">Recycler</string>

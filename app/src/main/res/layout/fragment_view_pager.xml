@@ -6,7 +6,8 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:background="?attr/backgroundAppThemeColor">
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tab_layout"
@@ -15,7 +16,8 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tabGravity="fill" />
+            app:tabGravity="fill"
+            android:background="?attr/backgroundAppThemeColor"/>
 
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/view_pager"
