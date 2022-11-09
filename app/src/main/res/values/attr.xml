@@ -5,6 +5,7 @@
     <attr name="textColorTitle" format="reference"/>
     <attr name="textColorBody" format="reference"/>
     <attr name="backgroundAppThemeColor" format="reference"/>
+    <attr name="backgroundMenuAppThemeColor" format="reference"/>
     <attr name="backgroundBottomSheetColor" format="reference"/>
     <attr name="appChipBackgroundColor" format="reference"/>
     <attr name="appSwitchActiveColor" format="reference"/>

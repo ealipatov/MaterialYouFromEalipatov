@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/constraint_layout"
+        android:icon="@drawable/ic_favourite_menu"
+        android:title="@string/constraint_layout"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/coordinator_layout"
+        android:icon="@drawable/ic_settings_menu"
+        android:title="@string/coordinator_layout"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/motion_layout"
+        android:icon="@drawable/ic_settings_menu"
+        android:title="@string/motion_layout"
+        app:showAsAction="ifRoom" />
+</menu>

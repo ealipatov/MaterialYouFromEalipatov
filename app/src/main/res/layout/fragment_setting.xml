@@ -1,18 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?attr/backgroundAppThemeColor"
-    android:orientation="vertical">
+    android:background="?attr/backgroundAppThemeColor">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical_left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.075"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical_center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.5"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/vertical_right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.75"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal_for_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.05"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal_for_bottom"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.125"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal_for_name_selected_theme"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.175"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal_for_switch_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.25"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal_for_switch_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.3"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/horizontal_for_apply_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.4"/>
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/horizontal_barrier"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="auto_switch_night_mod"
+        />
+
 
     <TextView
+        android:id="@+id/title"
         style="@style/TitleTextStyle"
-        android:text="@string/settings" />
+        android:text="@string/settings"
+        app:layout_constraintBottom_toTopOf="@+id/horizontal_for_title"
+        app:layout_constraintEnd_toEndOf="@+id/vertical_center"
+        app:layout_constraintStart_toStartOf="@+id/vertical_center"
+        app:layout_constraintTop_toBottomOf="@+id/horizontal_for_title"/>
 
     <com.google.android.material.chip.ChipGroup
         android:id="@+id/chip_theme_group"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toTopOf="@+id/horizontal_for_bottom"
+        app:layout_constraintEnd_toEndOf="@+id/vertical_center"
+        app:layout_constraintStart_toStartOf="@+id/vertical_center"
+        app:layout_constraintTop_toBottomOf="@+id/horizontal_for_bottom">
 
         <com.google.android.material.chip.Chip
             android:id="@+id/moon_theme"
@@ -32,27 +122,38 @@
 
     <TextView
         android:id="@+id/selected_theme_name"
-        style="@style/TitleTextStyle" />
+        style="@style/TitleTextStyle"
+        app:layout_constraintBottom_toTopOf="@+id/horizontal_for_name_selected_theme"
+        app:layout_constraintEnd_toEndOf="@+id/vertical_center"
+        app:layout_constraintStart_toStartOf="@+id/vertical_center"
+        app:layout_constraintTop_toBottomOf="@+id/horizontal_for_name_selected_theme"/>
 
     <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/switchNightMod"
+        android:id="@+id/switch_night_mod"
         style="@style/MaterialComponentsChipFragmentStyle"
+        android:text="@string/night_mode"
         android:theme="@style/SwitchStyle"
-        android:minHeight="@dimen/minHeightSettingSwitch"
-        android:text="@string/night_mode"/>
+        app:layout_constraintBottom_toTopOf="@+id/horizontal_for_switch_one"
+        app:layout_constraintStart_toStartOf="@+id/vertical_left"
+        app:layout_constraintTop_toBottomOf="@+id/horizontal_for_switch_one"/>
 
     <androidx.appcompat.widget.SwitchCompat
-        android:id="@+id/autoSwitchNightMod"
+        android:id="@+id/auto_switch_night_mod"
         style="@style/MaterialComponentsChipFragmentStyle"
+        android:text="@string/auto_night_mode"
         android:theme="@style/SwitchStyle"
-        android:minHeight="@dimen/minHeightSettingSwitch"
-        android:text="@string/auto_night_mode"/>
+        app:layout_constraintBottom_toTopOf="@+id/horizontal_for_switch_two"
+        app:layout_constraintStart_toStartOf="@+id/vertical_left"
+        app:layout_constraintTop_toBottomOf="@+id/horizontal_for_switch_two"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/apply_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="@string/apply" />
+        android:text="@string/apply"
+        app:layout_constraintBottom_toTopOf="@+id/horizontal_for_apply_btn"
+        app:layout_constraintEnd_toEndOf="@+id/vertical_center"
+        app:layout_constraintStart_toStartOf="@+id/vertical_center"
+        app:layout_constraintTop_toBottomOf="@+id/horizontal_barrier" />
 
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

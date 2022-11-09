@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <item
+        android:id="@+id/app_bar_telescope"
+        android:icon="@drawable/ic_telescope"
+        android:title="@string/picture_of_nasa"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/app_bar_layouts"
+        android:icon="@drawable/ic_hamburger_menu_bottom_bar"
+        android:title="@string/layouts"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/app_bar_system"
+        android:icon="@drawable/bg_system"
+        android:title="@string/solar_system_tab_text"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/app_bar_settings"
+        android:icon="@drawable/ic_settings_menu"
+        android:title="@string/settings"
+        app:showAsAction="ifRoom" />
+</menu>
+
