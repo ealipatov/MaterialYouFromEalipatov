@@ -85,12 +85,10 @@ class MainActivity : AppCompatActivity() {
         badge.number = 10
     }
 
-    //Сделать проверку уже созданного фрагмента
     private fun toFragment(fragment: Fragment) {
         supportFragmentManager.apply {
             beginTransaction()
                 .replace(R.id.bottom_navigation_container, fragment)
-              //  .hide(this.fragments.last())
                 .addToBackStack(null)
                 .commit()
         }
