@@ -8,3 +8,6 @@ const val DAY = "Day"
 const val NIGHT = "Night"
 const val AUTO = "Auto"
 const val SYSTEM = "System"
+
+const val TIMER = 2000L
+const val TIMER_INTERVAL = 1000L

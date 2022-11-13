@@ -1,13 +1,21 @@
 package by.ealipatov.kotlin.materialyoufromealipatov
 
+import android.animation.ObjectAnimator
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.content.IntentFilter
 import android.content.res.Configuration
+import android.os.Build
 import android.os.Bundle
+import android.os.CountDownTimer
+import android.view.View
+import android.view.ViewTreeObserver
+import android.view.animation.AnticipateInterpolator
+import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
+import androidx.core.animation.doOnEnd
 import androidx.fragment.app.Fragment
 import by.ealipatov.kotlin.materialyoufromealipatov.databinding.ActivityMainBinding
 import by.ealipatov.kotlin.materialyoufromealipatov.utils.*
@@ -18,6 +26,7 @@ import by.ealipatov.kotlin.materialyoufromealipatov.view.pictureOfTheDay.Picture
 
 class MainActivity : AppCompatActivity() {
 
+    @RequiresApi(Build.VERSION_CODES.S)
     override fun onCreate(savedInstanceState: Bundle?) {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
@@ -27,6 +36,45 @@ class MainActivity : AppCompatActivity() {
             supportFragmentManager.beginTransaction()
                 .replace(R.id.bottom_navigation_container, PictureOfTheDayViewPagerFragment())
                 .commit()
+        }
+
+        var isHideSplashScreen = false
+
+        object : CountDownTimer(TIMER, TIMER_INTERVAL){
+            override fun onTick(millisUntilFinished: Long) {
+                //Nothing to do
+            }
+
+            override fun onFinish() {
+                isHideSplashScreen = true
+            }
+        }.start()
+
+        val content : View = findViewById(android.R.id.content)
+        content.viewTreeObserver.addOnPreDrawListener(
+            object : ViewTreeObserver.OnPreDrawListener {
+                override fun onPreDraw(): Boolean {
+                    return if (isHideSplashScreen) {
+                        content.viewTreeObserver.removeOnPreDrawListener(this)
+                        true
+                    } else {
+                        false
+                    }
+                }
+            })
+
+        splashScreen.setOnExitAnimationListener { splashScreenView ->
+            val slideLeft = ObjectAnimator.ofFloat(
+                splashScreenView,
+                View.TRANSLATION_X,
+                0f,
+                -splashScreenView.height.toFloat()
+            )
+            slideLeft.interpolator = AnticipateInterpolator()
+            slideLeft.duration = 1000L
+
+            slideLeft.doOnEnd { splashScreenView.remove() }
+            slideLeft.start()
         }
 
         //Настроим ресивер для мониторинга изменения конфигурации темного/светлого режима
