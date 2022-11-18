@@ -12,7 +12,6 @@ import android.os.CountDownTimer
 import android.view.View
 import android.view.ViewTreeObserver
 import android.view.animation.AnticipateInterpolator
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.core.animation.doOnEnd
@@ -20,13 +19,12 @@ import androidx.fragment.app.Fragment
 import by.ealipatov.kotlin.materialyoufromealipatov.databinding.ActivityMainBinding
 import by.ealipatov.kotlin.materialyoufromealipatov.utils.*
 import by.ealipatov.kotlin.materialyoufromealipatov.view.SettingFragment
-import by.ealipatov.kotlin.materialyoufromealipatov.view.solarSystem.ViewPagerFragment
 import by.ealipatov.kotlin.materialyoufromealipatov.view.layouts.LayoutsViewPagerFragment
 import by.ealipatov.kotlin.materialyoufromealipatov.view.pictureOfTheDay.PictureOfTheDayViewPagerFragment
+import by.ealipatov.kotlin.materialyoufromealipatov.view.solarSystem.ViewPagerFragment
 
 class MainActivity : AppCompatActivity() {
 
-    @RequiresApi(Build.VERSION_CODES.S)
     override fun onCreate(savedInstanceState: Bundle?) {
         val binding = ActivityMainBinding.inflate(layoutInflater)
         super.onCreate(savedInstanceState)
@@ -63,18 +61,20 @@ class MainActivity : AppCompatActivity() {
                 }
             })
 
-        splashScreen.setOnExitAnimationListener { splashScreenView ->
-            val slideLeft = ObjectAnimator.ofFloat(
-                splashScreenView,
-                View.TRANSLATION_X,
-                0f,
-                -splashScreenView.height.toFloat()
-            )
-            slideLeft.interpolator = AnticipateInterpolator()
-            slideLeft.duration = 1000L
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            splashScreen.setOnExitAnimationListener { splashScreenView ->
+                val slideLeft = ObjectAnimator.ofFloat(
+                    splashScreenView,
+                    View.TRANSLATION_X,
+                    0f,
+                    -splashScreenView.height.toFloat()
+                )
+                slideLeft.interpolator = AnticipateInterpolator()
+                slideLeft.duration = 1000L
 
-            slideLeft.doOnEnd { splashScreenView.remove() }
-            slideLeft.start()
+                slideLeft.doOnEnd { splashScreenView.remove() }
+                slideLeft.start()
+            }
         }
 
         //Настроим ресивер для мониторинга изменения конфигурации темного/светлого режима
